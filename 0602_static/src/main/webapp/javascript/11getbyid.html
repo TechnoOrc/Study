@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>11getbyid.html</title>
+	</head>
+	<body>
+		<h1>id가 같으면 안되요.</h1>
+		<hr>
+		정상적인 예 :
+		<input type="text" id="txt1" name="txt1" value="text here...">
+		<button onclick="getText1();"> get Text </button>
+		<script type="text/javascript">
+		function getText1() {
+			alert(txt1.value);
+		}
+		</script>
+		<hr>
+		 비정상적인 예 : 
+		 <input type="hidden" id="txt2" name="txt2" value="hidden">
+		 <input type="text" id="txt2" name="txt3" value="this is txt2">
+		 <button onclick="getText2();"> get Text2 </button>
+		 <script type="text/javascript">
+		 function getText2() {
+			alert(txt2.value);//id 중복으로 충돌이 발생.
+			alert(document.getElementById("txt2").value);
+			//document.egtElementById : id 값으로 문서를 검색 : 제일 먼저 나온 요소를 선택.
+		}
+		 </script>
+	</body>
+</html>

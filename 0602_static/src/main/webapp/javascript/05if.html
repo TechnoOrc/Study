@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>05if.html</title>
+		<script type="text/javascript">
+			let kor = window.prompt("국어 성적을 입력하세요.");
+			let eng = window.prompt("영어 성적을 입력하세요.");
+			let math = window.prompt("수학 성적을 입력하세요.");
+			let sum = parseInt(kor) + parseInt(eng) + parseInt(math);
+			let avg = sum / 3;
+			let grade = 'F';
+			if(avg>=90){
+				grade = 'A';
+			}else if(avg>=80){
+				grade = 'B';
+			}else if(avg>=70){
+				grade = 'C';
+			}else if(avg>=60){
+				grade = 'D';
+			}else {
+				grade = 'F';
+			}
+			document.write("<h1>sum : " + sum + "</h1>");
+			document.write("<h1>avg : " + avg + "</h1>");
+			document.write("<h1>grade : " + grade + "</h1>");
+			
+		</script>
+	</head>
+	<body>
+
+	</body>
+</html>

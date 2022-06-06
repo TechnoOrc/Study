@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>09function.html</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+		//내장 함수(윈도우 내장 함수 + 자바스크립트 내장 함수)는 바로 실행된다.
+		alert("start");
+		//1. 프로그래머가 만든 함수는 호출이 있어야 실행된다.
+		function first() {
+			alert("alert in function");
+		}
+		first();//함수 호출.
+		//2. 함수는 외부로부터 데이터를 받는 parameter list를 갖는다.
+		function plus(num1, num2) {
+			alert(num1 + num2);
+		}
+		plus(7, 8);
+		//3. 함수는 return type이 없지만, return으로 data를 줄 수 있다.
+		function multi(num1, num2) {
+			return num1 * num2;
+		}
+		let res = multi(7, 3);
+		alert(res);
+		//4. 함수는 다른 함수를 호출 할 수 있다.
+		function callOther() {
+			let tmp = multi(5,5);
+			alert(tmp);
+			first();
+		}
+		callOther();
+		</script>
+	</body>
+</html>

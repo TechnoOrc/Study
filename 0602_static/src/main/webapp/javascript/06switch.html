@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>06switch.html</title>
+		<script type="text/javascript">
+		let num1 = prompt("정수 입력 : ");	
+		let giho = prompt("+ - */ & 입력 : ");	
+		let num2 = prompt("정수 입력 : ");	
+		let result = 0;
+		switch(giho){
+		case '+' : result = parseInt(num1) + parseInt(num2); break;
+		case '-' : result = num1 - num2; break;
+		case '*' : result = num1 * num2; break;
+		case '/' : result = num1 / num2; break;
+		case '%' : result = num1 % num2; break;
+		default : result = 0;
+		}
+		document.write("<h1>" + num1 + " " + giho + " " + num2 + " = " + result + "</h1>");
+		</script>
+	</head>
+	<body>
+
+	</body>
+</html>

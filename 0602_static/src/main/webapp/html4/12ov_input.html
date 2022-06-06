@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>12ov_input.html</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function down() {
+			txt2.value = txt1.value;
+			txt1.value = " ";
+		}
+		function up(){
+			txt1.value = txt2.value;
+			txt2.value = "";
+		}
+	</script>
+	<br><br>
+	<input type="text" id="txt1" name="txt1" value="hello">
+	<input type="button" id="btn1" value="아래로" onclick="down();">
+	<br><br>
+	<input type="text" id="txt2" name="txt2" value="hi">
+	<input type="button" id="btn2" value="위로" onclick="up();">
+</body>
+</html>

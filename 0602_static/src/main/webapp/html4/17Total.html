@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>17Total.html</title>
+	</head>
+	<body>
+
+		<h1>form : 양식 : 서버로 보낼 하나의 양식을 의미.	</h1>
+		<h1>input type="reset" : form 내부의 내용들을 맨 처음 상태로 만든다.</h1>
+
+		<form id="form1" name="form1">
+			ID : <input type="text" id="mid" name="mid" maxlength="20"
+						placeholder="ID를 입력해 주세요.">
+			<br><br>
+			PWD : <input type="text" id="pwd" name="pwd" maxlength="20">
+			<br><br>
+			관심분야 :
+			<input type="checkbox" id="hobby1" name="hobby" value="politic">정치
+			<input type="checkbox" id="hobby2" name="hobby" value="economic">경제
+			<input type="checkbox" id="hobby3" name="hobby" value="society">사회
+			<input type="checkbox" id="hobby4" name="hobby" value="culture">문화
+			<br><br>
+			성별 :
+			<input type="radio" id="m" name="gender" value="m">남성
+			<input type="radio" id="f" name="gender" value="f">여성
+			<br><br>
+			동아리 :
+			<select id="group" name="group" multiple="multiple">
+				<option value="movie">영화</option>
+				<option value="mountain">등산</option>
+				<option value="sports">스포츠</option>
+			</select>
+			<br><br>
+			자기소개 :
+			<textarea rows="5" cols="30" id="area" name="area">
+				자기 소개를 입력해 주세요.
+			</textarea>
+			<br><br>
+			첨부 파일 : <input type="file" id="file1" name="file1">
+			<br><br>
+			<input type="button" id="btn" name="btn" value="확인"
+					onclick="send();">
+			<input type="reset">
+		</form>
+		<script type="text/javascript">
+			function send() {
+				alert(mid.value);
+				alert(pwd.value);
+				alert(group.value);
+				alert(area.value);
+				alert(file1.value);
+			}
+		</script>
+
+	</body>
+</html> 

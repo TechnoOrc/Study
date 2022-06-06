@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>10onclick.html</title>
+	</head>
+	<body>
+		<input type="button" value="click here"
+				onclick="javascript:clickBtn1();">
+		<script type="text/javascript">
+		function clickBtn1() {
+			alert("button clicked!!!");
+		}
+		</script>
+		<hr>
+		<input type="button" id="btn2" name="btnData2" value="data go"
+			onclick="plusBtn(777,888);">
+		<script type="text/javascript">
+		function plusBtn(num1, num2) {//onclick 순간에 data를 함수로 전달 할 수 있다.
+			alert(num1 + num2);
+		}	
+		</script>
+		<hr>
+		<input type="button" id="btn3" name="btnData3" value="data go3"
+				onclick="objectBtn(this);"><!-- this : 버튼 객체 자기 자신 -->
+		<script type="text/javascript">
+		function objectBtn(obj) {//parameter list로 객체를 받는다.
+			alert(obj);
+			alert(obj.id);
+			alert(obj.name);
+			alert(obj.value);
+			
+		}
+		</script>
+	</body>
+</html>

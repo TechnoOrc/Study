@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>02varTest.html</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var testVar1 = 777;
+			function local1() {
+				var testVar1 = 888;
+				alert(testVar1);//888
+				testVar2 = 999;//전역변수
+			}
+			local1();
+			alert(testVar1);//777
+			alert(testVar2);//999
+		</script>
+		<script type="text/javascript">
+			let testLet1 = 111;
+			function local2() {
+				let testLet1 = 222;
+				alert(testLet1);//222
+				let testLet2 = 333;
+			}
+			local2();
+			alert(testLet1);//111
+			alert(testLet2);//error
+		</script>
+		<script type="text/javascript">
+			alert("=== 끝부분 확인 ===");
+			alert(testVar1);
+			alert(testLet1);
+		</script>
+	</body>
+</html> 
