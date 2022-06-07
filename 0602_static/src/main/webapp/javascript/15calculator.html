@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>15calculator.html</title>
+	</head>
+	<body>
+		<table border="1">
+			<tr>
+				<td colspan="4"> <input type="text" id="txt"> </td>
+			</tr>
+			<tr>
+				<td> <button onclick="calc(7);">7</button> </td>
+				<td> <button onclick="calc(8);">8</button> </td>
+				<td> <button onclick="calc(9);">9</button> </td>
+				<td> <button onclick="calc('/');">/</button> </td>
+			</tr>
+			<tr>
+				<td> <button onclick="calc(4);">4</button> </td>
+				<td> <button onclick="calc(5);">5</button> </td>
+				<td> <button onclick="calc(6);">6</button> </td>
+				<td> <button onclick="calc('*');">*</button> </td>
+			</tr>
+			<tr>
+				<td> <button onclick="calc(1);">1</button> </td>
+				<td> <button onclick="calc(2);">2</button> </td>
+				<td> <button onclick="calc(3);">3</button> </td>
+				<td> <button onclick="calc('-');">-</button> </td>
+			</tr>
+			<tr>
+				<td> <button onclick="calc('C');">C</button> </td>
+				<td> <button onclick="calc(0);">0</button> </td>
+				<td> <button onclick="calc('=');">=</button> </td>
+				<td> <button onclick="calc('+');">+</button> </td>
+			</tr>
+		</table>
+		<script type="text/javascript">
+		let firstNum, giho, secondNum, resultNum;
+		
+		function calc( data1 ){
+			if(data1 == "/" || data1 == "*" || data1 == "-" || data1 == "+"){
+				firstNum = txt.value;
+				giho = data1;
+				txt.value = "";
+			} else if(data1 == "=") {
+				secondNum = txt.value;
+				
+				if(giho == "+") resultNum = parseInt(firstNum) + parseInt(secondNum);
+				else if(giho == "-") resultNum = firstNum - secondNum;
+				else if(giho == "*") resultNum = firstNum * secondNum;
+				else if(giho == "/") resultNum = firstNum / secondNum;
+				txt.value = resultNum;
+			} else if(data1 == 'C'){
+				firstNum = "";
+				secondNum = "";
+				resultNum = "";
+				txt.value = "";
+			} else {
+				txt.value = txt.value + data1;
+			}
+			
+		}//function
+		</script>
+	</body>
+</html>
