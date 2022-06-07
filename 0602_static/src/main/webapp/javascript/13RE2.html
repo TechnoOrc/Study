@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>13RE2.html</title>
+	</head>
+	<body>
+		<h1>10. 버튼 클릭을 통한 함수 호출.</h1>
+		1.<button id = "btr1" onclick="javascript:btnClick();">버튼 클릭을 통한 함수 호출</button>
+		<script type="text/javascript">
+		function btnClick() {
+			alert("버튼을 클릭하여 함수를 호출할 수 있다.");
+		}
+		</script>
+		<hr>
+		2.<button id="btn2" onclick="btnClick2('함수의 파라미터를 통한 데이터 전달');">
+			버튼 클릭을 통한 함수 호출  + data 전달.
+		</button>
+		<script type="text/javascript">
+		function btnClick2(data1) {
+			alert(data1);
+		}
+		</script>
+		<hr>
+		3.<button id = "btn3" name="btn3Name" onclick="btnClick3(this);">
+			버튼 클릭을 통한 함수 호출 + 버튼 객체 전달. <!-- 여기서 this는 버튼 자신을 의미한다. -->
+		</button>
+		<input type = "button" id="btn4" name="btn4name" value="버튼 클릭을 통한 함수호출 + 버튼 객체 전달"
+				onclick="btnClick3(this)">
+		<script type="text/javascript">
+		function btnClick3(element) {
+			alert(element);
+			alert(element.id);
+			alert(element.name);
+			alert(element.value);
+		}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>14Before_calculator.html</title>
+	</head>
+	<body>
+		<button onclick="calc(1);"> 1 </button>
+		<button onclick="calc('+');"> + </button>
+		<button onclick="calc(2);"> 2 </button>
+		<button onclick="calc('=');"> = </button>
+		<input type="text" id="resTxt">
+		<script type="text/javascript">
+		let firstNum, giho, secondNum, resultNum;
+		function calc( data1 ){
+			if(data1 == "+" || data1 == "-" ||data1 == "*"||data1 == "/"){
+				firstNum = resTxt.value;
+				giho = data1;
+				resTxt.value = "";
+			} else if(data1 == "="){
+				secondNum = resTxt.value;
+				if(giho == "+") resultNum = parseInt(firstNum) + parseInt(secondNum);//parseInt
+				else if(giho == "-") resultNum = firstNum - secondNum;
+				else if(giho == "*") resultNum = firstNum * secondNum;
+				else if(giho == "/") resultNum = firstNum / secondNum;
+				resTxt.value = resultNum;
+			} else {//data1 == 숫자
+				resTxt.value = resTxt.value + data1;
+			}
+			
+		}//function
+		
+		</script>
+	</body>
+</html>
