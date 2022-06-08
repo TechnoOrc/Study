@@ -39,11 +39,11 @@
 		
 		function calc( data1 ){
 			if(data1 == "/" || data1 == "*" || data1 == "-" || data1 == "+"){
-				firstNum = txt.value;
+				firstNum = txt.value;//화면의 값을 firstNum으로 저장.
 				giho = data1;
-				txt.value = "";
+				txt.value = "";//화면 clear
 			} else if(data1 == "=") {
-				secondNum = txt.value;
+				secondNum = txt.value;//화면의 값을 secondNum으로 저장.
 				
 				if(giho == "+") resultNum = parseInt(firstNum) + parseInt(secondNum);
 				else if(giho == "-") resultNum = firstNum - secondNum;
@@ -55,7 +55,7 @@
 				secondNum = "";
 				resultNum = "";
 				txt.value = "";
-			} else {
+			} else {// 숫자 버튼을 누른 경우.
 				txt.value = txt.value + data1;
 			}
 			
