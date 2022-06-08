@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="UTF-8">
+		<title>21blur_focus.html</title>
+		</head>
+	<body>
+		<h1>blur : 떠날 때 발생하는 이벤트</h1>
+		<input type="text" onblur="byebye();">
+		<script type="text/javascript">
+		function byebye() {//blur : 포커스를 잃는 것.
+			alert("blur 이벤트 발생!");
+		}
+		</script>
+		<h1>focus : 선택될 때 발생하는 이벤트</h1>
+		<input type="text" id="txt2" onfocus="hello();">
+		<script type="text/javascript">
+		function hello() {//focus : 선택될 때 발생하는 이벤트.
+			txt2.value = "focus 이벤트 발생!";
+		}
+		</script>
+	</body>
+</html>

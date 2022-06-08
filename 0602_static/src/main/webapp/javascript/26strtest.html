@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>26strtest.html</title>
+	</head>
+	<body>
+	<input type="text" id="txt1" value="3,000,000,000">
+	<button onclick="removeComma();">콤마 제거 버튼</button>
+	<script type="text/javascript">
+	function removeComma(){
+		txt1.value = txt1.value.replaceAll(",","");
+	}
+	</script>
+	</body>
+</html>

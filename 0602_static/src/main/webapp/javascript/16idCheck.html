@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>16idCheck.html</title>
+	</head>
+	<body>
+		<h1>입력 값이 없을 때, 회원 가입 거부.(잘못된 입력 방지)</h1>
+		아이디 : <input type="text" id="mid" name="mid" size="20" maxlength="20">
+		<hr>
+		<button onclick ="validation_check();">회원 가입</button>
+		<script type="text/javascript">
+		function validation_check(){
+			//입력 값을 서버로 전송하기 전에 잘못된 값 입력 여부를 체크.
+			if(mid.value.trim() == ""){
+				alert("아이디 값을 입력해 주세요.");
+				mid.focus();
+				return;
+			}		
+			//alert(mid.value.length);
+			if(mid.value.length <=6){
+				alert("아이디는 7자 이상이어야 합니다.");
+				mid.focus();
+			}
+			alert("회원 가입 완료");
+		}//function
+		</script>
+	</body>
+</html>

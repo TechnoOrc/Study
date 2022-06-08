@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>22mouse_over.html</title>
+	</head>
+	<body>
+		<h1>마우스 이벤트에 따라 변하는 그림</h1>
+		<img src="./fruit1.jpg" id="img1" 
+			alt="이미지가 깨지면 나오는 설명" title="마우스가 오면 나오는 설명" 
+			onmouseover="changeImage();" onmouseout="returnImg();">
+		<script type="text/javascript">
+		function changeImage() {
+			img1.src = "./fruit2.jpg";
+		}
+		function returnImg() {
+			img1.src="./fruit1.jpg";
+		}
+		</script>
+	</body>
+</html>
