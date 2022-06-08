@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>27array.html</title>
+	</head>
+	<body>
+		<h1>자바스크립트 배열</h1>
+		자바스크립트도 객체 선언 및 생성 가능.
+		<br>배열도 자바스크립트 객체의 하나.<br>
+		<script type="text/javascript">
+		let arr1 = new Array(3);
+		arr1[0] = "hi";
+		arr1[1] = "hello";
+		arr1[2] = "how are you";
+		for (let i = 0; i < arr1.length; i++) {
+			document.write(arr1[i] + "<br>");
+		}
+		</script>
+		<hr>
+		<script type="text/javascript">
+		let arr2 = new Array("click", "keyup", "focus", "blur");
+		for (let i = 0; i < arr2.length; i++) {
+			document.write(arr2[i] + "<br>");
+		}
+		</script>
+		<hr>
+		<script type="text/javascript">
+		let arr3 = new Array();
+		arr3.push("nice");		
+		arr3.push("to");		
+		arr3.push("meet");		
+		arr3.push("you");		
+		for (let i = 0; i < arr3.length; i++) {
+			document.write(arr3[i] + "<br>");
+		}
+		document.write(arr3);
+		</script>
+	</body>
+</html>
