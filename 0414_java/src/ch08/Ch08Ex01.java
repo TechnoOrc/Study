@@ -20,7 +20,7 @@ public class Ch08Ex01 {
 		Calendar cal1 = new GregorianCalendar();
 		//System.out.println( cal1 ); 
 		System.out.println( "Calendar.YEAR : " + cal1.get(Calendar.YEAR) );
-		System.out.println( "Calendar.MONTH : " + cal1.get(Calendar.MONTH + 1 );//month : 0 ~ 11
+		System.out.println( "Calendar.MONTH : " + cal1.get(Calendar.MONTH + 1 ));//month : 0 ~ 11
 		System.out.println( "Calendar.DAY_OF_MONTH : " + cal1.get(Calendar.DAY_OF_MONTH) );
 		System.out.println( "Calendar.DAY_OF_WEEK : " + cal1.get(Calendar.DAY_OF_WEEK) );//1(일) 2 3 4(수) 5 6 7(토)
 		System.out.println( "Calendar.AM_PM : " + cal1.get(Calendar.AM_PM) );//0:오전, 1:오후.

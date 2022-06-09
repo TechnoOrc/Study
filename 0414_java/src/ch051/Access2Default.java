@@ -2,7 +2,7 @@ package ch051;
 
 import ch051.access.DefaultObject;
 
-public class Access2Default2 {
+public class Access2Default {
 
 	public static void main(String[] args) {
 
