@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>33month.html</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+		let today = new Date();
+		let getMonth = today.getMonth();
+		let firstDay = new Date("2022", getMonth, 1) //이번 달 초일
+		let lastDay = new Date("2022", getMonth + 1, 0) //이번 달 말일
+		
+		document.write("<h1>" + (getMonth + 1) + "월</h1>");
+		document.write("<h1>" + (firstDay) + "</h1>");
+		document.write("<h1>" + (lastDay) + "</h1>");
+		document.write("<h1>" + (lastDay.getDate()) + "</h1>");
+		document.write("<h1>" + (firstDay.getDay()) + "</h1>");
+		let yoil = new Array("일", "월", "화", "수", "목", "금", "토");
+		
+		document.write("<table border=1><tr>");
+		for (let i = 0; i < yoil.length; i ++){
+			document.write("<th>" + yoil[i] + "</th>");
+		}//for
+		document.write("</tr><tr>");
+		for (let i = 0, d = 1; d <= lastDay.getDate(); i++){//lastDay.getDate() 30일
+			
+			if(i >= firstDay.getDay()){//getDay() 요일을 숫자로 0:일~ 6:토 // 수요일 ->3 
+				document.write("<td>" + d++ + "</td>");
+			
+			} else if(i < firstDay.getDay()){
+				document.write("<td></td>");
+			}
+			
+			if((i + 1) % 7 == 0){
+				document.write("</tr><tr>");
+			}
+		}//for
+		for (let i = 6 - lastDay.getDay(); i> 0; i--){
+			document.write("<td></td>");
+		}//for - 마지막 빈칸 채우기
+		document.write("</tr></table>");
+		</script>
+	</body>
+</html>

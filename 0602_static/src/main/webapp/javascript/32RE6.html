@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>32RE6.html</title>
+	</head>
+	<body>
+		<input type="text" id="txt1" name="txt1" value="여러분안녕하세요">
+		<button onclick="addComma();"> ADD COMMA </button>
+		<script type="text/javascript">
+		function addComma() {
+			txt1.value = txt1.value.replaceAll(",","");
+			let origin = txt1.value;//여러분안녕하세요
+			let copy = ""; //한글자씩 복사용
+			for (let i=origin.length-1, no=1; i>= 0; i--, no++) {
+				copy = origin.charAt(i) + copy;
+				if (no % 3 ==0 && i !=0 ) copy = "," + copy;//쉼표 추가
+				//alert(copy);
+			}//for
+			txt1.value = copy;
+		}//function
+		</script>
+		
+	</body>
+</html>

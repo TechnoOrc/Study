@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>32RE3.html</title>
+	</head>
+	<body>
+		아이디 : <input type="text" id="mid" name="mid"
+						onblur="idChk();" onfocus="welcome();">
+		[<span id="idspan"></span>]
+		<br><br>
+		패스워드 : <input type="password" id="mpwd" name="mpwd"
+						onkey up="login();">
+		<button onclick ="realLogin();"> 로 그 인 </button>				
+		<script type="text/javascript">
+		function login() {
+			if( event.keyCode == 13 ){//13은 엔터를 의미한다.
+				realLogin();
+			}
+		}
+		function realLogin() {
+			alert("로그인 하겠습니다.");
+		}
+		function idChk() {
+			idspan.textContent = mid.value + " 아이디를 검사합니다.";
+		}//function
+		function welcome() {
+			idspan.innerHTML = "<font color=blue>아이디를 입력해 주세요.</font>"
+		}
+		</script>
+	</body>
+</html>

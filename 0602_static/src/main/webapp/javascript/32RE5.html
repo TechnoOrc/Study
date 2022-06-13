@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>32RE5.html</title>
+	</head>
+	<body>
+		<h1> 3자리마다 , 찍기</h1>
+		<input type="text" id="txt2" name="txt2">
+		<button onclick="addComma();"> add comma </button>
+		<script type="text/javascript">
+		function addComma(){
+			
+			let origin = txt2.value;
+			let copy = "";
+			for (let i = origin.length - 1, no = 1; i >= 0; i--, no++) {
+				//alert(origin.charAt(i % 3));
+				copy = origin.charAt(i) + copy;
+				if(i !=0 && no % 3 == 0) copy = "," + copy;//3 자리마다 쉼표
+			}//for
+			//alert(copy);
+			txt2.value = copy;
+			
+		}//function
+		</script>
+	</body>
+</html>

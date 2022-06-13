@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>39popup_child.html</title>
+	</head>
+	<body>
+		<hr>
+		<button onclick="parentColor();"> 부모 창의 바탕 색 바꾸기 </button>
+		<hr>
+		<button onclick="parentText();"> 부모 창에 text 전달하기</button>
+		<hr>
+		<button onclick="parentFunction();"> 부모 창의 함수 호출하기</button>
+		<script type="text/javascript">
+		function parentFunction() {
+			window.opener.parent();
+		}
+		function parentText() {
+			window.opener.txt.value = "부모 창에 text 전달"
+		}//parentText
+		function parentColor() {
+			window.opener.document.body.bgColor = "gray";
+		}//parentColor
+		</script>
+	</body>
+</html>

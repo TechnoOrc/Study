@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>32RE4.hmtl</title>
+	</head>
+	<body>
+		과일 : <select id="sel1" name="sel1">
+			<option value=""> 선택 하세요. </option>
+			<option value="apple"> 사과 </option>
+			<option value="banana"> 바나나 </option>
+			<option value="cherry"> 체리 </option>
+		</select>
+		<hr>
+		<button onclick="send();"> 전 송 버 튼</button>
+		<script type="text/javascript">
+			function send() {
+				if (sel1.value == "") {
+					alert("과일을 선택하세요.");
+					return; // 실행 중지
+				}
+				alert(sel1.value);
+			}//function
+		</script>
+		<hr>
+		스포츠 : <input type ="checkbox" id="cb1" name="sports" value="baseball"
+							onchange="checkAlert(this);">야구
+		<input type="checkbox" id="cb2" name="sports" value="basketball"
+							onchange="checkAlert(this);"> 농구
+		<input type="checkbox" id="cb3" name="sports" value="football"
+							onchange="checkAlert(this);"> 축구
+		<input type="checkbox" id="cb4" name="sports" value="volleyball"
+							onchange="checkAlert(this);">배구
+		<script type="text/javascript">
+		let cbArr = new Array();
+		function checkAlert( object ) {
+			if (object.checked == true) {
+				cbArr.push(object.value);
+			} else if (object.checked == false){
+				let removeIndex = -1;
+				for (let i = 0; i < cbArr.length; i++) {
+					if (cbArr[i] == object.value) {
+						removeIndex = i;
+					}//지워질 대상의 번지를 알아내는 표현.
+				}//for
+				alert(removeIndex);
+				for (let i = removeIndex ; i < cbArr.length; i++) {
+					cbArr[i] = cbArr[i +1]//체크해제한 값의 번지수에 뒷 번지수 값을 넣는다.
+				}//for
+				cbArr.pop();// 맨끝에 한간을 삭제하는 함수
+			}//if
+			alert( cbArr );
+		}//checkAlert	
+		
+		</script>
+	</body>
+</html>

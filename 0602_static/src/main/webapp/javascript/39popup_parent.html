@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>39popup_parent.html</title>
+	</head>
+	<body>
+		<h1>popup_parent : opener</h1>
+		<input type="text" id="txt" name="txt">
+		<button onclick="newOpen();"> 새 창 열 기 </button>
+		<script type="text/javascript">
+		function newOpen() {
+			window.open("39popup_child.html", "mypop", "width=450 height=450");
+		}
+		function parent() {
+			alert("child call parent...");
+		}
+		</script>
+	</body>
+</html>

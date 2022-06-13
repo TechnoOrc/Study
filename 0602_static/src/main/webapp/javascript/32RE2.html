@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>32RE2.html</title>
+	</head>
+	<body>
+		성별 : <input type="radio" id="rdo1" name="gender" value="F"> 여성
+		<input type="radio" id="rdo2" name="gender" value="M"> 남성
+		<hr>
+		동아리 선택 : <input type="checkbox" id="cb1" name="dongari" value="sports"> 스포츠
+		<input type="checkbox" id="cb2" name="dongari" value="movie"> 영화
+		<input type="checkbox" id="cb3" name="dongari" value="game"> 컴퓨터 게임
+		<hr>
+		<button onclick="send();"> 전 송 </button>
+		<script type="text/javascript">
+		function send() {
+			let dongArr = document.getElementsByName("dongari");
+			let dongariCheck = false;
+			for (let i = 0; i < dongArr.length; i++) {
+				if(dongArr[i].checked == true){
+					dongariCheck = true;
+					break;
+				}
+			}//for
+			if(dongariCheck == false){
+				alert("동아리는 1개 이상 선택하셔야 합니다.");
+				return;//진행 중지
+			}
+			if(rdo1.checked == false && rdo2.checked == false){
+				alert("성별을 선택해 주세요.");
+				return;//진행 중지
+			}
+		}//function
+		</script>
+	</body>
+</html>
