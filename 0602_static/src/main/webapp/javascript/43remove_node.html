@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>43remove_node.html</title>
+	</head>
+	<body>
+		<h1>remove element / node</h1>
+		<h2>element : document를 구성하는 html 요소들을 호칭하는 명칭.</h2>
+		<h2>node : tree 구조에서 document를 구성하는 html 요소들을 호칭하는 명칭.</h2>
+		<h2>node가 element보다 조금 큰 의미 : html 요소 사이 공백도 text 노드로 인식.</h2>
+		<div id="parentDiv">
+			<h1 id="child1">child1</h1>
+			<h1 id="child2">child2</h1>
+			<h1 id="child3">child3</h1>
+			<h1 id="child4">child4</h1>
+			<h1 id="child5">child5</h1>
+		</div>
+		<button onclick="node();"> about node </button>
+		<button onclick="removeNode();"> remove node </button>
+		<script type="text/javascript">
+		function removeNode() {
+			parentDiv.removeChild(parentDiv.childNodes[3]);
+			parentDiv.removeChild(child4);
+		}
+		function node() {
+			alert(parentDiv.childNodes[0]);
+			alert(parentDiv.childNodes[1]);
+			alert(parentDiv.childNodes[2]);
+			alert(parentDiv.childNodes[3]);
+			alert(parentDiv.childNodes[4]);
+			alert(parentDiv.childNodes[5]);
+			alert(parentDiv.childNodes[6]);
+			alert(parentDiv.childNodes[7]);
+			alert(parentDiv.childNodes[8]);
+			alert(parentDiv.childNodes[9]);
+			alert(parentDiv.childNodes[10]);
+			alert(parentDiv.childNodes[11]);
+		}
+		</script>
+	</body>
+</html>

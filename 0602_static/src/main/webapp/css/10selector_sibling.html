@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>10selector_sibling.html</title>
+		<style type="text/css">
+		h1 ~ h1 {
+			color : lightgreen;
+		}
+		</style>
+	</head>
+	<body>
+		<h1 id="first">sibling selector : 모든 형제</h1>
+		<h1> heading tag 1 </h1><!-- #first의 형제 -->
+		<div>
+			<h1 id="divH"> heading tag 1 : div 내부 </h1>
+			<h1> heading tag 1 : div 내부 </h1><!-- #divH의 형제 -->
+		</div>
+		<h1> heading tag 1 </h1><!-- #first의 형제 -->
+		<h1> heading tag 1 </h1><!-- #first의 형제 -->
+	</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>07selector_child.html</title>
+		<style type="text/css">
+		.testCls > h1 {
+			background-color: blue;
+			color: white;
+		}
+		</style>
+	</head>
+	<body>
+		<h1>child selector : 어떤 요소의 내부의 요소(child 요소)에 적용</h1>
+		<h1> h1 : testCls 위</h1><!-- child selector와 무관 -->
+		<div class="testCls">
+			<h1> h1 : testCls 내부 </h1>
+			<div>
+				<h1> h1 : testCls 내부의 div 내부  </h1><!-- 자식이 아니라 손자 -->
+			</div>
+			<h1> h1 : testCls 내부</h1>
+		</div>
+		<h1> h1: testCls 아래</h1><!-- child selector와 무관 -->
+	</body>
+</html>

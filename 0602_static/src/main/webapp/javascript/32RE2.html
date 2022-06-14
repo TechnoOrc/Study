@@ -23,15 +23,15 @@
 					break;
 				}
 			}//for
-			if(dongariCheck == false){
-				alert("동아리는 1개 이상 선택하셔야 합니다.");
-				return;//진행 중지
-			}
 			if(rdo1.checked == false && rdo2.checked == false){
 				alert("성별을 선택해 주세요.");
+				return;//진행 중지
+			}
+			if(dongariCheck == false){
+				alert("동아리는 1개 이상 선택하셔야 합니다.");
 				return;//진행 중지
 			}
 		}//function
 		</script>
 	</body>
-</html>
+</html> 

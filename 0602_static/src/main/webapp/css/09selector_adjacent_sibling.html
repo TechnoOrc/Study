@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>09selector_adjacent_sibling.html</title>
+		<style type="text/css">
+		h1 + h1 {
+			color: pink;
+		}
+		</style>
+	</head>
+	<body>
+		<h1>adjacent sibling selector : 인접 형제를 선택하는 개념</h1>
+		<h1> h1 + h1 : h1 바로 옆에 있는 h1 선택 </h1><!-- h1 다음에 있는 h1 -->
+		<h1> heading tag 1 </h1><!-- h1 다음에 있는 h1 -->
+		<div>
+			<h1> heading tag 1 : div 내부 </h1>
+			<h1> heading tag 1 : div 내부 </h1><!-- h1 다음에 있는 h1 -->
+			<h1> heading tag 1 : div 내부 </h1><!-- h1 다음에 있는 h1 -->
+		</div>
+		<h1> heading tag 1 </h1>
+		<h1> heading tag 1 </h1><!-- h1 다음에 있는 h1 -->
+		<br>
+		<h1> heading tag 1 </h1>
+	</body>
+</html>

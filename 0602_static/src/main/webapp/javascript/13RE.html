@@ -2,46 +2,42 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>13RE2.html</title>
+		<title>13RE.html</title>
 	</head>
 	<body>
 		<h1>
 			00.html, css, javascript의 역할.
-			<br>01. javascript의 위치. (주석은 자바와 동일)
-			<br>02. html 페이지 변수 let를 사용하자. 
-				(var : 전역 변수, 지역변수 개념 없다, 사용 자제)
+			<br>01.javascript의 위치. (주석은 자바 동일)
+			<br>02.html 페이지 변수 let를 사용하자.
+				(var:전역 변수, 지역 변수 개념 없다, 사용 자제)
 				(var, let 선언 없이 변수 만들어도, var 전역 변수)
 				(전역 변수 : 프로젝트 전체에 영향을 주는 변수)
-			<br>02. 자바스크립트는 data type의 개념이 없이 변수를 선언한다.
-			<br>03. confirm  : 확인창
-			<br>04. operator (자바 동일)
-			<br>05. if (자바 동일)
-			<br>06. switch (자바 동일)
-			<br>07. for (자바 동일)
-			<br>08. while (자바 동일)
-			<br>09. 함수의 종류 : 윈도우(웹 브라우저) 내장 함수, 
+			<br>02.자바스크립트는 data type의 개념이 없이 변수를 선언한다.
+			<br>03.confirm : 확인창
+			<br>04, 05, 06, 07, 08.(자바 동일)
+			<br>09.함수의 종류 : 윈도우(웹브라우저) 내장 함수,
 								자바스크립트 내장 함수,
-								프로그래머가 만든 함수. 
-			<br>09. 프로그래머가 만든 함수 : 호출이 있어야 실행된다.
-			<br>09. 함수 만드는 법 : function 함수이름 (외부에서 오는 데이터 목록) {실행코드}
+								프로그래머가 만든 함수.
+			<br>09.프로그래머가 만든 함수 : 호출이 있어야 실행된다.
+			<br>09.함수 만드는 법 : function 함수이름 (외부에서 오는 데이터 목록){실행코드}
 		</h1>
 		<hr>
-		<h1>09. programmer defined function</h1>
+		<h1>09.programmer defined function</h1>
 		<script type="text/javascript">
-		//1. 리턴이 있는 경우.(자바의 메소드와 다른 점 : 리턴 타입은 없다)
+		//1.리턴이 있는 경우.(자바의 메소드와 다른 점 : 리턴 타입은 없다)
 		function isReturn(){
 			return '자바스크립트의 함수는 리턴 타입은 없지만, 리턴은 가능하다.';
 		}
-		let returnstr = isReturn();//사용자 정의함수는 호출이 있어야 실행된다.
-		alert(returnstr);//윈도우 함수, 자바스크립트함수는 script tag안에서 바로 실행.
-		
-		//2. parameter list가 있는 경우.
+		let returnStr = isReturn();//사용자정의함수는 호출이 있어야 실행된다.
+		alert(returnStr);//윈도우함수,자바스크립트함수는 script tag안에서 바로 실행.
+
+		//2.parameter list가 있는 경우.
 		function paramList(var1, var2) {//parameter list도 data type이 없다.
 			alert(var1 + var2);
 		}
-		paramList(1,1);
-		paramList(0.1,0.1);
-		paramList('문자','열');
+		paramList(1, 1);
+		paramList(0.1, 0.1);
+		paramList('문자', '열');
 		</script>
 	</body>
-</html>
+</html> 
