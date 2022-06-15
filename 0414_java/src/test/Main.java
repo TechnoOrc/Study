@@ -10,8 +10,10 @@ public class Main {
 		
 		int intVar1 = scan.nextInt();
 		int intVar2 = scan.nextInt();
-		System.out.println(intVar1 + " * " + intVar2 + " = " + intVar1 * intVar2);
-		System.out.print(intVar1 + " / " + intVar2 + " = " + intVar1 / intVar2);
+		System.out.println(intVar1 + " > " + intVar2 + " --- " + (intVar1 > intVar2));
+		System.out.println(intVar1 + " < " + intVar2 + " --- " + (intVar1 < intVar2));
+		System.out.println(intVar1 + " >= " + intVar2 + " --- " + (intVar1 >= intVar2));
+		System.out.println(intVar1 + " =< " + intVar2 + " --- " + (intVar1 <= intVar2));
 		
 	}
 
