@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>02selector_element.html</title>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	</head>
+	<body>
+		<h1>element selector : html element에 접근</h1>
+		<button id="btn1"> h1의 text를 가져가자 </button>
+		<button id="btn2"> div의 html을 가져가자 </button>
+		<hr>
+		<div>
+			<img src="../javascript/fruit1.jpg">
+		</div>
+		<script>
+		$(document).ready(function() {
+			
+			$("#btn2").click(function() {
+				alert( $("div").html() );
+				//$("div").text("<img src='../javascript/fruit2.jpg'>");
+				$("div").html("<img src='../javascript/fruit2.jpg'>");
+			});//click
+			//html() : html을 가져오거나 집어 넣는 jquery 함수. : 자바스크립트의 innerHTML
+			
+			$("#btn1").click(function() {
+				alert( $("h1").text() );//html 요소의 text 가져오기
+				$("h1").text("Get Test Complete!!");//html  요소의 텍스트 집어 넣기
+				//text() : 글자를 가져오거나 집어 넣는 jquery 함수 : 자바스크립트의 textCotents
+			});//click
+		});//read
+		</script>
+	</body>
+</html>

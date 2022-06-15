@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>03selector_id.html</title>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<style type="text/css">
+		div {
+			height : 50px;
+			border : 2px solid blue;
+		}
+		</style>
+	</head>
+	<body>
+		<h1>id selector : html element의 id에 접근 : #을 사용ㄴ</h1>
+		<h3>바구니에 아이스크림을 담아라</h3>
+		<div id="baguni"></div>
+		<input type="checkbox" value="죠스바"> 죠스바
+		<input type="checkbox" value="바밤바"> 바밤바
+		<input type="checkbox" value="쌍쌍바"> 쌍쌍바
+		<input type="checkbox" value="누가바"> 누가바
+		<input type="checkbox" value="설레임"> 설레임
+		<script>
+		$(document).ready(function() {
+			$("input[type=checkbox]").click(function() {
+				//alert( this.value );
+				alert( $(this).val() );
+				//$("#baguni").append( this.value );
+			});//click
+			//val() : value를 가져 오거나 집어 넣는 jquery 함수.
+			//append() : 글자 또는 html을 추가하는 jquery 함수.
+		});//ready
+		
+		</script>
+	</body>
+</html>
