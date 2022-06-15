@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>29zindex.html</title>
+		<style type="text/css">
+		div {
+			width : 300px;
+			height : 300px;
+			position : absolute;
+		}
+		#no1 {
+			background-color: skyblue;
+			top : 100px;
+			left : 100px;
+			z-index: 3;
+		}
+		#no2 {
+			background-color: pink;
+			left : 150px;
+			top : 150px;
+			z-index: 2;
+		}
+		#no3 {
+			background-color: lightgreen;
+			top : 200px;
+			left : 200px;
+			z-index: 1;
+		}
+		</style>
+	</head>
+	<body>
+		<div id="no1"></div>
+		<div id="no2"></div>
+		<div id="no3"></div>
+		<h1>z-index 화면상의 높이 : 숫자가 작을 수록 아래에 깔림</h1>
+	</body>
+</html>
