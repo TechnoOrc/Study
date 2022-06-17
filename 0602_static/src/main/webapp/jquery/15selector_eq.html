@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>15selector_eq.html</title>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	</head>
+	<body>
+		<h1>eq : equal, gt : greater than, lt : less than</h1>
+		<button id="eqBtn"> equal(5) </button>
+		<button id="ltBtn"> less than(5) </button>
+		<button id="gtBtn"> greater than(5) </button>
+		<script>
+			$(document).ready(function() {
+				
+				$("#gtBtn").click(function() {
+					$("li:gt(5)").css("background-color", "yellow")
+				});//click
+				
+				$("#ltBtn").click(function() {
+					$("li:lt(5)").css("background-color", "skyblue");
+				});//click
+				
+				$("#eqBtn").click(function() {
+					$("li:eq(5)").css("background-color", "red");		
+				});//click
+				
+			});//ready
+		</script>
+		<ul>
+			<li>index 0 : apple</li>
+			<li>index 1 : banana</li>
+			<li>index 2 : cherry</li>
+			<li>index 3 : melon</li>
+			<li>index 4 : watermelon</li>
+			<li>index 5 : pineapple</li>
+			<li>index 6 : peach</li>
+			<li>index 7 : grape</li>
+		</ul>
+	</body>
+</html>

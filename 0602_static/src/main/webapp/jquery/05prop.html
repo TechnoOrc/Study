@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>05prop.html</title>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	</head>
+	<body>
+		<input type="checkbox" value="1"> 1
+		<input type="checkbox" value="2"> 2
+		<input type="checkbox" value="3"> 3
+		<input type="checkbox" value="4"> 4
+		<input type="checkbox" value="5"> 5
+		<button id="testBtn1"> 전체 선택 </button>
+		<script>
+		let checkboxLength = 0;
+		$(document).ready(function() {
+			checkboxLength = $(":checkbox").length;//5 : 전체 checkbox 길이
+			//alert( "checkboxLength : " + checkboxLength );
+
+			$(":checkbox").click(function() {
+				if ($(this).prop("checked") == true ) {
+					checkboxLength--;//checkbox가 선택되면 선택된 체크박스의 수를 기록.
+				} else if ($(this).prop("checked") == false ) {
+					checkboxLength++;//checkbox가 선택 해제되면 해제된 체크박스의 수를 기록.
+				}
+			});//click
+
+			$("#testBtn1").click(function() {
+				if(checkboxLength == 0) {
+					alert("모두 선택된 상태");
+				}
+				if(checkboxLength == 5) {
+					alert("모두 해제된 상태");
+				}
+			});//click
+		});//ready
+		</script>
+	</body>
+</html>

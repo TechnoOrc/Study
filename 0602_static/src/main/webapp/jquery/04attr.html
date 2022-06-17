@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>04attr.html</title>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	</head>
+	<body>
+		<button id="imgBtn1"> 이미지 교체 </button>
+		<button id="imgBtn2"> check checkbox </button>
+		<img src="../javascript/fruit1.jpg" width="200px">
+		<hr>
+		<input type="checkbox" id="ch1" value="yes"> checkedTest1
+		<input type="checkbox" id="ch1" value="no"> checkedTest2
+		<input type="checkbox" id="ch1" value="yesno"> checkedTest3
+		<script>
+		let chkYN = false;//전체 선택 여부 : false(선택 안됨), true(선택됨)
+		$(document).ready(function() {
+	
+			$("#imgBtn2").click(function() {
+			if (chkYN == false) {
+				$(":checkbox").prop("checked", true);
+				chkYN = true;//선택했음을 기록.
+				$("#imgBtn2").text("check uncheckbox");
+			} else if (chkYN == true) {
+				$(":checkbox").prop("checked", false);
+				chkYN = false;//선택을 해제했음을 기록.
+				$("#imgBtn2").text("check checkbox");
+			}
+				
+			});//click
+			
+			$("#imgBtn1").click(function() {
+				alert( "attr : " + $("#ch1").prop("checked") );//element state : ok
+				alert( "attr : " + $("#ch1").attr("checked") );//element state : error
+				$("img").prop("src", "../javascript/fruit2.jpg");//ok
+				//$("img").attr("src", "../javascript/fruit2.jpg");//ok
+				//$("img").prop("border", "10px");
+				//$("img").attr("border", "10px");
+			});//click
+			
+		});//ready
+		</script>
+	</body>
+</html>

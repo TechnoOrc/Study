@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>09hide_show.html</title>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		
+	</head>
+	<body>
+		<h1>hide & show</h1>
+		<button id="openToggle"> toggle button </button>
+		<div id = "title1"><h3>193 오늘의 알림 2022.04.14.</h3></div>
+		<div id = "cnts1">
+			<p>여러분 안녕하세요.</p>
+			<p>새로운 class가 시작되었습니다.</p>
+			<p>모두 건승하세요.</p>
+		</div>
+		<script>
+			$(document).ready(function() {
+				$("#cnts1").hide();
+				let openCnts1 = false;
+				
+				$("#title1").click(function() {
+					if (openCnts1 == false) {//hide 상태
+						$("#cnts1").show(2000);//2000/1000 -> 2초동안
+						openCnts1 = true;
+					} else if (openCnts1 == true) {//show 상태
+						$("#cnts1").hide(2000);//2000/1000 -> 2초동안
+						openCnts1 = false;
+					}
+					
+				});//click
+			
+				$("#openToggle").click(function() {
+					$("#cnts1").toggle(1000);
+				});//click
+				
+			});//ready
+		</script>
+	</body>
+</html>

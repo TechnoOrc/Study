@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>07selector_class.html</title>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	</head>
+	<body>
+		<script>
+		$(document).ready(function() {
+			$(".clsOdd").click(function() {
+				$(".clsOdd").css("background-color", "orange");
+				$(".clsEven").css("background-color", "skyblue");
+			});//click
+			
+			$(".clsEven").click(function() {
+				alert( $(".clsOdd").css("background-color") );
+				$(".clsOdd").css("background-color","");
+			});//click
+			
+			//css() : css를 적용하거나, 적용된 css 값을 가져올 수 있다.
+		});//ready
+		</script>
+		<h1 class="clsOdd"> Heading 1 </h1>
+		<h2 class="clsEven"> Heading 2 </h2>
+		<h3 class="clsOdd"> Heading 3 </h3>
+		<h4 class="clsEven"> Heading 4 </h4>
+		<h5 class="clsOdd"> Heading 5 </h5>
+		<h6 class="clsEven"> Heading 6 </h6>
+	</body>
+</html>

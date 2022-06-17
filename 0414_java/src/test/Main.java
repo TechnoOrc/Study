@@ -5,16 +5,24 @@ import java.util.Scanner;
 public class Main {
 
 	public static void main(String[] args) {
-
+		
+		int jungArr [] = new int [10];
+		int min = 1000;
+		int max = 0;
 		Scanner scan = new Scanner(System.in);
 		
-		int intVar1 = scan.nextInt();
-		int intVar2 = scan.nextInt();
-		System.out.println(intVar1 + " > " + intVar2 + " --- " + (intVar1 > intVar2));
-		System.out.println(intVar1 + " < " + intVar2 + " --- " + (intVar1 < intVar2));
-		System.out.println(intVar1 + " >= " + intVar2 + " --- " + (intVar1 >= intVar2));
-		System.out.println(intVar1 + " =< " + intVar2 + " --- " + (intVar1 <= intVar2));
+		for (int i = 0; i < jungArr.length; i++) {
+			jungArr [i] = scan.nextInt();
+			
+		}//for
 		
-	}
+		for (int i = 0; i < jungArr.length; i++) {
+			if (jungArr [i] < min) {
+				min = jungArr[i];
+			} else if (jungArr [i] > min) continue;
+		}		
+		
+		System.out.print(min);
+	}//main
 
-}
+}//class

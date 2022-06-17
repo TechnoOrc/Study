@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>33layout.html</title>
+		<!-- 메뉴 style  -->
+		<style type="text/css">
+		nav ul {
+			list-style : none;
+			padding-left : 0;
+			background-color : lightblue;
+			overflow : hidden;
+			margin : 0;
+		}
+		
+		nav li {
+			boarder : 1px solid gray;
+			float : left;
+			padding : 20px 50px 20px 50px;
+			font-family : 궁서;
+			font-size : xx-large;
+			color : black;
+		}
+		nav li:hover {
+			color : white;
+			background-color : gray;
+		}
+		</style>
+		<!-- layout style  -->
+		<style type="text/css">
+		#container {
+			border : 1px solid blue;
+			margin : 0px 100px 0px 100px;
+		}
+		#header {
+			border : 5px solid orange;
+			height : 150px;
+			text-align : center;
+			font-family : 궁서;
+			font-size : xxlarge;
+			color : pink;
+			padding-top : 50px;
+			background-image : url(./sky.jpg);
+			
+		}
+		#nav {
+			border : 5px solid green;
+		}
+		
+		#main {
+			border : 5px solid yellow;
+			float : left;
+			height : 500px;
+			width : 58.22%;
+		}
+		#side_nav {
+			border : 5px solid pink;
+			float : left;
+			height : 500px;
+			width : 20%;
+		}
+		#banner {
+			border : 5px solid skyblue;
+			float : left;
+			height : 500px;
+			width : 20%;
+	
+		}
+		#footer {
+			border : 5px solid purple;
+			clear : both;
+			height : 100px;
+		}
+		</style>
+		
+	</head>
+	<body>
+		<!-- html5 semantic tag : 의미론적 접근 : html의 의미에 css를 통해 기능을 부여 -->
+		<!-- container : web page의 contents를 담는 가장 외곽에 위치한 영역 -->
+		<div id="container">
+			<header id="header">header</header>
+			<nav id="nav">
+				<ul>
+					<li>네이버</li>
+					<li>구글</li>
+					<li>잔디</li>
+					<li>유튜브</li>
+				</ul>
+			</nav>
+			<aside id="side_nav">side_nav</aside>
+			<main id="main">main</main>
+			<aside id="banner">banner</aside>
+			<footer id="footer">footer</footer>
+		</div>
+	</body>
+</html>

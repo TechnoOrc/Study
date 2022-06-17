@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>10fade.html</title>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	</head>
+	<body>
+		<h1>fade in & fade out</h1>
+		<button id="openToggle"> toggle button </button>
+		<div id="title1"><h3>193 오늘의 알림 2022.04.14.</h3></div>
+		<div id="cnts1">
+			<p>여러분 안녕하세요.</p>
+			<p>새로운 class가 시작 되었습니다.</p>
+			<p>모두 건승하세요.</p>
+		</div>
+		<script>
+		$(document).ready(function() {
+			$("#cnts1").fadeOut();
+			let state = false;
+			$("#title1").click(function() {
+				if(state == false) {//cnts1 close 상태
+					$("#cnts1").fadeIn();
+					state = true;//현재 open 상태임을 저장
+				} else if (state == true) {//cnts1 open 상태
+					$("#cnts1").fadeOut();
+					state = false;//현재 close 상태임을 저장
+				}
+			});//click
+
+			$("#openToggle").click(function() {
+				$("#cnts1").fadeToggle();
+			});//click
+		});//ready
+		</script>
+	</body>
+</html>
