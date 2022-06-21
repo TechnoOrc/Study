@@ -1,0 +1,42 @@
+.<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>21display.html</title>
+		<style type="text/css">
+		#box { display : block; background-color : pink; }
+		/* none : 표시하지 않는다. */
+		/* inline : 하나의 줄 안에 포함되는 개념. */
+		/* block : 속해 있는 영역의 좌에서 우까지를 모두 차지한다. */
+		#box2 { display : inline-block; background-color : pink; }
+		/* inline-block : 영역의 크기에 따라서 inline과 bolock을 왔다 갔다 한다. */
+		#box3 { visibility : hidden; }
+		/* visibility : hidden;은 영역은 확보되지만 보이지는 않는다. */
+		/* display : none;은 영역도 확보되지 않고 보이지도 않는다. */
+		</style>
+	</head>
+	<body>
+		Dummy
+		<span id="box">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+		Dummy
+
+		<hr>
+
+		Dummy
+		<span id="box2">
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+		</span>
+		Dummy
+
+		<hr>
+
+		Dummy
+		<span id="box3">
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+		</span>
+		Dummy
+
+	</body>
+</html>

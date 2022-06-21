@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>17active_hover.html</title>
+		<style type="text/css">
+		#btn {
+			width : 300px;
+			height : 100px;
+			background : linear-gradient(blue, pink);
+			border-radius : 30px;
+		}
+		#btn:hover {
+			background : linear-gradient(to right, pink, yellow);
+		}/* 마우스가 올라 왔을 때 */
+		#btn:active {
+			color : red;
+			background : linear-gradient(to bottom right, yellow, gray);
+		}/* 마우스에서 클릭 등 활동이 있을 때 */
+		</style>
+	</head>
+	<body>
+		<button> 일반 버튼 </button>
+		<button id="btn"> 버튼에 css를 적용해 보자 </button>
+	</body>
+</html> 

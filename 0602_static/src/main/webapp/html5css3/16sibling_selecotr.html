@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>16sibling_selector.html</title>
+		<style type="text/css">
+		#li1 + li {
+			background-color : orange;
+		}/*adjacent sibling : li1의 형제 노드 중에 li1 바로 다음에 있는 li*/
+		#li2 ~ li {
+			background-color : skyblue;
+		}/*sibling : li2의 형제 노드 중에 li*/
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li id="li1">apple</li>
+			<li>banana</li>
+			<li>cherry</li>
+			<li>melon</li>
+			<li>peach</li>
+		</ul>
+		<ul>
+			<li id="li2">apple</li>
+			<li>banana</li>
+			<li>cherry</li>
+			<li>melon</li>
+			<li>peach</li>
+		</ul>
+	</body>
+</html> 
