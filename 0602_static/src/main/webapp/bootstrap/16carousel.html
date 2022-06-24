@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>16carousel.html</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+		<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			
+			<div id="test" class="carousel slide" data-ride="carousel">
+				<!-- indicator - 용도 : 화면 정의 -->
+				<ul class="carousel-indicators">
+					<li data-target="#test" data-slide-to="0" class="active"></li>
+					<li data-target="#test" data-slide-to="1" class="active"></li>
+				</ul>
+				<!-- slide show - 용도 : 이미지 로드 -->
+				<div class="carousel-inner">
+					<div class="carousel-item active">
+						<img src="https://www.w3schools.com/bootstrap4/chicago.jpg">
+					</div>
+					<div class="carousel-item">
+						<img src="https://www.w3schools.com/bootstrap4/ny.jpg">
+					</div>
+				</div>
+				<!-- controls - 용도 : 화면 이동 버튼 -->
+				<a class="carousel-control-prev" href="#test" data-slide="prev">
+					<span class="carousel-control-prev-icon"></span>
+				</a>
+				<a class="carousel-control-next" href="#test" data-slide="next">
+					<span class="carousel-control-next-icon"></span>
+				</a>
+				
+			</div>
+				<!-- data-target : 이미지가 나타나는 영역 -->
+				<!-- data-slide-to : 이미지 이미지 번호 -->
+				<!-- active : 맨 처음 보이는 이미지 -->
+			
+		</div>
+	</body>
+</html>
+
+
