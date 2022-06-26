@@ -29,9 +29,9 @@ public class JDBC10RSMD2 {
 		for (int i = 1; i <= rsmd.getColumnCount(); i++) {
 			System.out.println(rsmd.getColumnName(i) + "\t");
 			rs.next();
-			
+			   
 		}//for
-		
+		 
 		while (rs.next()) {
 			System.out.print(rs.getString("empno") + "\t");
 			System.out.print(rs.getString("ename") + "\t");
