@@ -195,7 +195,7 @@ ch052.Engine - interface, implements의 구조_예제
 ch06.Ch06Ex01 - java의 error
 ch06.Ch06Ex02 - exception의 종류
 ch06.Ch06Ex03 - try ~ catch
-ch06.Ch06Ex04 - exception의 상속
+ch06.Ch06Ex04 - exception의 상속 
 ch06.Ch06Ex05 - finally
 ch06.Ch06Ex06 - throws
 ch06.Ch06Ex061 - throw
