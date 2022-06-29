@@ -23,9 +23,9 @@ public class Join13DAO {
 	private final String PASSWORD = "tiger";
 	public int insertMember( MemberDTO dto ) {
 		int successCount = 0;
-		String sql = "inert into member(mno, mid"
+		String sql = "insert into member(mno, mid"
 				+ ", mpwd, tel1, tel2, tel3, email1, email2, mdate) values("
-				+ "seq.nextval, ?, ?, ? , ?, ?, ?, ?, sysdate)";
+				+ "mno_seq.nextval, ?, ?, ? , ?, ?, ?, ?, sysdate)";
 		try {
 			con = DriverManager.getConnection(URL, USER, PASSWORD);
 			psmt = con.prepareStatement(sql);//?의 자리에 데이터를 바꾸어 넣는다.
@@ -35,7 +35,7 @@ public class Join13DAO {
 			psmt.setString(4,  dto.getTel2());// 첫 번째 물음표
 			psmt.setString(5,  dto.getTel3());// 첫 번째 물음표
 			psmt.setString(6,  dto.getEmail1());// 첫 번째 물음표
-			psmt.setString(6,  dto.getEmail2());// 첫 번째 물음표
+			psmt.setString(7,  dto.getEmail2());// 첫 번째 물음표
 			successCount = psmt.executeUpdate();
 			
 			
