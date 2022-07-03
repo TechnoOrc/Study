@@ -29,7 +29,7 @@ public class Redirect16 extends HttpServlet {
      */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		response.sendRedirect("./Request07");
+		//response.sendRedirect("./Request07");
 		
 		PrintWriter out = response.getWriter();
 		out.print("<body bgcolor=lightgreen><h1>hello</h1></body>");
