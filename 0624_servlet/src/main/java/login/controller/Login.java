@@ -49,7 +49,7 @@ public class Login extends HttpServlet {
 		}
 		
 		if( loginYN == 0 ) {//login 불가능.
-			request.setAttribute("error_message","로그인 실퍠<br><br> 아이디 또는 패스워드를 확인 하세요");
+			request.setAttribute("error_message","로그인 실패<br><br> 아이디 또는 패스워드를 확인 하세요");
 			//("name", "value") 클라이언트의 요청(request)을 생성
 			disp.forward(request, response);//request를 ErrMsg.java와 공유함
 		} else if( loginYN == 1 ) {//login 가능.

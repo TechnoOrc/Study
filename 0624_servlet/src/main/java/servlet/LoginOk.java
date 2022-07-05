@@ -24,7 +24,7 @@ public class LoginOk extends HttpServlet {
 		response.setContentType("text/html charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		
-		HttpSession session = request.getSession();
+		HttpSession session = request.getSession();//세션 생성?
 		String loginID = (String) session.getAttribute("login_id");
 		
 		if(loginID == null || loginID.equals("")) {

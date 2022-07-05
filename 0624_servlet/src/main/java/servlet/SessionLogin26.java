@@ -50,9 +50,9 @@ public class SessionLogin26 extends HttpServlet {
 			out.print("<h1>비밀 번호가 올바르지 않습니다.<br><br>비밀 번호를 확인 하세요.</h1>");
 			
 		} else if (result == 1) {//id도 있고, pwd도 정상.//login ok.
-			HttpSession session = request.getSession();
-			session.setAttribute( "login_id", dto.getMid() );//login ok.
-			response.sendRedirect("./LoginOk");
+			HttpSession session = request.getSession();// 세션 생성?
+			session.setAttribute( "login_id", dto.getMid() );//세션의 login_id 속성에 dto.getMid() 값 생성
+			response.sendRedirect("./LoginOk"); // LoginOk로 페이지 변환
 			//out.print("<h1>" + dto.getMid() + "님 환영합니다.</h1>");
 			
 		}
