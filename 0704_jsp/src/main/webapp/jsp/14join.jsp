@@ -24,6 +24,12 @@
 								placeholder="영문 소문자 + 숫자 6~20자"></td>
 				</tr>
 				<tr>
+					<td class="text-right">패스워드 확인</td>
+					<td><input type="password" id="mpwdre" name="mpwdre"
+								class="form-control" maxlength="20"
+								placeholder="영문 소문자 + 숫자 6~20자"></td>
+				</tr>
+				<tr>
 					<td class="text-right">전화번호</td>
 					<td class="form-inline">
 						<input type="text" id="tel1" name="tel1"
@@ -68,8 +74,20 @@
 					alert("아이디를 확인하세요.");
 					return;
 				}
+				if( $.trim( $("#mid").val() ).length < 6 ){
+					alert("아이디는 6자 이상이어야 합니다.");
+					return;
+				}
 				if( $.trim( $("#mpwd").val() ) == "" ){
 					alert("패스워드를 확인하세요.");
+					return;
+				}
+				if( $.trim( $("#mpwd").val() ).length < 6 ){
+					alert("패스워드는 6자 이상이어야 합니다.");
+					return;
+				}
+				if( $.trim( $("#mpwd").val() ) != $.trim( $("#mpwdre").val() ) ){
+					alert("패스워드와 패스워드 확인이 서로 다름니다.");
 					return;
 				}
 				if( $.trim( $("#tel1").val() ) == ""
@@ -98,6 +116,10 @@
 			$("#mpwd").keyup(function() {
 				let tmp = $("#mpwd").val().replace( /[^ a-z 0-9 ]/g , "" );
 				$("#mpwd").val( tmp );
+			});
+			$("#mpwdre").keyup(function() {
+				let tmp = $("#mpwdre").val().replace( /[^ a-z 0-9 ]/g , "" );
+				$("#mpwdre").val( tmp );
 			});
 			$("#tel1").keyup(function() {
 				let tmp = $("#tel1").val().replace( /[^ 0-9 ]/g , "" );
