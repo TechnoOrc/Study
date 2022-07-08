@@ -38,12 +38,16 @@
 				<tr>
 					<td><%= dto.getBno() %></td>
 					<td>
+					<!-- 제목을 클릭하면, 게시글 상세보기를 실행하자. -->
+					<!-- 서버에 가서, dao를 거쳐, DBMS에서 선택된 1건의 게시글을 조회해야 한다. -->
+					<!-- 선택된 1건의 게시글을 조회하기 위해, 글 번호를 서버로 전달해야 한다. -->
+					<!-- FBList17?cmd=detail :  FBList17의 doGet 메소드 내부의 detail 업무 실행 -->
 						<a href="<%=rootPath%>/FBList17?cmd=detail&no=<%=dto.getBno()%>">
-							<%= dto.getBtitle()%>
+							<%= dto.getBtitle() %>
 						</a>	
 					</td>
-					<td><%= dto.getBwriter()%></td>
-					<td><%= dto.getBdate()%></td>
+					<td><%= dto.getBwriter() %></td>
+					<td><%= dto.getBdate() %></td>
 				</tr>
 		
 		<%			

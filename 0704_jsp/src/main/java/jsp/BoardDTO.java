@@ -1,12 +1,15 @@
 package jsp;
 
 public class BoardDTO {
-
+	//data transfer object : 데이터를 담아서 이동만 하는 역할의 객체.
+	
 	private String bno;
 	private String btitle;
 	private String bwriter;
 	private String bcnts;
 	private String bdate;
+	private String mno;
+	private String mid;
 	
 	public String getBno() {
 		return bno;
@@ -37,6 +40,18 @@ public class BoardDTO {
 	}
 	public void setBdate(String bdate) {
 		this.bdate = bdate;
+	}
+	public String getMno() {
+		return mno;
+	}
+	public void setMno(String mno) {
+		this.mno = mno;
+	}
+	public String getMid() {
+		return mid;
+	}
+	public void setMid(String mid) {
+		this.mid = mid;
 	}
 	
 	

@@ -102,7 +102,7 @@
 				<a href="<%=rootPath%>/FBList17">
 					<button class="btn btn-primary">FBList17</button>
 				</a>
-				<a href="<%=rootPath%>/jsp/MBList18.jsp">
+				<a href="<%=rootPath%>/MBList18">
 					<button class="btn btn-primary">MBList18</button>
 				</a>
 			</nav><!-- end of nav -->

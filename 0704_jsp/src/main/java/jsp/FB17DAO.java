@@ -27,7 +27,7 @@ public class FB17DAO {
 	
 	public ArrayList<BoardDTO> list() throws SQLException {
 		ArrayList<BoardDTO> list = new ArrayList<BoardDTO>();
-		String sql = "select bno, btitle, bwriter, bcnts, bdate from freeboard";	
+		String sql = "select bno, btitle, bwriter, bcnts, bdate from freeboard order by bno desc";	
 		con = DriverManager.getConnection(URL, USER, PASSWORD);
 		psmt = con.prepareStatement(sql);
 		rs = psmt.executeQuery();
@@ -73,7 +73,7 @@ public class FB17DAO {
 		psmt = con.prepareStatement(sql);
 		psmt.setString(1, no);
 		rs = psmt.executeQuery();
-		rs.next();
+		rs.next();//결과값의 다음줄(속성 다음 줄) 데이터..
 		dto.setBno( rs.getString("bno") );
 		dto.setBtitle( rs.getString("btitle") );
 		dto.setBwriter( rs.getString("bwriter") );
@@ -86,5 +86,38 @@ public class FB17DAO {
 		return dto;
 		
 	}//detail
+
+	public int delete(String no) throws SQLException {
+		int successCount = 0;
+		con =DriverManager.getConnection(URL, USER, PASSWORD);
+		String sql = "delete from freeboard where bno = ?";
+		psmt = con.prepareStatement(sql);
+		psmt.setString( 1, no );
+		
+		successCount = psmt.executeUpdate();
+		psmt.close();
+		con.close();
+			
+		return successCount;
+	}//delete
+
+	public int update(String no, String title, String writer, String cnts) throws SQLException {
+
+		int successCount = 0;
+		con =DriverManager.getConnection(URL, USER, PASSWORD);
+		String sql = "update freeboard set btitle = ?, bwriter = ?, bcnts = ? where bno = ?";
+		psmt = con.prepareStatement(sql);
+		psmt.setString( 1, title );
+		psmt.setString( 2, writer );
+		psmt.setString( 3, cnts );
+		psmt.setString( 4, no );
+		
+		successCount = psmt.executeUpdate();
+		
+		psmt.close();
+		con.close();
+			
+		return successCount;
+	}
 	
 }//class

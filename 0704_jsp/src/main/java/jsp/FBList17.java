@@ -1,6 +1,7 @@
 package jsp;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -24,8 +25,69 @@ public class FBList17 extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String cmd = request.getParameter("cmd");
 		if(cmd == null) cmd = "list";
-		
-		if( cmd.equals("detail") ) {
+		if( cmd.equals("uform") ) {
+			
+			String no = request.getParameter("no");
+			BoardDTO dto = null;
+			try {
+				dto = dao.detail(no);
+			} catch( SQLException e ) {
+				e.printStackTrace();
+				UtilMessage.setSessionFailMsg(request.getSession(), "DBMS 오류"
+						, request.getContextPath() + "/FBList17?cmd=list", "게시판 목록으로 바로가기");
+				response.sendRedirect( request.getContextPath() + "/jsp/fail_page.jsp" );
+				return;
+			}
+			request.setAttribute("free_board_detail", dto);
+			request.getRequestDispatcher("/jsp/17fb_update.jsp").forward(request, response);
+			//update : 전제조건 select 결과를 수정.
+			//select for update
+			
+			
+		} else if( cmd.equals("delete") ) {
+			String no = request.getParameter("no");
+			//String writer = request.getParameter("writer");
+			//String writer = request.getParameter("writer");
+			//&writer=<%=dto.getBwriter
+			int successCount = 0;
+			
+			try {
+				successCount = dao.delete(no);
+			} catch ( SQLException e ) {
+				e.printStackTrace();
+				UtilMessage.setSessionFailMsg(request.getSession()
+												, "DBMS 오류"
+												, request.getContextPath() + "/FBList17"
+												, "게시판 목록으로 바로가기");
+				response.sendRedirect("./jsp/fail_page.jsp");
+				return ;
+				
+			}// catch
+			
+			if (successCount == 0 ) {
+				//4. successCount == 0 처리 -> 메세지 처리
+				UtilMessage.setSessionFailMsg(request.getSession()
+						, "게시판 삭제가 실패 하였습니다."
+						, request.getContextPath() + "/FBList17"
+						, "게시판 목록으로 바로가기");
+				response.sendRedirect( request.getContextPath() + "/jsp/fail_page.jsp");
+				
+			} else if( successCount == 1) {
+				//5. successCount == 1 처리 -> list 호출
+				response.setCharacterEncoding("UTF-8");
+				response.setContentType("text/html; charset=UTF-8");
+				
+				PrintWriter out = response.getWriter();
+				// ??번의 글이 삭제되 었습니다.
+				out.println("<script>alert("+request.getParameter("no")+"+'번이 삭제되었습니다');location.href='./FBList17?cmd=list';</script>"); 
+				//out.println("<script>alert('게시글이 삭제되었습니다.');location.href='./FBList17?cmd=list';</script>");
+				
+				out.flush();
+				//response.sendRedirect( request.getContextPath() + "/FBList17?cmd=list");//실행 시점이 jsp 패키지 내부
+			}
+			
+			
+		} else if( cmd.equals("detail") ) {
 			
 			String no = request.getParameter("no");
 			BoardDTO dto = null;
@@ -34,10 +96,16 @@ public class FBList17 extends HttpServlet {
 				dto = dao.detail(no);
 			} catch (SQLException e) {
 				e.printStackTrace();
-				// 나중에 코딩예정.
+				// 
+				UtilMessage.setSessionFailMsg( request.getSession()
+						, "DBMS 오류"
+						, request.getContextPath() + "/FBList17?cmd=list"
+						, "게시판 목록으로 바로가기");
+				response.sendRedirect( request.getContextPath() + "/jsp/fail_page.jsp");
 				return;
 			}
 			request.setAttribute("free_board_detail", dto);
+			//RequestDispatcher : 요청을 전환시켜줌
 			RequestDispatcher disp = request.getRequestDispatcher("./jsp/17fb_detail.jsp");
 			disp.forward(request, response);
 			
@@ -48,15 +116,13 @@ public class FBList17 extends HttpServlet {
 			try {
 				list = dao.list();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				e.printStackTrace();// 개발자의 에러 수정을 위해 콘솔 출력
 				
-				SuccessMsgDTO errDTO = new SuccessMsgDTO();
-				errDTO.setMessage("DBMS 오류");
-				errDTO.setUrl("./main.jsp");
-				errDTO.setUrlName("메인으로 바로가기");
-				
-				request.getSession().setAttribute("msg_dto", errDTO);
-				response.sendRedirect("./jsp/fail_page.jsp");
+				UtilMessage.setSessionFailMsg(request.getSession()
+						, "DBMS 오류"
+						, request.getContextPath() + "/jsp/main.jsp"
+						, "메인으로 바로 가기");
+				response.sendRedirect( request.getContextPath() + "/jsp/fail_page.jsp");
 				
 				return ;
 			}//catch
@@ -83,42 +149,61 @@ public class FBList17 extends HttpServlet {
 			dto.setBcnts( request.getParameter("cnts"));
 			//2. int successCount = dao.write(dto);
 			int successCount = 0;
-			//3. exception 처리 -> 메세지 처리
 			try {
 				successCount = dao.write(dto);
 			} catch (SQLException e) {
 				e.printStackTrace();
-				SuccessMsgDTO msgDTO = new SuccessMsgDTO();
-				msgDTO.setMessage("DBMS 오류");
-				msgDTO.setUrl("./main.jsp");
-				msgDTO.setUrlName("메인을 바로 가기");
-				request.getSession().setAttribute("msg_dto", msgDTO );
+				//3. exception 처리 -> 메세지 처리
+				UtilMessage.setSessionFailMsg(request.getSession()
+												, "DBMS 오류"
+												, request.getContextPath() + "/jsp/main.jsp"
+												, "메인으로 바로 가기");
 				response.sendRedirect("./jsp/fail_page.jsp");
 				return;// exception 발생시 프로그램 멈춤
 			
+			}//catch
 			
-			}
 			if (successCount == 0 ) {
 				//4. successCount == 0 처리 -> 메세지 처리
-				SuccessMsgDTO msgDTO = new SuccessMsgDTO();
-				msgDTO.setMessage("게시판 글쓰기가 실패 하였습니다.");
-				msgDTO.setUrl("../FBList17");//실행시점이 jsp 폴더 내부
-				msgDTO.setUrlName("게시판 목록으로 바로가기");
-				request.getSession().setAttribute("msg_dto", msgDTO );
-				response.sendRedirect("./jsp/fail_page.jsp");
+				UtilMessage.setSessionFailMsg(request.getSession()
+						, "게시판 글쓰기가 실패 하였습니다."
+						, request.getContextPath() + "/FBList17"
+						, "게시판 목록으로 바로가기");
+				response.sendRedirect( request.getContextPath() + "/jsp/fail_page.jsp");
 				
 			} else if( successCount == 1) {
 				//5. successCount == 1 처리 -> list 호출
-				response.sendRedirect("./FBList17");//실행 시점이 jsp 패키지 내부
+				response.sendRedirect( request.getContextPath() + "/FBList17?cmd=list");//실행 시점이 jsp 패키지 내부
 				
 			}
 		} else if( cmd.equals("update") ) {
+			String no = request.getParameter("no");
+			String title = request.getParameter("title");
+			String writer = request.getParameter("writer");
+			String cnts = request.getParameter("cnts");
+			int successCount = 0;
+			try {
+				successCount = dao.update(no, title, writer, cnts);
+			} catch( SQLException e) {
+				e.printStackTrace();
+				UtilMessage.setSessionFailMsg(request.getSession(),"DBMS 오류"
+						, request.getContextPath() + "/FBList17?cmd=list", "게시판 목록으로 바로가기");
+				response.sendRedirect(request.getContextPath() + "/jsp/fail_page.jsp");
+				return;
+			}
+			if ( successCount == 0 ) {
+				UtilMessage.setSessionFailMsg(request.getSession(), "게시판 수정을 실패하였습니다."
+						, request.getContextPath() + "/FBList17?cmd=list", "게시판 목록으로 바로가기");
+				response.sendRedirect(request.getContextPath() + "/jsp/fail_page.jsp");
+			} else if ( successCount == 1 ) {
+				response.sendRedirect("./FBList17?cmd=list");
+			}//else
 			
-		}
+		}//else
 		
 	}//doPost
 
-}
+}//class
 /*
 drop sequence mno_seq;
 create sequence mno_seq
