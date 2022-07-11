@@ -1,6 +1,7 @@
 package jsp;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -40,7 +41,7 @@ public class MB18DAO {
 
 		String sql = "select mb.bno, mb.btitle, mb.mno, m.mid, mb.bcnts, mb.bdate"
 				+ " from memberboard mb, member m"
-				+ " where mb.mno = m.mno";
+				+ " where mb.mno = m.mno order by mb.bno";
 		psmt = con.prepareStatement(sql);
 		rs = psmt.executeQuery();
 
@@ -61,6 +62,85 @@ public class MB18DAO {
 
 		return list;
 	}//list
+	
+	public int write(String title, String cnts, String id) throws SQLException {
+		int successCount = 0;
+		con = ds.getConnection();
+		String sql = "insert into memberboard (bno, btitle, mno, bcnts, bdate)"
+				+ " values (mno_seq.nextval, ?"
+				+ ", (select mno from member where mid = ?), ?, sysdate)";
+		psmt = con.prepareStatement(sql);
+		psmt.setString(1, title);
+		psmt.setString(2, id);
+		psmt.setString(3, cnts);
+		successCount = psmt.executeUpdate();
+		psmt.close();
+		con.close();
+		
+		return successCount;
+	}//write
+
+	public BoardDTO detail(String bno) throws SQLException {
+		BoardDTO dto = new BoardDTO();
+		con = ds.getConnection();
+		String sql = "select mb.bno, mb.btitle, mb.mno, m.mid, mb.bcnts, mb.bdate"
+				+ " from memberboard mb, member m"
+				+ " where mb.bno = ? and mb.mno = m.mno";
+		psmt = con.prepareStatement(sql);
+		psmt.setString(1, bno);
+		rs = psmt.executeQuery();
+		rs.next();//결과값의 다음줄(속성 다음 줄) 데이터..
+		dto.setBno( rs.getString("bno") );
+		dto.setBtitle( rs.getString("btitle") );
+		dto.setMno( rs.getString("mno") );
+		dto.setMid( rs.getString("mid") );
+		dto.setBcnts( rs.getString("bcnts") );
+		dto.setBdate( rs.getString("bdate") );
+		rs.close();
+		psmt.close();
+		con.close();
+		
+		return dto;
+		
+	}//detail
+
+	public int delete(String bno, String id) throws SQLException {
+		int successCount = 0;
+		con = ds.getConnection();
+		String sql = "delete from memberboard where bno = ?"
+				+ " and mno = (select mno from member where mid = ?)";
+		psmt = con.prepareStatement(sql);
+		psmt.setString( 1, bno );
+		psmt.setString( 2, id );
+		
+		successCount = psmt.executeUpdate();
+		psmt.close();
+		con.close();
+			
+		return successCount;
+	}//delete		
+
+	public int update(String bno, String title, String cnts, String id) throws SQLException {
+		int successCount = 0;
+		con = ds.getConnection();
+		String sql = "update memberboard set btitle = ?, bcnts = ? where bno = ?"
+				+ " and mno = (select mno from member where mid = ?)";
+		psmt = con.prepareStatement(sql);
+		psmt.setString(1, title);
+		psmt.setString(2, cnts);
+		psmt.setString(3, bno);
+		psmt.setString(4, id);
+		
+		successCount = psmt.executeUpdate();
+		
+		psmt.close();
+		con.close();
+		
+		return successCount;
+		
+	}
+	
+	
 
 }//class
 
