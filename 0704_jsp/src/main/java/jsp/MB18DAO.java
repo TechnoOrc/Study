@@ -123,8 +123,10 @@ public class MB18DAO {
 	public int update(String bno, String title, String cnts, String id) throws SQLException {
 		int successCount = 0;
 		con = ds.getConnection();
+		
 		String sql = "update memberboard set btitle = ?, bcnts = ? where bno = ?"
 				+ " and mno = (select mno from member where mid = ?)";
+		//and mno = (select mno from member where mid = ?) 글을 잘성한 작성자에게만 updqte 권한을 주기위헤 서브쿼리적용.
 		psmt = con.prepareStatement(sql);
 		psmt.setString(1, title);
 		psmt.setString(2, cnts);

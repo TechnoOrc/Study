@@ -57,10 +57,6 @@ public class MBUform18 extends HttpServlet {
 	
 		request.setCharacterEncoding("UTF-8");
 	
-		
-		
-		
-	
 	}//doPost
 
 }//class

@@ -1,4 +1,3 @@
-<%@page import="javax.security.auth.message.callback.PrivateKeyCallback.Request"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -13,7 +12,7 @@
 	</head>
 	<body>
 		<div class="container">
-			<% String rootPath = request.getContextPath(); %>
+			<% String rootPath = request.getContextPath(); %><%-- 0704_jsp --%>
 			<nav class="text-right">
 				<%
 					String loginID = (String) session.getAttribute("login_id");
@@ -77,15 +76,15 @@
 					<button class="btn btn-primary">09exe_search.jsp</button>
 				</a>
 			</nav><!-- end of nav -->
-			<nav class="btn-group">
+			<nav class="btn-group mb-2">
 				<a href="<%=rootPath%>/jsp/10RE.jsp">
 					<button class="btn btn-primary">10RE.jsp</button>
 				</a>
 				<a href="<%=rootPath%>/jsp/11err_test.jsp">
 					<button class="btn btn-primary">11err_test.jsp</button>
 				</a>
-				<a href="<%=rootPath%>/jsp/12result_scriptlet.jsp">
-					<button class="btn btn-primary">12result_scriptlet.jsp</button>
+				<a href="<%=rootPath%>/jsp/12result_sciptlet.jsp">
+					<button class="btn btn-primary">12result_sciptlet.jsp</button>
 				</a>
 				<a href="<%=rootPath%>/jsp/13param_values.jsp">
 					<button class="btn btn-primary">13param_values.jsp</button>
@@ -106,4 +105,12 @@
 					<button class="btn btn-primary">MBList18</button>
 				</a>
 			</nav><!-- end of nav -->
-			<main class="mt-2"> 
+			<nav class="btn-group">
+				<a href="<%=rootPath%>/jsp/19jsp_action_tag_include.jsp">
+					<button class="btn btn-primary">19jsp_action_tag_include.jsp</button>
+				</a>
+				<a href="<%=rootPath%>/jsp/20jsp_action_tag_forward.jsp">
+					<button class="btn btn-primary">20jsp_action_tag_forward.jsp</button>
+				</a>
+			</nav><!-- end of nav -->
+			<main class="mt-2">

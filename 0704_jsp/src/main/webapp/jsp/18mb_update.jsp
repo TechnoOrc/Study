@@ -34,7 +34,7 @@
 				</tr>
 				<tr>
 					<td>작성자</td>
-					<td><%=loginID%></td>
+					<td><%=dto.getMid()%></td>
 				</tr>
 				<tr>
 					<td>내용</td>

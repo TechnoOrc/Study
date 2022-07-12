@@ -3,6 +3,7 @@ package jsp;
 import javax.servlet.http.HttpSession;
 
 public class UtilSessionLogin {
+	
 	public static boolean isLogin(HttpSession session) {
 		boolean loginYN = false;
 		String loginID = (String) session.getAttribute("login_id");		//Login15.java에서 설정 함.

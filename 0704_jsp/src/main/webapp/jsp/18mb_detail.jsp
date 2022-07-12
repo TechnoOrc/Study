@@ -48,11 +48,22 @@
 					<button class="btn btn-warning float-right"> 게 시 글 수 정 </button>
 				</a>
 				<a href="<%=rootPath%>/MBDelete18?bno=<%=dto.getBno()%>">
-					<button class="btn btn-warning float-right"> 게 시 글 삭 제 </button>
+					<button class="btn btn-danger float-right"> 게 시 글 삭 제 </button>
 				</a>
+				<a href="<%=rootPath%>/MBList18">
+							<button class="btn btn-info float-right"> 목 록 </button>
+						</a>
+				
 			</div>
 		<%
-			}//if(loginID.equals(dto.getMid()))
+			} else {//if(loginID.equals(dto.getMid()))
+		%>
+		<a href="<%=rootPath%>/MBList18">
+					<button class="btn btn-info float-right"> 목 록 </button>
+				</a>
+		<%				
+					
+			}//
 		%>
 
 		<%
