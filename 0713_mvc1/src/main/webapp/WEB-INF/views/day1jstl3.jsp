@@ -17,6 +17,7 @@
 		</c:forEach>
 		<h2>items : forEach문의 대상 객체</h2>
 		<h2>for(String str : mylist) : str = mylist.get(i)</h2>
+		
 		<h2> varStatus : 반복문의 반복 횟수를 기억하는 변수</h2>
 		<h2> varStatus.index : 0에서 부터 시작하는 반복문의 반복 횟수</h2>
 		<h2> varStatus.count : 1에서 부터 시작하는 반복문의 반복 횟수</h2>

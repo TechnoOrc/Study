@@ -9,6 +9,7 @@
 	<body>
 		<h1>EL을 사용함으로써, 객체를 받는 부분이 자동화 되었다.</h1>
 		<hr>
+		<h1>empty : 해당 객체가 null 인지를 물어보는 객체  리턴은 boolean</h1>
 		<h1>empty dto? : dto is null? : ${  empty free_board_dto }</h1>
 		<h1>not empty dto? : dto is not null? : ${ not empty free_board_dto }</h1>
 		<hr>

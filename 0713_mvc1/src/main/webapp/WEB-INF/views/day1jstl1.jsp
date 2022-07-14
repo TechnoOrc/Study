@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %><!-- 대표적인 라이브러리 Core -->
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %><!-- 대표적인 라이브러리 Core // prefix jstl을 사용하기 위한 약속-->
 
 <!DOCTYPE html>
 <html>

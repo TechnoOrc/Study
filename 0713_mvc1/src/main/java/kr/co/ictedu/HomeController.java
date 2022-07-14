@@ -17,9 +17,11 @@ public class HomeController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);//logger.info에서 출력시 클래스 이름과 위치 같이 표현하게해줌
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)//Get, Post방식을 지정
-	public String testhometest(Locale locale, Model model, TestObj to) {// TestObj를 new 하지 않아도 호출하여 사용가능
+	public String testhometest(Locale locale, Model model, TestObj to) {
+		// TestObj를 new 하지 않아도 호출하여 사용가능 //Model - 컨트롤러에서 생성된 데이터를 담아서 전달하는 역할을 하는 존재
 		logger.info("Welcome home! The client locale is {}.", locale);//System.out.println();와 같은 표현
 		logger.info("시스아웃은 이제 안녕");
+		
 		to.print();// TestObj.java의 메소드를 호출함
 		
 		

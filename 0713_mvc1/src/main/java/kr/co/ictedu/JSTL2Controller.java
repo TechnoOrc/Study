@@ -2,6 +2,8 @@ package kr.co.ictedu;
 
 import java.util.ArrayList;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,10 +12,60 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class JSTL2Controller {
 	
+	private static final Logger logger = LoggerFactory.getLogger(JSTL2Controller.class);
+	//slf4j.Logger
+	
+	
+	@RequestMapping( value = "/jstl11", method = RequestMethod.GET)
+	public String day2Jstl11() {
+		return "day2jstl11";//jsp 파일 이름.
+	}//day2Jstl11
+	
+	
+	@RequestMapping ( value = "/jstl10", method = RequestMethod.GET)
+	public String day2Jstl10() {
+		return "day2jstl10";//jsp 파일 이름
+	}//day2Jstl10
+	
+	
+	@RequestMapping ( value = "/jstl9", method = RequestMethod.GET)
+	public String day2Jstl9() {
+		return "day2jstl9";//jsp 파일 이름.
+	}//day2Jstl9
+	
+	
+	@RequestMapping ( value = "/jstl8", method = RequestMethod.GET  )
+	public String day2Jstl8() {
+		return "day2jstl8";//jsp 파일 이름.
+	}
+	
+	
+	@RequestMapping ( value = "/jstl7", method = RequestMethod.GET )
+	public String day2Jstl7(  ) { 
+		return "day2jstl7";//jsp 파일이름
+	}//day2Jstl7
+	
+	
+	@RequestMapping ( value = "/jstl6", method = RequestMethod.GET )
+	public String day2Jstl6(  ) { 
+		return "day2jstl6";//jsp 파일이름
+	}//day2Jstl6
+	
+	
+	@RequestMapping ( value = "/jstl5", method = RequestMethod.GET )
+	public String day2Jstl5() {
+		return "day2jstl5";//jsp 파일이름
+	}//day2Jstl5
+	
+	
+	@RequestMapping ( value = "/jstl4", method = RequestMethod.GET )
+	public String day2Jstl4() {
+		return "day2jstl4"; // jsp 파일 이름.
+	}//day2Jstl4
 	
 	
 	@RequestMapping( value = "/jstl3", method = RequestMethod.GET )
-	public String day1Jstl3( Model model, ArrayList<String> list) {
+	public String day1Jstl3( Model model, ArrayList<String> list) {//Model - 컨트롤러에서 생성된 데이터를 담아서 전달하는 역할을 하는 존재
 		
 		list.add("hi");list.add("hello");list.add("how are you");
 		list.add("안녕");list.add("밥먹었니?");
