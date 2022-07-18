@@ -111,9 +111,9 @@
 	
 		<!-- jdbc -->
 		<dependency>
-		  <groupId>org.springframework</groupId>
-		  <artifactId>spring-jdbc</artifactId>
-		  <version>5.3.22</version>
+		  <groupId>org.springframework</groupId><!-- 소프트웨어를 만든 사이트 이름 -->
+		  <artifactId>spring-jdbc</artifactId><!-- 제품 명 -->
+		  <version>5.3.22</version><!-- 버전 -->
 		</dependency>
 		
 		<dependency>
