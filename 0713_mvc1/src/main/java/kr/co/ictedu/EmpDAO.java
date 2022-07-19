@@ -24,7 +24,9 @@ public class EmpDAO {
 		
 		List<EmpDTO> list = null;
 		
-		list = sqlSession.selectList("EmpMapper.empList");
+		list = sqlSession.selectList("EmpMapper.empList");//mybatis-mapper.xml의 (namespace.id)
+		//sqlSession : dao에서 사용하는 mybatis의 변수 이름
+		//selectList : select 결과를 list에 담아서 return.
 		
 		System.out.println("Execute DAO : " + list);
 		

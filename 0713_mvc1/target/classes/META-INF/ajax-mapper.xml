@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="AjaxMapper">
+
+	<select id="idDupCheck" parameterType="java.lang.String" resultType="int">
+	select count(mid) cnt from member where mid = #{mid}	
+	</select>
+
+</mapper>
+	<!-- ?가 없을 시에는 prameterType도 필요 없다.  -->
+	<!-- 	<select id="empDetail" parameterType="java.lang.String" resultType="kr.co.ictedu.EmpDTO">
+			select empno, ename, job, mgr, hiredate, sal, comm, deptno 
+			from emp
+			where empno = #{eno} EmpDAO 에서 argument로 받은 값
+			-->

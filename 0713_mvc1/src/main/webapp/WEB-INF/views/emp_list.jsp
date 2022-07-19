@@ -50,7 +50,7 @@
 						<tr>
 							<td>
 								<a href="${ pageContext.request.contextPath }/emp/detail?eno=${ dto.empno }">
-								<b>${dto.empno}</b>
+									<b>${dto.empno}</b>
 								</a>
 							</td>
 							

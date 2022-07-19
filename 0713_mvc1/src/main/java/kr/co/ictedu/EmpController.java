@@ -16,7 +16,7 @@ public class EmpController {
 
 	private static final Logger logger = LoggerFactory.getLogger(EmpController.class);
 	
-	@Autowired // 자동으로 묶어준다.
+	@Autowired // 자동으로 묶어준다.// 아래 EmpService service 클래스 로드(new)
 	private EmpService service;
 	
 	@RequestMapping( value = "/detail", method = RequestMethod.GET )
