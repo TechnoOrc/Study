@@ -11,11 +11,11 @@
 		<h1>c:forTokens - 구분자를 기준으로 문자열 자르기</h1>
 		<c:set var="fruits" value="apple,banana,cherry,melon,peach"/>
 		<c:forTokens var="fruit" items="${ fruits }" delims="," varStatus="status">
-			<h3>${ fruit } : ${ status.index } : ${ status.index }<h3>
+			<h3>${ fruit } : ${ status.index } : ${ status.count }<h3>
 		</c:forTokens>
 		<hr>
 		<c:forTokens var="fruit" items="f,r,u,i,t,s" delims="," varStatus="status">
-			<h3>${ fruit } : ${ status.index } : ${ status.index }<h3>
+			<h3>${ fruit } : ${ status.index } : ${ status.count }<h3>
 		</c:forTokens>
 		<h2>var : 변수 이름 선언</h2>
 		<h2>items : for문을 돌릴 대상 객체</h2>

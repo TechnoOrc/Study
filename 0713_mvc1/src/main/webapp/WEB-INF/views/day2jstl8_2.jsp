@@ -11,6 +11,6 @@
 		<h2>c:import를 통해 가져온 파일</h2>
 		<h3>day2jstl8.jsp에서 선언한 변수 iVar는 출력 되는가?  : ${ iVar }</h3>
 		<c:set var="iVar2" value="888" />
-		<h3>day2jstl8_2.jsp에서 자체 선언한 변수 iVar는 출력 되는가?  : ${ iVar2 }</h3>
+		<h3>day2jstl8_2.jsp에서 자체 선언한 변수 iVar2는 출력 되는가?  : ${ iVar2 }</h3>
 	</body>
 </html>
