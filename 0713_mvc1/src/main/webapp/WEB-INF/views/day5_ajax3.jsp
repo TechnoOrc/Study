@@ -16,7 +16,7 @@
 		$(document).ready(function() {
 			$("#btn3").click(function() {
 				if( $.trim( $("#mid").val() ) == ""){
-					$("#id_message").text("아디이를 입력하세요 .");
+					$("#id_message").text("아이디를 입력하세요 .");
 					$("#id_message").css("color", "blue");
 					return;// 공백 입력 시  아이디를 입력 하세요 출력.
 				}

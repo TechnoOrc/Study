@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>write_form.jsp</title>
+		<title> 자유 게시판 글 쓰기 </title>
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
@@ -21,7 +21,7 @@
 	<%@ include file="/WEB-INF/views/header.jsp" %>
 	
 		<hr>
-		<h3> 자유 게시판 </h3>
+		<h3> 자유 게시판 글 쓰기 </h3>
 		<hr>
 		
 		<table class="table table-hover">

@@ -30,11 +30,20 @@
 			<tbody>
 				<c:forEach var="dto" items="${ list }">
 					<tr>
-						<td>${ dto.board_no }</td>			<td>${ dto.title }</td>
-						<td>${ dto.writer }</td>			<td>${ dto.write_date }</td>
+						<td><b>${dto.board_no}</b></td>
+						<td>
+							<a id ="dlink" href="${pageContext.request.contextPath}/board/free/detail?board_no=${dto.board_no}">
+								${dto.title}
+							</a>
+						</td>
+						
+						<td>${ dto.writer }</td>
+						<td>${ dto.write_date }</td>
+						
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
+		
 	</body>
 </html>

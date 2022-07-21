@@ -12,6 +12,22 @@ public class FreeBoardDAO {
 	@Autowired
 	private SqlSession sqlSession;
 	
+	public int delete(FreeBoardDTO dto) {
+		int successCount = 0;
+		successCount = sqlSession.delete("FreeBoardMapper.delete", dto);
+		//data argument 1개만 가능 (board_no 와 pwd를 하나의 객체로 담아서 넘겨야 함
+		//컨트롤러에서 아예 수정하여 넘겨 받음
+		return successCount;
+	}//delete
+	
+	public FreeBoardDTO detail( String board_no) {
+		FreeBoardDTO dto = null;
+		dto = sqlSession.selectOne("FreeBoardMapper.detail", board_no);
+		return dto;
+	}//detail
+	
+	
+	
 	public int write ( FreeBoardDTO dto ) {
 		int successCount = 0;
 		successCount = sqlSession.insert("FreeBoardMapper.write", dto);
@@ -20,8 +36,7 @@ public class FreeBoardDAO {
 	
 	
 	
-	
-	public List<FreeBoardDTO> list() {//나중에 리턴타입 바꿀거임
+	public List<FreeBoardDTO> list() {
 		List<FreeBoardDTO> list = null;
 		list = sqlSession.selectList("FreeBoardMapper.list");
 		//sqlSession.selectOne : select 결과가 오직 하나일때.
@@ -29,5 +44,7 @@ public class FreeBoardDAO {
 		return list;
 		
 	}//list
+
+
 
 }//class

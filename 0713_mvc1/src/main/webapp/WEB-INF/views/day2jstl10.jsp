@@ -15,7 +15,7 @@
 		
 		
 		<c:set var="price" value="1000000000" />
-		<fmt:formatNumber type="number" var="priceNum" value="${ price }" />
+			<fmt:formatNumber type="number" var="priceNum" value="${ price }" />
 		<h3>priceNum : ${ priceNum } </h3>
 		
 		<h3>
