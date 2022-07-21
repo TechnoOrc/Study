@@ -12,6 +12,14 @@ public class FreeBoardDAO {
 	@Autowired
 	private SqlSession sqlSession;
 	
+	
+	public int update(FreeBoardDTO dto) {
+		int successCount = 0;
+		successCount = sqlSession.update("FreeBoardMapper.update", dto);
+		return successCount;
+	}//update
+	
+	
 	public int delete(FreeBoardDTO dto) {
 		int successCount = 0;
 		successCount = sqlSession.delete("FreeBoardMapper.delete", dto);
@@ -44,6 +52,7 @@ public class FreeBoardDAO {
 		return list;
 		
 	}//list
+
 
 
 

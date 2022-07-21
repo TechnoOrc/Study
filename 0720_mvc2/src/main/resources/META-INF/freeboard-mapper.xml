@@ -5,6 +5,12 @@
  
 <mapper namespace="FreeBoardMapper">
 
+	<update id="update" parameterType="kr.co.ictedu.board.free.FreeBoardDTO">
+	update freeboard set title = #{title}, writer = #{writer}, contents = #{contents}
+	where board_no = #{board_no} and pwd = #{pwd}
+	</update>
+	
+	
 	<delete id="delete" parameterType="kr.co.ictedu.board.free.FreeBoardDTO">
 		delete from freeboard where board_no = #{board_no} and pwd = #{pwd}
 	</delete>
@@ -13,7 +19,7 @@
       select board_no, title, writer, pwd, contents, write_date
       from freeboard
       where board_no = #{board_no}
-   </select>
+	</select>
 
 
 	<insert id="write" parameterType="kr.co.ictedu.board.free.FreeBoardDTO">

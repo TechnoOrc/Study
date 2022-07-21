@@ -22,7 +22,28 @@ public class FreeBoardController {
 	private FreeBoardService service;
 	
 	
-	@RequestMapping ( value = "/delete", method = RequestMethod.GET)
+	@RequestMapping( value = "/update", method = RequestMethod.POST )
+	public void update( FreeBoardDTO dto, PrintWriter out) {
+		//dbms에 게시글을 update : FreeBoardService.update(dto) -> FreeBoardDAO.update(dto)
+		//						-> freeboard-mapper.xml(namespace : FreeBoardMapper.update)
+		int successCount = 0;
+		successCount = service.update(dto);
+		out.print(successCount);
+		out.close();
+	}//update
+	
+	
+	
+	@RequestMapping( value ="/update_form", method = RequestMethod.GET )
+	public String updateForm( String board_no, Model model ) {
+		FreeBoardDTO dto = null;
+		dto = service.detail(board_no);
+		model.addAttribute("detail_dto", dto);
+		return "/board/free/update_form";
+	}//updateForm
+	
+	
+	@RequestMapping( value = "/delete", method = RequestMethod.GET)
 	public void delete( FreeBoardDTO dto, PrintWriter out ) {
 		//	board_no : ${detail_dto.board_no} , pwd : $("#pwd").val() 의 값이 ==> dto에 담김  (변수명과 일치해야함)
 		//dbms에서 게시글 하나를 delete : FreeBoardService.delete(board_no) ->  FreeBoardDAO.delete(board_no)
@@ -35,15 +56,14 @@ public class FreeBoardController {
 	}//delete
 	
 	
-	
 	@RequestMapping( value = "/detail", method = RequestMethod.GET )
 	public String detail( String board_no, Model model ) {
 		//dbms에서 게시글 하나를 select : FreeBoardService.detail(board_no) ->  FreeBoardDAO.detail(board_no)
 		//						->  freeboard-mapper.xml(namespace : FreeBoardMapper.detail)
-		logger.info(board_no);
+		//logger.info(board_no);
 		FreeBoardDTO dto = service.detail(board_no);
 		model.addAttribute("detail_dto", dto);
-		logger.info(dto.toString());
+		//logger.info(dto.toString());
 		return "/board/free/detail";//jsp file name
 	}//detail
 	

@@ -37,6 +37,10 @@
 				<button id="btn_delete" class="btn btn-danger"> 게시글 삭제 </button>
 			</div>
 		</div>
+		<hr>
+		<a href="${pageContext.request.contextPath}/board/free/update_form?board_no=${detail_dto.board_no}">
+			<button class="btn btn-primary"> 게시글 수정하러 가기 </button>
+		</a>
 	<%@ include file="/WEB-INF/views/footer.jsp" %>
 	<script type="text/javascript">
 	$(document).ready(function() {
@@ -58,6 +62,14 @@
 					}//서버로 전달되는 data
 					, function(data, status) {
 						alert(data);
+						if(data >= 1){
+							alert("게시글이 삭제 되었습니다.");
+							location.href="${pageContext.request.contextPath}/board/free/list";
+						} else if (data <= 0) {
+							alert("삭제할 수 없는 게시물 입니다.");
+						} else {
+							alert("잠시 후 다시 시도해 주세요.");
+						}
 					}//call back function
 			);//get
 

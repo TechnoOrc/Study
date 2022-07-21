@@ -7,7 +7,7 @@
 		<title>day5_json1.jsp</title>
 	</head>
 	<body>
-		<h1>${json_array }</h1>
+		<h1>${ json_array }</h1>
 		<h2>json : javascript object notation : 자바스크립트의 객체 모델</h2>
 		<h2>쉽게 이해하는 방법 : java의 String으로 Object를 표현한 것</h2>
 		<h2></h2>

@@ -11,6 +11,11 @@ public class FreeBoardService {
    @Autowired
    private FreeBoardDAO dao;
    
+   public int update(FreeBoardDTO dto) {
+	   int successCount = 0;
+	   successCount = dao.update(dto);
+	   return successCount;
+   }//update
    
    public int delete( FreeBoardDTO dto ) {
 	   int successCount = 0;
@@ -38,6 +43,8 @@ public class FreeBoardService {
       list = dao.list();
       return list;
    }//list
+
+
 
 
    
