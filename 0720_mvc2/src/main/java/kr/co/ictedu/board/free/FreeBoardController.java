@@ -20,70 +20,81 @@ public class FreeBoardController {
 
 	@Autowired
 	private FreeBoardService service;
-	
-	
-	@RequestMapping( value = "/update", method = RequestMethod.POST )
-	public void update( FreeBoardDTO dto, PrintWriter out) {
-		//dbms에 게시글을 update : FreeBoardService.update(dto) -> FreeBoardDAO.update(dto)
-		//						-> freeboard-mapper.xml(namespace : FreeBoardMapper.update)
-		int successCount = 0;
-		successCount = service.update(dto);
-		out.print(successCount);
-		out.close();
-	}//update
-	
-	
-	
-	@RequestMapping( value ="/update_form", method = RequestMethod.GET )
-	public String updateForm( String board_no, Model model ) {
-		FreeBoardDTO dto = null;
-		dto = service.detail(board_no);
-		model.addAttribute("detail_dto", dto);
-		return "/board/free/update_form";
-	}//updateForm
-	
-	
-	@RequestMapping( value = "/delete", method = RequestMethod.GET)
-	public void delete( FreeBoardDTO dto, PrintWriter out ) {
-		//	board_no : ${detail_dto.board_no} , pwd : $("#pwd").val() 의 값이 ==> dto에 담김  (변수명과 일치해야함)
-		//dbms에서 게시글 하나를 delete : FreeBoardService.delete(board_no) ->  FreeBoardDAO.delete(board_no)
-		//						->  freeboard-mapper.xml(namespace : FreeBoardMapper.delete)
-		//logger.info(dto.toString());
-		int successCount = 0;
-		successCount = service.delete( dto );
-		out.print( successCount );
-		out.close();
-	}//delete
-	
-	
-	@RequestMapping( value = "/detail", method = RequestMethod.GET )
-	public String detail( String board_no, Model model ) {
-		//dbms에서 게시글 하나를 select : FreeBoardService.detail(board_no) ->  FreeBoardDAO.detail(board_no)
-		//						->  freeboard-mapper.xml(namespace : FreeBoardMapper.detail)
-		//logger.info(board_no);
-		FreeBoardDTO dto = service.detail(board_no);
-		model.addAttribute("detail_dto", dto);
-		//logger.info(dto.toString());
-		return "/board/free/detail";//jsp file name
-	}//detail
-	
-	
-	@RequestMapping( value = "/write", method = RequestMethod.POST )
-	public void write( FreeBoardDTO dto, PrintWriter out) {
-		//dbms에 게시글을 insert : FreeBoardService.write(dto) -> FreeBoardDAO.write(dto)
-		//						-> freeboard-mapper.xml(namespace : FreeBoardMapper.write)
-		int successCount = 0;
-		
-		successCount = service.write(dto);
-		out.print( successCount );
-		out.close();
-		
-	}//write
 
-	@RequestMapping( value = "/write_form", method = RequestMethod.GET )
-	public String writeForm() {
-		return "/board/free/write_form";//jsp 파일 이름
-	}//writeForm
+	@RequestMapping( value = "/list4", method = RequestMethod.GET )
+	public String pagingList( Model model, String userWantPage ) {
+		if( userWantPage == null || userWantPage.equals("") ) userWantPage = "1";
+		int totalCount = 0, startPageNum = 1, endPageNum = 10, lastPageNum = 1;
+		totalCount = service.totalListCount();
+		if( totalCount > 10 ) {
+			lastPageNum = ( totalCount / 10 ) + ( totalCount % 10 > 0 ? 1 : 0 );//lastPageNum는 최후의 페이지 번호
+		}
+		//페이징 일반 요소 끝
+
+		if(userWantPage.length() >= 2) {//userWantPage가 10보다 큰 경우
+			String frontNum = userWantPage.substring(0, userWantPage.length()-1);//25 -> 2
+			startPageNum = Integer.parseInt(frontNum) * 10 + 1;//21
+			endPageNum = ( Integer.parseInt(frontNum) + 1 ) * 10;//30
+
+			String backNum = userWantPage.substring(userWantPage.length()-1, userWantPage.length());
+			if(backNum.equals("0")) {
+				startPageNum = startPageNum - 10;
+				endPageNum = endPageNum - 10;
+			}
+		}
+
+		if(endPageNum > lastPageNum) {
+			endPageNum = lastPageNum;
+		}
+		model.addAttribute("startPageNum", startPageNum);
+		model.addAttribute("endPageNum", endPageNum);
+		model.addAttribute("userWantPage", userWantPage);
+		model.addAttribute("lastPageNum", lastPageNum);
+		//userWantPage가 10보다 작거나 같으면, 화면에 보이는 페이지는 1 2 3 4 5 6 7 8 9 10
+		//userWantPage가 12인 경우, 화면에 보이는 페이지는 11 12 13 14 15 16 17 18 19 20
+		//userWantPage가 27인 경우, 화면에 보이는 페이지는 21 22 23 24 25 26 27 28 29 30
+
+		int limitNum = ( Integer.parseInt(userWantPage) - 1 ) * 10;
+		List<FreeBoardDTO> list = null;
+		list = service.pagingList(limitNum);
+		model.addAttribute("list", list);
+
+		return "/board/free/list4";//jsp file name
+	}//pagingList
+
+	@RequestMapping( value = "/list3", method = RequestMethod.GET )
+	public String list3( Model model, String userWantPage ) {
+		if ( userWantPage == null || userWantPage.equals("") ) userWantPage = "1";
+		int totalCount = 0;
+		totalCount = service.totalListCount();
+		int startPageNum = 1;
+		int endPageNum = 1;
+		if( totalCount > 10 ) {
+			endPageNum = ( totalCount / 10 ) + ( totalCount % 10 > 0 ? 1 : 0 );
+		}
+		model.addAttribute("startPageNum", startPageNum);
+		model.addAttribute("endPageNum", endPageNum);
+		model.addAttribute("userWantPage", userWantPage);
+
+		return "/board/free/list3";//jsp file name
+	}//list3
+
+	@RequestMapping( value = "/list2", method = RequestMethod.GET )
+	public String list2( Model model ) {//목록 아래쪽의 페이징 정보만 리스팅해보자.
+		//한페이지에 10건을 보여줄 때 : 10 : 한 페이지에 보여지는 게시물의 총 건수
+		//페이지 총건수 - 예) 128건
+		//보여주는 페이지 번호 리스팅 건수 - (128 / 10) + (128 % 10 > 0 ? 1 : 0) == 13 페이지
+		int totalCount = 0;
+		totalCount = service.totalListCount();
+		int startPageNum = 1;
+		int endPageNum = 1;
+		if(totalCount > 10) {
+			endPageNum = (totalCount / 10) + (totalCount % 10 > 0 ? 1 : 0);
+		}
+		model.addAttribute("startPageNum", startPageNum);
+		model.addAttribute("endPageNum", endPageNum);
+		return "/board/free/list2";//jsp file name
+	}//list2
 
 	@RequestMapping( value = "/list", method = RequestMethod.GET )
 	public String list( Model model ) {
@@ -94,5 +105,57 @@ public class FreeBoardController {
 		model.addAttribute("list", list);
 		return "/board/free/list";//list.jsp (view name) 호출
 	}//list
+
+	@RequestMapping( value = "/update", method = RequestMethod.POST )
+	public void update( FreeBoardDTO dto, PrintWriter out ) {
+		//dbms에 게시글을 update : FreeBoardService.update(dto) -> FreeBoardDAO.update(dto)
+		//						-> freeboard-mapper.xml(namespace : FreeBoardMapper.update)
+		int successCount = 0;
+		successCount = service.update(dto);
+		out.print(successCount);
+		out.close();
+	}//update
+
+	@RequestMapping( value = "/update_form", method = RequestMethod.GET )
+	public String updateForm( String board_no, Model model ) {
+		FreeBoardDTO dto = null;
+		dto = service.detail(board_no);
+		model.addAttribute("detail_dto", dto);
+		return "/board/free/update_form";//jsp file name
+	}//updateForm
+
+	@RequestMapping( value = "/delete", method = RequestMethod.GET )
+	public void delete( FreeBoardDTO dto, PrintWriter out) {
+		//dbms에서 게시글 하나를 delete : FreeBoardService.delete(board_no) -> FreeBoardDAO.delete(board_no)
+		//						-> freeboard-mapper.xml(namespace : FreeBoardMapper.delete)
+		int successCount = 0;
+		successCount = service.delete( dto );
+		out.print(successCount);
+		out.close();
+	}//delete
+
+	@RequestMapping( value = "/detail", method = RequestMethod.GET )
+	public String detail( String board_no, Model model ) {
+		//dbms에서 게시글 하나를 select : FreeBoardService.detail(board_no) -> FreeBoardDAO.detail(board_no)
+		//						-> freeboard-mapper.xml(namespace : FreeBoardMapper.detail)
+		FreeBoardDTO dto = service.detail(board_no);
+		model.addAttribute("detail_dto", dto);
+		return "/board/free/detail";//jsp file name
+	}//detail
+
+	@RequestMapping( value = "/write", method = RequestMethod.POST )
+	public void write( FreeBoardDTO dto, PrintWriter out ) {
+		//dbms에 게시글을 insert : FreeBoardService.write(dto) -> FreeBoardDAO.write(dto)
+		//						-> freeboard-mapper.xml(namespace : FreeBoardMapper.write)
+		int successCount = 0;
+		successCount = service.write(dto);
+		out.print(successCount);
+		out.close();
+	}//write
+
+	@RequestMapping( value = "/write_form", method = RequestMethod.GET )
+	public String writeForm() {
+		return "/board/free/write_form";//jsp 파일 이름
+	}//writeForm
 
 }//class

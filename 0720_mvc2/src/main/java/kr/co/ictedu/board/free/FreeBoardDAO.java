@@ -13,6 +13,19 @@ public class FreeBoardDAO {
 	private SqlSession sqlSession;
 	
 	
+	public List<FreeBoardDTO> pagingList( int limitNum ) {
+		List<FreeBoardDTO> list = null;
+		list = sqlSession.selectList("FreeBoardMapper.pagingList", limitNum);
+		return list;
+	}//pagingList
+	
+	
+	public int  totalListCount() {
+		int totalCount = 0;
+		totalCount = sqlSession.selectOne("FreeBoardMapper.totalListCount");
+		return totalCount;
+	}//totalListCount
+	
 	public int update(FreeBoardDTO dto) {
 		int successCount = 0;
 		successCount = sqlSession.update("FreeBoardMapper.update", dto);
