@@ -8,9 +8,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import kr.co.ictedu.util.dto.SearchDTO;
 
 @Controller
 @RequestMapping( value = "/board/free" )
@@ -20,6 +21,61 @@ public class FreeBoardController {
 
 	@Autowired
 	private FreeBoardService service;
+
+	/*
+	 * 핵심 메소드 목록 : finalList, update, updateForm, delete, detail, write, writeForm
+	 */
+	/*
+	 * 연습 메소드 목록 : search1, search1Test, pagingList, list3, list2, list
+	 */
+
+	@RequestMapping( value = "/final_list", method = RequestMethod.GET )
+	public String finalList( SearchDTO dto, String userWantPage, Model model ) {
+		if( userWantPage == null || userWantPage.equals("") ) userWantPage = "1";//if
+		int totalCount = 0, startPageNum = 1, endPageNum = 10, lastPageNum = 1;
+		totalCount = service.searchListCount( dto );
+		if( totalCount > 10 ) {
+			lastPageNum = ( totalCount / 10 ) + ( totalCount % 10 > 0 ? 1 : 0);
+		}//if
+		if( userWantPage.length() >= 2 ) {
+			String frontNum = userWantPage.substring(0, userWantPage.length()-1);//125 -> 12
+			startPageNum = Integer.parseInt(frontNum) * 10 + 1;//121
+			endPageNum = ( Integer.parseInt(frontNum) + 1 ) * 10;//130
+			String backNum = userWantPage.substring( userWantPage.length()-1, userWantPage.length() );//120
+			if( backNum.equals("0") ) {
+				startPageNum = startPageNum - 10;//111
+				endPageNum = endPageNum - 10;//120
+			}//if
+		}//if
+		if( endPageNum > lastPageNum ) endPageNum = lastPageNum;//if
+		model.addAttribute("startPageNum", startPageNum);
+		model.addAttribute("endPageNum", endPageNum);
+		model.addAttribute("userWantPage", userWantPage);
+		model.addAttribute("lastPageNum", lastPageNum);
+
+		dto.setLimitNum( ( Integer.parseInt(userWantPage) - 1 ) * 10 );
+		List<FreeBoardDTO> list = null;
+		list = service.searchList( dto );
+		model.addAttribute("list", list);
+		model.addAttribute("search_dto", dto);
+
+		return "/board/free/list5";//jsp file name
+	}//finalList
+
+	@RequestMapping( value = "/search1_test", method = RequestMethod.GET )
+	public String search1Test( SearchDTO dto, Model model ) {
+		List<FreeBoardDTO> list = null;
+		list = service.search1Test( dto );
+		logger.info(list.toString());
+		model.addAttribute("list", list);
+		model.addAttribute("search_dto", dto);
+		return "/board/free/search1";//jsp file name
+	}//search1Test
+
+	@RequestMapping( value = "/search1", method = RequestMethod.GET )
+	public String search1() {
+		return "/board/free/search1";//jsp file name
+	}//search1
 
 	@RequestMapping( value = "/list4", method = RequestMethod.GET )
 	public String pagingList( Model model, String userWantPage ) {

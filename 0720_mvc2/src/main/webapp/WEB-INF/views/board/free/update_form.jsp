@@ -108,7 +108,7 @@
 						//alert(data);
 						if(data >= 1) {
 							alert("게시글을 수정 하였습니다.");
-							location.href="${pageContext.request.contextPath}/board/free/list";
+							location.href="${pageContext.request.contextPath}/board/free/final_list";
 						} else if( data <= 0){
 							alert(" 수정 하실 수 없는 게시글 입니다.");
 						} else{

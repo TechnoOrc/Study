@@ -81,6 +81,45 @@
 			</a>
 		</c:if>
 		<hr>
+		
+		<ul class="pagination">
+			<c:if test="${startPageNum > 10}">
+				<li class="page-item">
+					<a class="page-link"
+					 href="${pageContext.request.contextPath}/board/free/list4?userWantPage=${startPageNum - 1}">
+						Previous
+					</a>
+				</li>
+			</c:if>
+			<c:forEach var="page_no" begin="${startPageNum}" end="${endPageNum}"> 
+				<c:choose>
+					<c:when test="${page_no == userWantPage}">
+						<li class="page-item active">
+							<a class="page-link" href="#">${page_no}</a>
+						</li>
+					</c:when>
+					<c:otherwise>
+						<li class="page-item">
+							<a class="page-link"
+								href="${pageContext.request.contextPath}/board/free/list4?userWantPage=${page_no}">
+								${page_no}
+								</a>
+						</li>
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>
+			
+			<c:if test="${lastPageNum > endPageNum }">
+				<li class="page-item">
+					<a class="page-link" 
+						href="${pageContext.request.contextPath}/board/free/list4?userWantPage=${endPageNum + 1}">
+						Next
+					</a>
+				</li>
+			</c:if>
+		</ul>		
+		
+		<hr>
 	<%@ include file="/WEB-INF/views/footer.jsp" %>
 	</body>
 </html>

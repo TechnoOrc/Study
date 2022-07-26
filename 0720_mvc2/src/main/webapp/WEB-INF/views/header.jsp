@@ -9,28 +9,26 @@
 				<!-- Links -->
 				<ul class="navbar-nav">
 					<li class="nav-item">
-						<a class="nav-link" href="${pageContext.request.contextPath}/board/free/list">자유 게시판</a>
+						<a class="nav-link" href="${pageContext.request.contextPath}/board/free/final_list">
+							자유 게시판 : Searching + Paging + List</a>
 					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="${pageContext.request.contextPath}/board/free/list2">List2</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="${pageContext.request.contextPath}/board/free/list3">List3</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="${pageContext.request.contextPath}/board/free/list4">PagingList</a>
-					</li>
-					
-					
+
 					<!-- Dropdown -->
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-							Drop down link
+							검색 페이징 목록
 						</a>
 						<div class="dropdown-menu">
-							<a class="dropdown-item" href="#">Link 1</a>
-							<a class="dropdown-item" href="#">Link 2</a>
-							<a class="dropdown-item" href="#">Link 3</a>
+							<a class="dropdown-item" href="${pageContext.request.contextPath}/board/free/list">
+								list : only list</a>
+							<a class="dropdown-item" href="${pageContext.request.contextPath}/board/free/list2">
+								list2 : only paging</a>
+							<a class="dropdown-item" href="${pageContext.request.contextPath}/board/free/list3">
+								list3 : paging + link</a>
+							<a class="dropdown-item" href="${pageContext.request.contextPath}/board/free/list4">
+								list4 : paging + link + list</a>
+							<a class="dropdown-item" href="${pageContext.request.contextPath}/board/free/search1">
+								search1 : search + list</a>
 						</div>
 					</li>
 				</ul>

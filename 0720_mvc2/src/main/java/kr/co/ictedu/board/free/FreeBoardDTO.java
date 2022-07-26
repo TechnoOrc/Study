@@ -8,12 +8,11 @@ public class FreeBoardDTO {
 	private String pwd;
 	private String contents;
 	private String write_date;
-	
+
 	public String toString() {
 		return board_no + " : " + title + " : " + writer;
 	}
-	
-	
+
 	public String getBoard_no() {
 		return board_no;
 	}
@@ -50,6 +49,5 @@ public class FreeBoardDTO {
 	public void setWrite_date(String write_date) {
 		this.write_date = write_date;
 	}
-	
-	
+
 }//class

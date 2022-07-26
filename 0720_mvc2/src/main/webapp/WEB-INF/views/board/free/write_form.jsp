@@ -67,7 +67,7 @@
 		<hr>
 		<br>
 		<button id="write_btn" class="btn btn-primary float-right"> 글 작성 완료 </button>
-		<a href="${pageContext.request.contextPath}/board/free/list">
+		<a href="${pageContext.request.contextPath}/board/free/final_list">
 		<button class="btn btn-warning float-right"> 글 작성 취소 </button>
 		</a>
 		<br>
@@ -108,7 +108,7 @@
 					, function(data, status) {
 						if(data >= 1) {
 							alert("게시글이 성공적으로 업로드 되었습니다.");
-							location.href = "${pageContext.request.contextPath}/board/free/list";
+							location.href = "${pageContext.request.contextPath}/board/free/final_list";
 						} else if(data <= 0) {
 							alert("게시글 작성이 실패하였습니다.");	
 						} else {
