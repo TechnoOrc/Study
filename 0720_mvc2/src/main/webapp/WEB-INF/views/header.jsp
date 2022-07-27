@@ -2,6 +2,18 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 		<div class="container">
+			<div class="text-right">
+				<c:choose>
+					<c:when test="${login_info != null && login_info.mid != null}">
+					${login_info.mid}
+						<a href="${pageContext.request.contextPath}/logout"> LOGOUT </a>
+					</c:when>
+					<c:otherwise>
+						<a href="${pageContext.request.contextPath}/login_form"> LOGIN </a>
+						회원가입
+					</c:otherwise>
+				</c:choose>
+			</div>
 			<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 				<!-- Brand -->
 				<a class="navbar-brand" href="#">Logo</a>
@@ -10,7 +22,8 @@
 				<ul class="navbar-nav">
 					<li class="nav-item">
 						<a class="nav-link" href="${pageContext.request.contextPath}/board/free/final_list">
-							자유 게시판 : Searching + Paging + List</a>
+							자유 게시판 : Searching + Paging + List
+						</a>
 					</li>
 
 					<!-- Dropdown -->

@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
-	<html>
+<html>
 	<head>
 		<meta charset="UTF-8">
 		<title> 페이지 연습 </title>
@@ -12,7 +12,7 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 	</head>
 	<body>
-		<%@ include file="/WEB-INF/views/header.jsp" %>
+	<%@ include file="/WEB-INF/views/header.jsp" %>
 		<hr>
 		<h3> 페이지 연습 </h3>
 		<hr>
@@ -28,6 +28,6 @@
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
-		<%@ include file="/WEB-INF/views/footer.jsp" %>
+	<%@ include file="/WEB-INF/views/footer.jsp" %>
 	</body>
 </html>

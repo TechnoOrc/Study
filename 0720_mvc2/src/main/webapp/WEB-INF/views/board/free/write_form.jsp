@@ -19,11 +19,9 @@
 	</head>
 	<body>
 	<%@ include file="/WEB-INF/views/header.jsp" %>
-	
 		<hr>
 		<h3> 자유 게시판 글 쓰기 </h3>
 		<hr>
-		
 		<table class="table table-hover">
 			<tbody>
 				<tr>
@@ -63,15 +61,10 @@
 				</tr>
 			</tbody>
 		</table>
-		<br>
-		<hr>
-		<br>
 		<button id="write_btn" class="btn btn-primary float-right"> 글 작성 완료 </button>
 		<a href="${pageContext.request.contextPath}/board/free/final_list">
-		<button class="btn btn-warning float-right"> 글 작성 취소 </button>
+			<button class="btn btn-warning"> 글 작성 취소 </button>
 		</a>
-		<br>
-		
 	<%@ include file="/WEB-INF/views/footer.jsp" %>
 	<script type="text/javascript">
 	$(document).ready(function() {
@@ -106,15 +99,14 @@
 						, contents : CKEDITOR.instances.contents.getData()
 					}
 					, function(data, status) {
-						if(data >= 1) {
+						if(data >= 1){
 							alert("게시글이 성공적으로 업로드 되었습니다.");
 							location.href = "${pageContext.request.contextPath}/board/free/final_list";
 						} else if(data <= 0) {
-							alert("게시글 작성이 실패하였습니다.");	
+							alert("게시글이 작성을 실패 하였습니다.");
 						} else {
 							alert("잠시 후 다시 시도해 주세요.");
 						}
-						
 					}//call back function : 서버에서 불러주는 함수
 			);//post
 
@@ -123,3 +115,7 @@
 	</script>
 	</body>
 </html>
+
+
+
+

@@ -45,26 +45,23 @@
 	<script type="text/javascript">
 	$(document).ready(function() {
 		$("#btn_delete").click(function() {
-			
-			if( $("#pwd").val() == ""){
+
+			if( $("#pwd").val() == "" ){
 				alert("삭제 비밀번호를 넣어 주세요.");
 				return;
-				
-			}//if
-			
-			
+			}
+
 			$.get(
 					"${pageContext.request.contextPath}/board/free/delete"
-					,{
+					, {
 						board_no : ${detail_dto.board_no}
-						, pwd : $("#pwd").val() 
-							
-					}//서버로 전달되는 data
+						, pwd : $("#pwd").val()
+					}
 					, function(data, status) {
-						alert(data);
+						//alert(data);
 						if(data >= 1){
 							alert("게시글이 삭제 되었습니다.");
-							location.href="${pageContext.request.contextPath}/board/free/list";
+							location.href="${pageContext.request.contextPath}/board/free/final_list";
 						} else if (data <= 0) {
 							alert("삭제할 수 없는 게시물 입니다.");
 						} else {

@@ -13,38 +13,36 @@
 	</head>
 	<body>
 	<%@ include file="/WEB-INF/views/header.jsp" %>
-	
 		<hr>
 		<h3> 자유 게시판 </h3>
 		<hr>
-		<a href="${ pageContext.request.contextPath }/board/free/write_form" class="clearfix">
-			<button type="button" class="btn btn-primary float-right"> 글 쓰러 가기 </button>
-		</a>
+		<div class="clearfix">
+			<a href="${pageContext.request.contextPath}/board/free/write_form">
+				<button type="button" class="btn btn-primary float-right"> 글 쓰러 가기 </button>
+			</a>
+		</div>
 		<hr>
 		<table class="table table-hover">
-		<thead>
-			<tr>
-				<th>글번호</th>	<th>제목</th>	<th>작성자</th>	<th>작성일</th>
-			</tr>	
-		</thead>
+			<thead>
+				<tr>
+					<th> 글 번 호 </th>	<th> 제 목 </th>	<th> 작 성 자 </th>	<th> 작 성 일 </th>
+				</tr>
+			</thead>
 			<tbody>
-				<c:forEach var="dto" items="${ list }">
+				<c:forEach var="dto" items="${list}">
 					<tr>
-						<td><b>${dto.board_no}</b></td>
+						<td>${dto.board_no}</td>
 						<td>
-							<a id ="dlink" href="${pageContext.request.contextPath}/board/free/detail?board_no=${dto.board_no}">
+							<a href="${pageContext.request.contextPath}/board/free/detail?board_no=${dto.board_no}">
 								${dto.title}
 							</a>
 						</td>
-						
-						<td>${ dto.writer }</td>
-						<td>${ dto.write_date }</td>
-						
+						<td>${dto.writer}</td>		<td>${dto.write_date}</td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
-		
 	<%@ include file="/WEB-INF/views/footer.jsp" %>
 	</body>
 </html>
+

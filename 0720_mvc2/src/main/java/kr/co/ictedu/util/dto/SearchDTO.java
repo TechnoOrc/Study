@@ -5,8 +5,7 @@ public class SearchDTO {
 	private String searchOption;
 	private String searchWord;
 	private int limitNum;
-	
-	
+
 	public String getSearchOption() {
 		return searchOption;
 	}
@@ -25,8 +24,5 @@ public class SearchDTO {
 	public void setLimitNum(int limitNum) {
 		this.limitNum = limitNum;
 	}
-	
-	
-	
-	
+
 }//class
