@@ -216,3 +216,16 @@ public class FreeBoardController {
 	}//writeForm
 
 }//class
+
+/*
+CREATE TABLE `freeboard` (
+  `board_no` int NOT NULL AUTO_INCREMENT,
+  `title` varchar(150) NOT NULL,
+  `writer` varchar(60) NOT NULL,
+  `pwd` varchar(20) NOT NULL,
+  `contents` varchar(1500) NOT NULL,
+  `write_date` datetime NOT NULL,
+  `view_cnt` int DEFAULT '0',
+  PRIMARY KEY (`board_no`)
+);
+*/

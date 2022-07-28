@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 public class Cookie282Get extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public Cookie282Get() {
+    public Cookie282Get() { 
         super();
     }
 
@@ -33,6 +33,7 @@ public class Cookie282Get extends HttpServlet {
 					+ URLDecoder.decode(coo.getValue(), "utf-8") );//공백과 한글 사용을 위해 encode한것을 decode 함
 			
 			System.out.println(coo.getMaxAge() + " : " + coo.getDomain());
+			System.out.println("====================================");
 			System.out.println("====================================");
 		}//for
 		

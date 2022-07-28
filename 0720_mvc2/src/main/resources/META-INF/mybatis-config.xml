@@ -8,6 +8,8 @@
 	<mappers>
 		<mapper resource="META-INF/freeboard-mapper.xml" />
 		<mapper resource="META-INF/login-mapper.xml" />
+		<mapper resource="META-INF/join-mapper.xml" />
+		<mapper resource="META-INF/memberboard-mapper.xml" />
 	</mappers>
 
 </configuration>

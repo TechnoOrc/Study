@@ -43,7 +43,7 @@ public class LoginController {
 	}//login
 	
 	
-	@RequestMapping( value = "/login", method = RequestMethod.GET )
+	@RequestMapping( value = "/login_form", method = RequestMethod.GET )
 	public String  loginForm() {
 		return "/login/login_form";//jsp file name
 	}//loginForm
@@ -52,7 +52,12 @@ public class LoginController {
 
 
 /*
-insert into member(mid, mpwd, tel, email, mdate)
-values('tea', '1111', '010-9999-8888', 'aaa@bbb.com', now());
-commit;
+create table member(
+mno int primary key auto_increment
+, mid varchar(20)
+, mpwd varchar(20)
+, tel varchar(15)
+, email varchar(50)
+, mdate datetime
+);
 */

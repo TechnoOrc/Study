@@ -10,7 +10,7 @@
 					</c:when>
 					<c:otherwise>
 						<a href="${pageContext.request.contextPath}/login_form"> LOGIN </a>
-						회원가입
+						<a href="${pageContext.request.contextPath}/join/form"> JOIN </a>
 					</c:otherwise>
 				</c:choose>
 			</div>

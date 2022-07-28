@@ -63,6 +63,7 @@ public class FreeBoardService {
 	}//delete
 
 	public FreeBoardDTO detail( String board_no ) {
+		dao.incrementViewCnt( board_no );
 		FreeBoardDTO dto = null;
 		dto = dao.detail(board_no);
 		return dto;
