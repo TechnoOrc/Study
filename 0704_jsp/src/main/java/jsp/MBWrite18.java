@@ -56,7 +56,7 @@ public class MBWrite18 extends HttpServlet {
 					, request.getContextPath() + "/MBList18", "회원 게시판 목록으로 바로가기");
 			response.sendRedirect(request.getContextPath() + "/jsp/fail_page.jsp");
 	
-		}
+		} 
 		
 	}//doPost
 
