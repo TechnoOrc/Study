@@ -23,6 +23,12 @@
 	
 	<context:component-scan base-package="kr.co.ictedu" />
 	
-	
+	<interceptors>
+		<interceptor>
+			<mapping path="/board/member/*"/>
+			<exclude-mapping path="/board/member/list"/>
+			<beans:bean class="kr.co.ictedu.login.LoginCheckInterceptor" />
+		</interceptor>
+	</interceptors>
 	
 </beans:beans>
