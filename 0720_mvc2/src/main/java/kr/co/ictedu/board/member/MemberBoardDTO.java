@@ -8,9 +8,12 @@ public class MemberBoardDTO {
 	private String contents;
 	private String write_date;
 	private String view_cnt;
+	private String pwd;
+	private String mid;
+
 
 	public String toString() {
-		return board_no + " : " + title + " : " + mno;
+		return board_no + " : " + title + " : " + mno + " : " + mid + " : " + contents + " : " + pwd;
 	}
 
 	public String getBoard_no() {
@@ -49,5 +52,22 @@ public class MemberBoardDTO {
 	public void setView_cnt(String view_cnt) {
 		this.view_cnt = view_cnt;
 	}
+	
+	public String getPwd() {
+		return pwd;
+	}
+	
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
+	}
 
+	public String getMid() {
+		return mid;
+	}
+	
+	public void setMid(String mid) {
+		this.mid = mid;
+	}
+	
+	
 }//class

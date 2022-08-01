@@ -228,4 +228,10 @@ CREATE TABLE `freeboard` (
   `view_cnt` int DEFAULT '0',
   PRIMARY KEY (`board_no`)
 );
+
+use ict;
+insert into freeboard (title,writer,pwd,contents,write_date)
+select title,writer,pwd,contents,write_date from freeboard;
+select count(*) from freeboard;
+
 */

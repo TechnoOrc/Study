@@ -6,6 +6,10 @@ public class SearchDTO {
 	private String searchWord;
 	private int limitNum;
 
+	public String toString() {
+		return searchOption + " : " + searchWord + " : " + limitNum;
+	}
+	
 	public String getSearchOption() {
 		return searchOption;
 	}

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
 <!DOCTYPE html>
 <html>
 	<head>
@@ -33,21 +34,17 @@
 					</td>
 				</tr>
 				<tr>
-					<th> 작 성 자 </th>
-					<td>
-						<input type="text" id="writer" name="writer" maxlength="20"
-							class="form-control">
-						<label id="writer_label" for="writer" class="write_label"></label>
-					</td>
+					<th> 작성자 </th>
+					<th>${login_info.mid}</th>
 				</tr>
-				<tr>
+				<!-- <tr>
 					<th> 비 밀 번 호 </th>
 					<td>
 						<input type="password" id="pwd" name="pwd" maxlength="20"
 							class="form-control">
 						<label id="pwd_label" for="pwd" class="write_label"></label>
 					</td>
-				</tr>
+				</tr> -->
 				<tr>
 					<th> 내 용 </th>
 					<td>
@@ -61,10 +58,13 @@
 				</tr>
 			</tbody>
 		</table>
+		
 		<button id="write_btn" class="btn btn-primary float-right"> 글 작성 완료 </button>
-		<a href="${pageContext.request.contextPath}/board/free/final_list">
+		
+		<a class="clearfix" href="${pageContext.request.contextPath}/board/member/list">
 			<button class="btn btn-warning"> 글 작성 취소 </button>
 		</a>
+		
 		<hr>
 	<%@ include file="/WEB-INF/views/footer.jsp" %>
 	<script type="text/javascript">
@@ -76,15 +76,15 @@
 				return;
 			} else { $("#title_label").text(""); }
 
-			if( $.trim( $("#writer").val() ) == "" ){
+			/* if( $.trim( $("#writer").val() ) == "" ){
 				$("#writer_label").text("작성자를 입력 하세요.");
 				return;
-			} else { $("#writer_label").text(""); }
+			} else { $("#writer_label").text(""); } */
 
-			if( $.trim( $("#pwd").val() ) == "" ){
+			/* if( $.trim( $("#pwd").val() ) == "" ){
 				$("#pwd_label").text("비밀번호를 입력 하세요.");
 				return;
-			} else { $("#pwd_label").text(""); }
+			} else { $("#pwd_label").text(""); } */
 
 			if( CKEDITOR.instances.contents.getData() == "" ){
 				$("#contents_label").text("내용을 입력 하세요.");
@@ -92,17 +92,17 @@
 			} else { $("#contents_label").text(""); }
 
 			$.post(
-					"${pageContext.request.contextPath}/board/free/write"
+					"${pageContext.request.contextPath}/board/member/write"
 					, {
 						title : $("#title").val()
-						, writer : $("#writer").val()
-						, pwd : $("#pwd").val()
+						, mno : ${login_info.mno}
 						, contents : CKEDITOR.instances.contents.getData()
 					}
 					, function(data, status) {
+						alert(data);
 						if(data >= 1){
 							alert("게시글이 성공적으로 업로드 되었습니다.");
-							location.href = "${pageContext.request.contextPath}/board/free/final_list";
+							location.href = "${pageContext.request.contextPath}/board/member/list";
 						} else if(data <= 0) {
 							alert("게시글이 작성을 실패 하였습니다.");
 						} else {
