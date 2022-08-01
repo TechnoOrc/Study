@@ -30,6 +30,6 @@
 	<select id="sidoSelect" resultType="kr.co.ictedu.test.DongCodeDTO">
 	select sido_code, sido_name
 	from code_sido
-	order by sido_code
+	order by sido_code 
 	</select>
 </mapper>
