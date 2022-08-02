@@ -39,7 +39,7 @@ public class MemberBoardController {
 			
 			String backNum = userWantPage.substring( userWantPage.length()-1, userWantPage.length() );//120
 			if( backNum.equals("0") ) {
-				startPageNum = startPageNum - 10;//111
+				startPageNum = startPageNum - 10;//111 
 				endPageNum = endPageNum - 10;//120
 			}//if
 		}//if
@@ -52,7 +52,7 @@ public class MemberBoardController {
 		dto.setLimitNum( ( Integer.parseInt(userWantPage) - 1 ) * 10 );
 		List<MemberBoardDTO> list = null;
 		list = service.searchList( dto );
-		logger.info(list.toString());
+		//logger.info(list.toString());
 		model.addAttribute("list", list);
 		model.addAttribute("search_dto", dto);
 		return "/board/member/list";//jsp file name
@@ -64,7 +64,7 @@ public class MemberBoardController {
 		//dbms에 게시글을 update : FreeBoardService.update(dto) -> FreeBoardDAO.update(dto)
 		//						-> freeboard-mapper.xml(namespace : FreeBoardMapper.update)
 		int successCount = 0;
-		logger.info(dto.toString());
+		//logger.info(dto.toString());
 		successCount = service.update(dto);
 		out.print(successCount);
 		out.close();
@@ -87,7 +87,7 @@ public class MemberBoardController {
 		//dbms에서 게시글 하나를 delete : FreeBoardService.delete(board_no) -> FreeBoardDAO.delete(board_no)
 		//						-> freeboard-mapper.xml(namespace : FreeBoardMapper.delete)
 		System.out.println("delete");
-		logger.info(dto.toString());
+		//logger.info(dto.toString());
 		int successCount = 0;
 		successCount = service.delete( dto );
 		out.print(successCount);
@@ -100,7 +100,7 @@ public class MemberBoardController {
 		//dbms에서 게시글 하나를 select : FreeBoardService.detail(board_no) -> FreeBoardDAO.detail(board_no)
 		//						-> freeboard-mapper.xml(namespace : FreeBoardMapper.detail)
 		MemberBoardDTO dto = service.detail(board_no);
-		//logger.info(dto.toString());
+		logger.info(dto.toString());
 		model.addAttribute("detail_dto", dto);
 		return "/board/member/detail";//jsp file name
 	}//detail

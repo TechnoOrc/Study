@@ -23,7 +23,7 @@
 					<th>제목</th><td>${detail_dto.title}</td>
 				</tr>
 				<tr>
-					<th>작성자</th><td>${login_info.mid}</td>
+					<th>작성자</th><td>${detail_dto.mid}</td>
 					<th>작성일</th><td>${detail_dto.write_date}</td>
 				</tr>
 				<tr>
@@ -37,6 +37,9 @@
 			
 			<c:if test="${detail_dto.mno == login_info.mno}"> 
 				<button id="btn_delete" class="btn btn-danger"> 게시글 삭제 </button> 
+				<a href="${pageContext.request.contextPath}/board/member/update_form?board_no=${detail_dto.board_no}">
+					<button class="btn btn-primary float-right"> 게시글 수정하러 가기 </button>
+				</a>
 			</c:if>
 			
 			
@@ -45,9 +48,6 @@
 			</a>
 			
 			
-			<a href="${pageContext.request.contextPath}/board/member/update_form?board_no=${detail_dto.board_no}">
-				<button class="btn btn-primary float-right"> 게시글 수정하러 가기 </button>
-			</a>
 		
 	
 		<hr>

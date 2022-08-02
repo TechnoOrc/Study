@@ -60,9 +60,9 @@
 	</delete>
 
 	<select id="detail" parameterType="java.lang.String" resultType="kr.co.ictedu.board.member.MemberBoardDTO">
-	select board_no, title, mno, contents, write_date, view_cnt
-	from memberboard
-	where board_no = #{board_no}
+	select board_no, title, member.mno, member.mid, contents, write_date, view_cnt
+	from memberboard, member
+	where board_no = #{board_no} and memberboard.mno = member.mno
 	</select>
 
 
