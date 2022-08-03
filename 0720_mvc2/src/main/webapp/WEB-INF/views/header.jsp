@@ -61,6 +61,20 @@
 								연관 검색어 조회 연습</a>
 						</div>
 					</li>
+
+					<!-- Dropdown -->
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+							파일 업로드
+						</a>
+						<div class="dropdown-menu">
+							<a class="dropdown-item" href="${pageContext.request.contextPath}/file1/form">
+								파일 업로드 연습</a>
+							<a class="dropdown-item" href="${pageContext.request.contextPath}/file2/form">
+								AJAX 파일 업로드 연습</a>
+						</div>
+					</li>
+
 				</ul>
 			</nav>
 			<main>
