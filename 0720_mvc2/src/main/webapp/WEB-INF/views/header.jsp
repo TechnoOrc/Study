@@ -20,10 +20,6 @@
 				
 				<!-- Links -->
 				<ul class="navbar-nav">
-					<li class="nav-item">
-						<a class="nav-link" href="${pageContext.request.contextPath}/board/free/final_list">
-							자유 게시판 : Searching + Paging + List</a>
-					</li>
 
 					<li class="nav-item">
 						<a class="nav-link" href="${pageContext.request.contextPath}/board/member/list">
@@ -33,9 +29,11 @@
 					<!-- Dropdown -->
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-							검색 페이징 목록
+							자유 게시판
 						</a>
 						<div class="dropdown-menu">
+							<a class="dropdown-item" href="${pageContext.request.contextPath}/board/free/final_list">
+								자유 게시판 : Searching + Paging + List</a>
 							<a class="dropdown-item" href="${pageContext.request.contextPath}/board/free/list">
 								list : only list</a>
 							<a class="dropdown-item" href="${pageContext.request.contextPath}/board/free/list2">
@@ -46,6 +44,19 @@
 								list4 : paging + link + list</a>
 							<a class="dropdown-item" href="${pageContext.request.contextPath}/board/free/search1">
 								search1 : search + list</a>
+						</div>
+					</li>
+
+					<!-- Dropdown -->
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+							상품
+						</a>
+						<div class="dropdown-menu">
+							<a class="dropdown-item" href="${pageContext.request.contextPath}/product/list">
+								상품 목록</a>
+							<a class="dropdown-item" href="${pageContext.request.contextPath}/product/form">
+								판매자 상품 등록</a>
 						</div>
 					</li>
 
