@@ -37,10 +37,8 @@
 					<td>${detail_dto.mid}</td>
 				</tr>
 				<tr>
-					<td colspan="2" class="text-center">
+					<td colspan="4" class="text-right">
 						<button type="button" id="jang_btn" class="btn btn-primary btn-lg"> 장 바구니 담기 </button>
-					</td>
-					<td colspan="2" class="text-center">
 						<button type="button" id="buy_btn" class="btn btn-primary btn-lg"> 바로 구매 하기 </button>
 					</td>
 				</tr>
@@ -62,16 +60,22 @@
 				</tr>
 				<tr>
 					<th> 첨 부 문 서 </th>
-					<td colspan="2">${detail_dto.add_file_name}${detail_dto.add_file_path}</td>
+					<td colspan="2">
+						<a href="${pageContext.request.contextPath}/file/download?path=${detail_dto.add_file_path}">
+							${detail_dto.add_file_name}
+						</a>
+					</td>
 				</tr>
 			</tbody>
 		</table>
 		<hr>
 		<c:if test="${detail_dto.mno == login_info.mno}">
-			<button id="delete_btn" class="btn btn-danger"> 상 품 삭 제 </button>
-			<a href="${pageContext.request.contextPath}/product/uform?prdt_no=${detail_dto.prdt_no}">
-				<button class="btn btn-primary"> 상 품 수 정 </button>
-			</a>
+			<div class="text-center">
+				<button id="delete_btn" class="btn btn-danger"> 상 품 삭 제 </button>
+				<a href="${pageContext.request.contextPath}/product/uform?prdt_no=${detail_dto.prdt_no}">
+					<button class="btn btn-primary"> 상 품 수 정 </button>
+				</a>
+			</div>
 			<hr>
 		</c:if>
 	<%@ include file="/WEB-INF/views/footer.jsp" %>

@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <html>
 	<head>
 		<meta charset="UTF-8">
@@ -60,8 +59,7 @@
 								${dto.prdt_name}
 							</a>
 						</td>
-						<fmt:formatNumber type="number" var="priceNum" value="${ dto.sale_price }" />
-						<td>${priceNum} 원</td>
+						<td>${dto.sale_price} 원</td>
 						<td>${dto.mid}</td>
 					</tr>
 				</c:forEach>

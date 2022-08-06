@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
+import kr.co.ictedu.board.member.MemberBoardDTO;
 import kr.co.ictedu.util.dto.MemberDTO;
 import kr.co.ictedu.util.dto.SearchDTO;
 
@@ -33,6 +34,14 @@ public class ProductController {
 
 	@Autowired
 	private ProductService service;
+
+	@RequestMapping( value = "/uform", method = RequestMethod.GET )
+	public String updateForm( String prdt_no, Model model ) {
+		ProductDTO dto = null;
+		dto = service.detail( prdt_no );
+		model.addAttribute("detail_dto", dto);
+		return "/product/uform";//jsp file name
+	}//updateForm
 
 	@RequestMapping( value = "/delete", method = RequestMethod.GET )
 	public void delete( ProductDTO dto, HttpSession session, PrintWriter out ) {

@@ -28,9 +28,9 @@
 					<tr>
 						<th> 내 용 </th>
 						<td>
-							<textarea class="form-control" id="contents" name="contents"></textarea>
+							<textarea class="form-control" id="cnts" name="cnts"></textarea>
 							<script type="text/javascript">
-							CKEDITOR.replace("contents");
+							CKEDITOR.replace("cnts");
 							</script>
 						</td>
 					</tr>
@@ -43,45 +43,39 @@
 				</tbody>
 			</table>
 		</form>
-		<div class="clear-fix">
+		<div class="clearfix">
 			<button type="button" id="write_btn" class="btn btn-primary float-right"> 게시글 입력 </button>
 		</div>
 		<hr>
 	<%@ include file="/WEB-INF/views/footer.jsp" %>
 	<script type="text/javascript">
 	$(document).ready(function() {
-		
+
 		$("#write_btn").click(function() {
-			
-			let form = new FormData( document.getElementById( "form_write" ) );//form 하나를 통째로 form에 담는다.
-			form.append( "contents", CKEDITOR.instances.contents.getData() );//CKEDITOR은 form에 안들어가서 붙여 줌. 
-			
+
+			let form = new FormData( document.getElementById( "form_write" ) );
+			form.append( "contents", CKEDITOR.instances.cnts.getData() );
+
 			$.ajax({
-				type : "POST"
+					type : "POST"
 					, encType : "multipart/form-data"
-					, url : "${pageContext.request.contextPath}/file2/ajax_upload" //테이터를 전송할 주소
+					, url : "${pageContext.request.contextPath}/file2/ajax_upload"
 					, data : form
 					, processData : false
 					, contentType : false
-					, cache : false // 이전 데이터 삭제
-					, success : function(result) {// 성공시에 실행할 함수
-						alert("저장성공");
-						location.href="${pageContext.request.contextPath}/"
-					} //call back function
-					, error : function(xhr) {// 통신 실퍠시 ->xhr : xml http Rquest / Response
-						alert("통신실패");
-					} // call back function
-				
+					, cache : false
+					, success : function(result) {
+						alert("저장 성공");
+						location.href = "${pageContext.request.contextPath}/";
+					}//call back function
+					, error : function(xhr) {
+						alert("통신 실패");
+					}//call back function//xhr : xml http request/response
 			});//ajax
-			
-			
-		
-			
-			
+
 		});//click
-		
+
 	});//ready
-	
 	</script>
 	</body>
 </html>

@@ -29,7 +29,7 @@ public class FileController1 {
 		logger.info(dto.getFile_memo());
 
 		Date today = new Date();
-		DateFormat nalja = new SimpleDateFormat("YYYYMMdd");
+		DateFormat nalja = new SimpleDateFormat("YYYYMMDD");
 		DateFormat sigan = new SimpleDateFormat("HHmmss");
 		String todayNalja = nalja.format(today);
 		String todaySigan = sigan.format(today);
@@ -58,7 +58,7 @@ public class FileController1 {
 	public String upload3( MultipartFile file, Model model ) throws IOException {
 
 		Date today = new Date();
-		DateFormat nalja = new SimpleDateFormat("YYYYMMdd");
+		DateFormat nalja = new SimpleDateFormat("YYYYMMDD");
 		DateFormat sigan = new SimpleDateFormat("HHmmss");
 		String todayNalja = nalja.format(today);
 		String todaySigan = sigan.format(today);

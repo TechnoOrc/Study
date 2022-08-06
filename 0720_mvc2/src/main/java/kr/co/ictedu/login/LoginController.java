@@ -25,7 +25,7 @@ public class LoginController {
 	@RequestMapping( value = "/logout", method = RequestMethod.GET )
 	public String logout( HttpSession session ) {
 		session.invalidate();//세션 삭제
-		return "/home";//jsp file name
+		return "/home";//jsp file name 
 	}//logout
 	
 	@RequestMapping( value = "/login", method = RequestMethod.POST )
@@ -43,10 +43,15 @@ public class LoginController {
 	}//login
 	
 	
+	
 	@RequestMapping( value = "/login_form", method = RequestMethod.GET )
 	public String  loginForm() {
 		return "/login/login_form";//jsp file name
 	}//loginForm
+	
+	
+	
+	
 	
 }//class
 

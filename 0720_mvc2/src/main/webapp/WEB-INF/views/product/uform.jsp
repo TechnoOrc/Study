@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title> 판매자 상품 등록 </title>
+		<title> 판매자 상품 수정 </title>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
@@ -26,63 +26,86 @@
 			<table class="table table-hover">
 				<tbody>
 					<tr>
-						<th> 상 품 명 (*) </th>
+						<th width="25%"> 상 품 명 (*) </th>
 						<td colspan="3">
 							<input type="text" id="prdt_name" name="prdt_name" maxlength="20"
-									class="form-control">
+									class="form-control" value="${detail_dto.prdt_name}">
 							<label for="prdt_name" id="prdt_name_label" class="write_label"></label>
 						</td>
 					</tr>
 					<tr>
-						<th> 판 매 자 </th>
-						<td>
+						<th width="25%"> 판 매 자 </th>
+						<td width="25%">
 							${login_info.mid}
 						</td>
-						<th> 재 고 수 량 (*) </th>
-						<td>
-							<input type="text" id="qty" name="qty" class="form-control">
+						<th width="25%"> 재 고 수 량 (*) </th>
+						<td width="25%">
+							<input type="text" id="qty" name="qty" class="form-control"
+									value="${detail_dto.qty}">
 							<label for="qty" id="qty_label" class="write_label"></label>
 						</td>
 					</tr>
 					<tr>
 						<th> 판 매 단 가 (*) </th>
 						<td>
-							<input type="text" id="price" name="price" class="form-control">
+							<input type="text" id="price" name="price" class="form-control"
+									value="${detail_dto.price}">
 							<label for="price" id="price_label" class="write_label"></label>
 						</td>
 						<th> 할 인 율 (*) </th>
 						<td>
-							<input type="text" id="discount" name="discount" class="form-control">
+							<input type="text" id="discount" name="discount" class="form-control"
+									value="${detail_dto.discount}">
 							<label for="discount" id="discount_label" class="write_label"></label>
 						</td>
 					</tr>
 					<tr>
 						<th> 썸 네 일 이 미 지 (*) </th>
 						<td>
-							<input type="file" id="thumbnail" name="thumbnail" class="form-control">
-							<label for="thumbnail" id="thumbnail_label" class="write_label"></label>
+							<c:choose>
+								<c:when test="${detail_dto.thumbnail_path != null && detail_dto.thumbnail_path != ''}">
+									<img src="${detail_dto.thumbnail_path}">
+								</c:when>
+								<c:otherwise>
+									<input type="file" id="thumbnail" name="thumbnail" class="form-control">
+									<label for="thumbnail" id="thumbnail_label" class="write_label"></label>
+								</c:otherwise>
+							</c:choose>
 						</td>
 						<th> 상 품 상 세 이 미 지 </th>
 						<td>
-							<input type="file" id="prdt_img" name="prdt_img" class="form-control">
-							<label for="prdt_img" id="prdt_img_label" class="write_label"></label>
+							<c:choose>
+								<c:when test="${detail_dto.prdt_img_path != null && detail_dto.prdt_img_path != ''}">
+									<img src="${detail_dto.prdt_img_path}">
+								</c:when>
+								<c:otherwise>
+									<input type="file" id="prdt_img" name="prdt_img" class="form-control">
+									<label for="prdt_img" id="prdt_img_label" class="write_label"></label>
+								</c:otherwise>
+							</c:choose>
 						</td>
 					</tr>
 					<tr>
 						<th> 상 품 설 명 이 미 지 </th>
 						<td>
-							<input type="file" id="desc_img" name="desc_img" class="form-control">
+							<c:choose>
+								<c:when test="${detail_dto.desc_img_path != null && detail_dto.desc_img_path != ''}">
+									<img src="${detail_dto.desc_img_path}">
+								</c:when>
+								<c:otherwise>
+									<input type="file" id="desc_img" name="desc_img" class="form-control">
+								</c:otherwise>
+							</c:choose>
 						</td>
 						<th> 첨 부 문 서 </th>
 						<td>
-							<input type="file" id="add_file" name="add_file" class="form-control">
-							<label for="desc_img" id="desc_img_label" class="write_label"></label>
+							${detail_dto.add_file_name}<br>${detail_dto.add_file_path}
 						</td>
 					</tr>
 					<tr>
 						<th> 상 품 설 명 </th>
 						<td colspan="3">
-							<textarea class="form-contol" id="desc_txt" name="desc_txt"></textarea>
+							<textarea class="form-contol" id="desc_txt" name="desc_txt">${detail_dto.description}</textarea>
 							<script type="text/javascript">
 							CKEDITOR.replace("desc_txt");
 							</script>
@@ -91,9 +114,10 @@
 				</tbody>
 			</table>
 		</form>
-		<button id="write_btn" class="btn btn-primary float-right"> 상품 등록 완료 </button>
+		
+		<button id="write_btn" class="btn btn-primary float-right"> 상품 수정 완료 </button>
 		<a href="${pageContext.request.contextPath}/product/list">
-			<button class="btn btn-warning"> 상품 등록 취소 </button>
+			<button class="btn btn-warning"> 상품 수정 취소 </button>
 		</a>
 		<hr>
 	<%@ include file="/WEB-INF/views/footer.jsp" %>

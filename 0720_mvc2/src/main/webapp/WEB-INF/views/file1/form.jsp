@@ -12,11 +12,6 @@
 	</head>
 	<body>
 	<%@ include file="/WEB-INF/views/header.jsp" %>
-	<img src="https://www.w3schools.com/bootstrap4/ny.jpg">
-	<img src="${pageContext.request.contextPath}/resources/image/naver_login.png">
-	
-	
-	
 		<hr>
 		<h3> 파일 업로드 연습 4 (폼 전송 통한 파일 업로드 최종 형태) </h3>
 		<hr>
