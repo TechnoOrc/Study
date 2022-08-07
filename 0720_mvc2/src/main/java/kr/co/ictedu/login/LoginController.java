@@ -32,6 +32,8 @@ public class LoginController {
 	public void login( MemberDTO dto, PrintWriter out, HttpSession session ) {
 		MemberDTO dtoFromDB = null;
 		dtoFromDB = service.login( dto );
+		System.out.println("======================");
+		System.out.println(dtoFromDB);
 		if( dtoFromDB == null ) {//아이디 없는 사용자 또는 패스워드 오류 사용자.
 			out.print(0);
 			
