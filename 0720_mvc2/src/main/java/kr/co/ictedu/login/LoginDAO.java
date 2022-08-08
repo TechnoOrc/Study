@@ -11,7 +11,7 @@ public class LoginDAO {
 
 	@Autowired
 	private SqlSession sqlSession;
-	
+
 	public MemberDTO login( MemberDTO dto ) {
 		MemberDTO dtoFromDB = null;
 		dtoFromDB = sqlSession.selectOne("LoginMapper.login", dto);

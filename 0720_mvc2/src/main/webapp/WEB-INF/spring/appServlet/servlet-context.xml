@@ -27,6 +27,7 @@
 		<interceptor>
 			<mapping path="/board/member/*"/>
 			<mapping path="/product/*"/>
+			<mapping path="/basket/*"/>
 			<exclude-mapping path="/board/member/list"/>
 			<exclude-mapping path="/product/list"/>
 			<exclude-mapping path="/product/detail"/>

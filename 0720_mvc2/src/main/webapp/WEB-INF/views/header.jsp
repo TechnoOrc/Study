@@ -6,6 +6,7 @@
 				<c:choose>
 					<c:when test="${login_info != null && login_info.mid != null}">
 					${login_info.mid}
+						<a href="${pageContext.request.contextPath}/basket/list"> 장바구니 </a>
 						<a href="${pageContext.request.contextPath}/logout"> LOGOUT </a>
 					</c:when>
 					<c:otherwise>
@@ -20,11 +21,6 @@
 				
 				<!-- Links -->
 				<ul class="navbar-nav">
-
-					<li class="nav-item">
-						<a class="nav-link" href="${pageContext.request.contextPath}/board/member/list">
-							멤버 게시판</a>
-					</li>
 
 					<!-- Dropdown -->
 					<li class="nav-item dropdown">
@@ -47,17 +43,9 @@
 						</div>
 					</li>
 
-					<!-- Dropdown -->
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-							상품
-						</a>
-						<div class="dropdown-menu">
-							<a class="dropdown-item" href="${pageContext.request.contextPath}/product/list">
-								상품 목록</a>
-							<a class="dropdown-item" href="${pageContext.request.contextPath}/product/form">
-								판매자 상품 등록</a>
-						</div>
+					<li class="nav-item">
+						<a class="nav-link" href="${pageContext.request.contextPath}/board/member/list">
+							멤버 게시판</a>
 					</li>
 
 					<!-- Dropdown -->
@@ -84,6 +72,11 @@
 							<a class="dropdown-item" href="${pageContext.request.contextPath}/file2/form">
 								AJAX 파일 업로드 연습</a>
 						</div>
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link" href="${pageContext.request.contextPath}/product/list">
+							상품 목록</a>
 					</li>
 
 				</ul>

@@ -81,13 +81,11 @@
 	from freeboard
 	where board_no = #{board_no}
 	</select>
-	
+
 	<update id="incrementViewCnt">
 	update freeboard set view_cnt = view_cnt + 1
 	where board_no = #{board_no}
 	</update>
-
-
 
 	<insert id="write" parameterType="kr.co.ictedu.board.free.FreeBoardDTO">
 	insert into freeboard (title, writer, pwd, contents, write_date)

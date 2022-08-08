@@ -5,6 +5,55 @@
 
 <mapper namespace="ProductMapper">
 
+	<update id="fileDelete" parameterType="kr.co.ictedu.product.ProductDTO">
+	update product
+		<if test="thumbnail_name != null and thumbnail_name != ''">
+			set thumbnail_name = ''
+			, thumbnail_path = ''
+		</if>
+		<if test="prdt_img_name != null and prdt_img_name != ''">
+			set prdt_img_name = ''
+			, prdt_img_path = ''
+		</if>
+		<if test="desc_img_name != null and desc_img_name != ''">
+			set desc_img_name = ''
+			, desc_img_path = ''
+		</if>
+		<if test="add_file_name != null and add_file_name != ''">
+			set add_file_name = ''
+			, add_file_path = ''
+		</if>
+	where prdt_no = #{prdt_no}
+	and mno = #{mno}
+	</update>
+
+	<update id="update" parameterType="kr.co.ictedu.product.ProductDTO">
+	update product
+	set prdt_name = #{prdt_name}
+		, qty = #{qty}
+		, price = #{price}
+		, discount = #{discount}
+		, description = #{description}
+		<if test="thumbnail_name != null and thumbnail_name != ''">
+			, thumbnail_name = #{thumbnail_name}
+			, thumbnail_path = #{thumbnail_path}
+		</if>
+		<if test="prdt_img_name != null and prdt_img_name != ''">
+			, prdt_img_name = #{prdt_img_name}
+			, prdt_img_path = #{prdt_img_path}
+		</if>
+		<if test="desc_img_name != null and desc_img_name != ''">
+			, desc_img_name = #{desc_img_name}
+			, desc_img_path = #{desc_img_path}
+		</if>
+		<if test="add_file_name != null and add_file_name != ''">
+			, add_file_name = #{add_file_name}
+			, add_file_path = #{add_file_path}
+		</if>
+	where prdt_no = #{prdt_no}
+	and mno = #{mno}
+	</update>
+
 	<update id="delete" parameterType="kr.co.ictedu.product.ProductDTO">
 	update product
 	set del_yn = 1
@@ -75,10 +124,10 @@
 	</select>
 
 	<insert id="insert" parameterType="kr.co.ictedu.product.ProductDTO">
-	INSERT INTO product (prdt_name, mno , qty, price, discount, description, reg_date
+	insert into product (prdt_name, mno , qty, price, discount, description, reg_date
 						, thumbnail_name, thumbnail_path, prdt_img_name, prdt_img_path
 						, desc_img_name, desc_img_path, add_file_name, add_file_path)
-	VALUES(#{prdt_name}, #{mno} , #{qty}, #{price}, #{discount}, #{description}, now()
+	values(#{prdt_name}, #{mno} , #{qty}, #{price}, #{discount}, #{description}, now()
 			, #{thumbnail_name}, #{thumbnail_path}, #{prdt_img_name}, #{prdt_img_path}
 			, #{desc_img_name}, #{desc_img_path}, #{add_file_name}, #{add_file_path})
 	</insert>

@@ -19,7 +19,7 @@
 			<col class="w-25">
 			<tbody>
 				<tr>
-					<td rowspan="7"><img src="${detail_dto.thumbnail_path}"></td>
+					<td rowspan="5"><img src="${detail_dto.thumbnail_path}"></td>
 					<td colspan="4"><h2><em>${detail_dto.prdt_name}</em></h2></td>
 				</tr>
 				<tr>
@@ -35,6 +35,19 @@
 					<td>${detail_dto.qty}</td>
 					<th> 판 매 자 </th>
 					<td>${detail_dto.mid}</td>
+				</tr>
+				<tr>
+					<th> 구 매 수 량 </th>
+					<td>
+						<select id="buy_qty" name="buy_qty">
+							<option value="0"> 선 택 </option>
+							<c:forEach var="tmp_qty" begin="1" end="10">
+								<option value="${tmp_qty}"> ${tmp_qty} </option>
+							</c:forEach>
+						</select>
+					</td>
+					<th> 구 매 가 격 </th>
+					<td><span id="tot_price_span"> 0 </span> 원 </td>
 				</tr>
 				<tr>
 					<td colspan="4" class="text-right">
@@ -87,6 +100,10 @@
 					"${pageContext.request.contextPath}/product/delete"
 					, {
 						prdt_no : ${detail_dto.prdt_no}
+						, thumbnail_path : "${detail_dto.thumbnail_path}"
+						, prdt_img_path : "${detail_dto.prdt_img_path}"
+						, desc_img_path : "${detail_dto.desc_img_path}"
+						, add_file_path : "${detail_dto.add_file_path}"
 					}
 					, function(data, status) {
 						if( data >= 1 ){
@@ -99,6 +116,50 @@
 						}
 					}//call back function
 			);//get
+
+		});//click
+	});//ready
+	</script>
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$("#buy_qty").change(function() {
+
+			$("#tot_price_span").text(
+					$("#buy_qty").val() * ${detail_dto.sale_price}
+			);
+
+		});//change
+	});//ready
+	</script>
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$("#jang_btn").click(function() {
+
+			if("${login_info.mno}" == ""){
+				alert("로그인 해주세요.");
+				return;
+			}
+
+			if( $("#buy_qty").val() == 0 ){
+				alert("구매 수량을 선택 하세요.");
+				return;
+			}
+
+			$.post(
+					"${pageContext.request.contextPath}/basket/insert"
+					, {
+						prdt_no : ${detail_dto.prdt_no}
+						, buy_qty : $("#buy_qty").val()
+					}
+					, function(data, status) {
+						if(data >= 1){
+							let tmp_bool = confirm("장바구니에 추가 하였습니다.\n장바구니로 이동 하시겠습니까?");
+							if( tmp_bool == true ) location.href="${pageContext.request.contextPath}/basket/list";
+						} else {
+							alert("장바구니 추가를 실패 하였습니다.");
+						}
+					}//call back function
+			);//post
 
 		});//click
 	});//ready
