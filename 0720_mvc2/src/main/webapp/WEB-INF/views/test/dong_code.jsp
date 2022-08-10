@@ -64,7 +64,7 @@
 			$.get(
 					"${pageContext.request.contextPath}/test/gugun"
 					, { sido_code : $("#sido").val() }
-					, function(data, status) { alert(data);
+					, function(data, status) { //alert(data);
 						$("#gugun").empty();
 						$("#gugun").append("<option value='0'>선택하세요</option>");
 						$("#dong").empty();

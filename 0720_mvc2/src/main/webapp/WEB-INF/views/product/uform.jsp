@@ -61,13 +61,10 @@
 					</tr>
 					<tr>
 						<th> 썸 네 일 이 미 지 (*) </th>
-						<td class="text-center">
+						<td>
 							<c:choose>
 								<c:when test="${detail_dto.thumbnail_path != null && detail_dto.thumbnail_path != ''}">
 									<img src="${detail_dto.thumbnail_path}">
-									<button id="thumbnail_btn" type="button" class="btn btn-danger btn-small delete_btn" value="${detail_dto.thumbnail_path}">
-										이미지 삭제
-									</button>
 								</c:when>
 								<c:otherwise>
 									<input type="file" id="thumbnail" name="thumbnail" class="form-control">
@@ -76,13 +73,10 @@
 							</c:choose>
 						</td>
 						<th> 상 품 상 세 이 미 지 </th>
-						<td class="text-center">
+						<td>
 							<c:choose>
 								<c:when test="${detail_dto.prdt_img_path != null && detail_dto.prdt_img_path != ''}">
 									<img src="${detail_dto.prdt_img_path}">
-									<button id="prdt_img_btn" type="button" class="btn btn-danger btn-small delete_btn" value="${detail_dto.prdt_img_path}">
-										이미지 삭제
-									</button>
 								</c:when>
 								<c:otherwise>
 									<input type="file" id="prdt_img" name="prdt_img" class="form-control">
@@ -93,35 +87,19 @@
 					</tr>
 					<tr>
 						<th> 상 품 설 명 이 미 지 </th>
-						<td class="text-center">
+						<td>
 							<c:choose>
 								<c:when test="${detail_dto.desc_img_path != null && detail_dto.desc_img_path != ''}">
 									<img src="${detail_dto.desc_img_path}">
-									<button id="desc_img_btn" type="button" class="btn btn-danger btn-small delete_btn" value="${detail_dto.desc_img_path}">
-										이미지 삭제
-									</button>
 								</c:when>
 								<c:otherwise>
 									<input type="file" id="desc_img" name="desc_img" class="form-control">
-									<label for="desc_img" id="desc_img_label" class="write_label"></label>
 								</c:otherwise>
 							</c:choose>
 						</td>
 						<th> 첨 부 문 서 </th>
-						<td class="text-center">
-							<c:choose>
-								<c:when test="${detail_dto.add_file_path != null && detail_dto.add_file_path != ''}">
-									<a href="${pageContext.request.contextPath}/file/download?path=${detail_dto.add_file_path}">
-										${detail_dto.add_file_name}
-									</a>
-									<button id="add_file_btn" type="button" class="btn btn-danger btn-small delete_btn" value="${detail_dto.add_file_path}">
-										첨부 문서 삭제
-									</button>
-								</c:when>
-								<c:otherwise>
-									<input type="file" id="add_file" name="add_file" class="form-control">
-								</c:otherwise>
-							</c:choose>
+						<td>
+							${detail_dto.add_file_name}<br>${detail_dto.add_file_path}
 						</td>
 					</tr>
 					<tr>
@@ -147,27 +125,6 @@
 	let onlyNum = /^[0-9]+$/;
 
 	$(document).ready(function() {
-		$(".delete_btn").click(function() {
-			$.get(
-					"${pageContext.request.contextPath}/product/file/delete"
-					, {
-						id : $(this).attr("id")
-						, path : $(this).val()
-						, prdt_no : ${detail_dto.prdt_no}
-					}
-					, function(data, status) {
-						if(data >= 1){
-							alert("파일을 삭제 하였습니다.");
-							location.href="${pageContext.request.contextPath}/product/uform?prdt_no=${detail_dto.prdt_no}";
-						} else {
-							alert("파일 삭제를 실패 하였습니다.");
-						}
-					}//call back function
-			);//get
-		});//click
-	});//ready
-
-	$(document).ready(function() {
 		$("#write_btn").click(function() {
 
 			if( $.trim( $("#prdt_name").val() ) == "" ){
@@ -190,51 +147,44 @@
 				return;
 			} else { $("#discount_label").text(""); }
 
-			if( "${detail_dto.thumbnail_name}" == "" || $.trim($("#thumbnail").val()) != "" ){
-				let tmp1 = $("#thumbnail").val().substring($("#thumbnail").val().length-3);
-				let tmp1_boolean = (tmp1 == "jpg" || tmp1 == "jpeg" || tmp1 == "gif" || tmp1 == "png"
-									|| tmp1 == "JPG" || tmp1 == "JPEG" || tmp1 == "GIF" || tmp1 == "PNG");
-				if( $.trim( $("#thumbnail").val() ) == "" || tmp1_boolean == false ){
-					$("#thumbnail_label").text("필수 입력 사항이며, jpg/jpeg/gif/png 파일만 허용 됩니다.");
-					return;
-				} else { $("#thumbnail_label").text(""); }
-			}
+			let tmp1 = $("#thumbnail").val().substring($("#thumbnail").val().length-3);
+			let tmp1_boolean = (tmp1 == "jpg" || tmp1 == "jpeg" || tmp1 == "gif" || tmp1 == "png"
+								|| tmp1 == "JPG" || tmp1 == "JPEG" || tmp1 == "GIF" || tmp1 == "PNG");
+			if( $.trim( $("#thumbnail").val() ) == "" || tmp1_boolean == false ){
+				$("#thumbnail_label").text("필수 입력 사항이며, jpg/jpeg/gif/png 파일만 허용 됩니다.");
+				return;
+			} else { $("#thumbnail_label").text(""); }
 
-			if( $.trim($("#prdt_img").val()) != "" ){
-				let tmp2 = $("#prdt_img").val().substring($("#prdt_img").val().length-3);
-				let tmp2_boolean = (tmp2 == "jpg" || tmp2 == "jpeg" || tmp2 == "gif" || tmp2 == "png"
-					|| tmp2 == "JPG" || tmp2 == "JPEG" || tmp2 == "GIF" || tmp2 == "PNG");
-				if( $.trim( $("#prdt_img").val() ) != "" && tmp2_boolean == false ){
-					$("#prdt_img_label").text("상품이미지는 jpg/jpeg/gif/png 파일만 허용 됩니다.");
-					return;
-				} else { $("#prdt_img_label").text(""); }
-			}
+			let tmp2 = $("#prdt_img").val().substring($("#prdt_img").val().length-3);
+			let tmp2_boolean = (tmp2 == "jpg" || tmp2 == "jpeg" || tmp2 == "gif" || tmp2 == "png"
+				|| tmp2 == "JPG" || tmp2 == "JPEG" || tmp2 == "GIF" || tmp2 == "PNG");
+			if( $.trim( $("#prdt_img").val() ) != "" && tmp2_boolean == false ){
+				$("#prdt_img_label").text("상품이미지는 jpg/jpeg/gif/png 파일만 허용 됩니다.");
+				return;
+			} else { $("#prdt_img_label").text(""); }
 
-			if( $.trim($("#desc_img").val()) != "" ){
-				let tmp3 = $("#desc_img").val().substring($("#desc_img").val().length-3);
-				let tmp3_boolean = (tmp3 == "jpg" || tmp3 == "jpeg" || tmp3 == "gif" || tmp3 == "png"
-					|| tmp3 == "JPG" || tmp3 == "JPEG" || tmp3 == "GIF" || tmp3 == "PNG");
-				if( $.trim( $("#desc_img").val() ) != "" && tmp3_boolean == false ){
-					$("#desc_img_label").text("상품이미지는 jpg/jpeg/gif/png 파일만 허용 됩니다.");
-					return;
-				} else { $("#desc_img_label").text(""); }
-			}
+			let tmp3 = $("#desc_img").val().substring($("#desc_img").val().length-3);
+			let tmp3_boolean = (tmp3 == "jpg" || tmp3 == "jpeg" || tmp3 == "gif" || tmp3 == "png"
+				|| tmp3 == "JPG" || tmp3 == "JPEG" || tmp3 == "GIF" || tmp3 == "PNG");
+			if( $.trim( $("#desc_img").val() ) != "" && tmp3_boolean == false ){
+				$("#desc_img_label").text("상품이미지는 jpg/jpeg/gif/png 파일만 허용 됩니다.");
+				return;
+			} else { $("#desc_img_label").text(""); }
 
 			let form = new FormData( document.getElementById( "write_form" ) );
 			form.append( "description", CKEDITOR.instances.desc_txt.getData() );
-			form.append( "prdt_no", ${detail_dto.prdt_no} );
 
 			$.ajax({
 					type : "POST"
 					, encType : "multipart/form-data"
-					, url : "${pageContext.request.contextPath}/product/update"
+					, url : "${pageContext.request.contextPath}/product/insert"
 					, data : form
 					, processData : false
 					, contentType : false
 					, cache : false
 					, success : function(result) {
-						alert("상품이 수정 되었습니다.");
-						location.href="${pageContext.request.contextPath}/product/detail?prdt_no=${detail_dto.prdt_no}";
+						alert("상품이 등록 되었습니다.");
+						location.href = "${pageContext.request.contextPath}/product/list";
 					}//call back function
 					, error : function(xhr) {
 						alert("잠시 후 다시 시도해 주세요.");

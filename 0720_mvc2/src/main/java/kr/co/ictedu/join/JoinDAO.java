@@ -11,21 +11,17 @@ public class JoinDAO {
 
 	@Autowired
 	private SqlSession sqlSession;
-	
+
 	public int join( MemberDTO dto ) {
 		int successCount = 0;
 		successCount = sqlSession.insert("JoinMapper.join", dto);
 		return successCount;
-	}
-	
-	
+	}//join
+
 	public int idCheck( String mid ) {
 		int isYN = 0;
-		isYN = sqlSession.selectOne("JoinMapper.idCheck", mid );
+		isYN = sqlSession.selectOne("JoinMapper.idCheck", mid);
 		return isYN;
-	}
+	}//idCheck
 
-
-
-	
-}//JoinDAO
+}//class

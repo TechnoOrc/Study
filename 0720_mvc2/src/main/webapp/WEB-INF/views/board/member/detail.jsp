@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
-<!DOCTYPE html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title> 자유 게시판 상세 보기 </title>
+		<title> 멤버 게시판 상세 보기 </title>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
@@ -14,66 +13,47 @@
 	<body>
 	<%@ include file="/WEB-INF/views/header.jsp" %>
 		<hr>
-		<h2> 자유 게시판 상세 보기 </h2>
+		<h3> 멤버 게시판 상세 보기 </h3>
 		<hr>
 		<table class="table table-hover">
 			<tbody>
 				<tr>
-					<th>글번호</th><td>${detail_dto.board_no}</td>
-					<th>제목</th><td>${detail_dto.title}</td>
+					<th> 글 번 호 </th>	<td>${detail_dto.board_no}</td>
+					<th> 제 목 </th>		<td>${detail_dto.title}</td>
 				</tr>
 				<tr>
-					<th>작성자</th><td>${detail_dto.mid}</td>
-					<th>작성일</th><td>${detail_dto.write_date}</td>
+					<th> 작 성 자 </th>	<td>${detail_dto.mid}</td>
+					<th> 작 성 일 </th>	<td>${detail_dto.write_date}</td>
 				</tr>
 				<tr>
-					<th>내용</th><td colspan="3">${detail_dto.contents}</td>
+					<th> 내 용 </th>		<td colspan="3">${detail_dto.contents}</td>
 				</tr>
 			</tbody>
 		</table>
 		<hr>
-		
-			<!-- <input type="text" id="pwd" name="pwd" maxlength="20" class="form-control"> -->
-			
-			<c:if test="${detail_dto.mno == login_info.mno}"> 
-				<button id="btn_delete" class="btn btn-danger"> 게시글 삭제 </button> 
-				<a href="${pageContext.request.contextPath}/board/member/update_form?board_no=${detail_dto.board_no}">
-					<button class="btn btn-primary float-right"> 게시글 수정하러 가기 </button>
-				</a>
-			</c:if>
-			
-			
-			<a href="${pageContext.request.contextPath}/board/member/list">
-				<button class="btn btn-info float-right"> 목록으로 바로가기 </button>
+		<c:if test="${detail_dto.mno == login_info.mno}">
+			<button id="btn_delete" class="btn btn-danger"> 게시글 삭제 </button>
+			<a href="${pageContext.request.contextPath}/board/member/update_form?board_no=${detail_dto.board_no}">
+				<button class="btn btn-primary"> 게시글 수정하러 가기 </button>
 			</a>
-			
-			
-		
-	
-		<hr>
+			<hr>
+		</c:if>
 	<%@ include file="/WEB-INF/views/footer.jsp" %>
 	<script type="text/javascript">
 	$(document).ready(function() {
 		$("#btn_delete").click(function() {
 
-			/* if( $("#pwd").val() == "" ){
-				alert("삭제 비밀번호를 넣어 주세요.");
-				return;
-			} */
-
 			$.get(
 					"${pageContext.request.contextPath}/board/member/delete"
 					, {
 						board_no : ${detail_dto.board_no}
-						, pwd : $("#pwd").val()
 					}
 					, function(data, status) {
-						//alert(data);
-						if(data >= 1){
+						if( data >= 1 ){
 							alert("게시글이 삭제 되었습니다.");
 							location.href="${pageContext.request.contextPath}/board/member/list";
-						} else if (data <= 0) {
-							alert("삭제할 수 없는 게시물 입니다.");
+						} else if( data <= 0 ) {
+							alert("게시글 삭제를 실패 하였습니다.");
 						} else {
 							alert("잠시 후 다시 시도해 주세요.");
 						}
@@ -85,6 +65,12 @@
 	</script>
 	</body>
 </html>
+
+
+
+
+
+
 
 
 

@@ -28,10 +28,6 @@ public class ProductDTO {
 	private String add_file_name;
 	private String add_file_path;
 
-	private String basket_no;
-	private String buy_qty;
-	private String total_price;
-
 	@Override
 	public String toString() {
 		return prdt_no
@@ -56,9 +52,7 @@ public class ProductDTO {
 				+ " : " + desc_img_name
 				+ " : " + desc_img_path
 				+ " : " + add_file_name
-				+ " : " + add_file_path
-				+ " : " + buy_qty
-				+ " : " + total_price;
+				+ " : " + add_file_path;
 	}
 
 	public String getPrdt_no() {
@@ -98,18 +92,12 @@ public class ProductDTO {
 		this.price = price;
 	}
 	public String getDiscount() {
-		if(discount.contains(".")) {
-			discount = discount.substring(0, discount.indexOf("."));
-		}
 		return discount;
 	}
 	public void setDiscount(String discount) {
 		this.discount = discount;
 	}
 	public String getSale_price() {
-		if(sale_price.contains(".")) {
-			sale_price = sale_price.substring(0, sale_price.indexOf("."));
-		}
 		return sale_price;
 	}
 
@@ -206,24 +194,6 @@ public class ProductDTO {
 	}
 	public void setAdd_file_path(String add_file_path) {
 		this.add_file_path = add_file_path;
-	}
-	public String getBasket_no() {
-		return basket_no;
-	}
-	public void setBasket_no(String basket_no) {
-		this.basket_no = basket_no;
-	}
-	public String getBuy_qty() {
-		return buy_qty;
-	}
-	public void setBuy_qty(String buy_qty) {
-		this.buy_qty = buy_qty;
-	}
-	public String getTotal_price() {
-		return total_price;
-	}
-	public void setTotal_price(String total_price) {
-		this.total_price = total_price;
 	}
 
 }//class

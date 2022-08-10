@@ -44,7 +44,6 @@ public class JoinController {
 }//class
 
 /*
-
 drop table member;
 CREATE TABLE `member` (
   `mno` int NOT NULL AUTO_INCREMENT,
@@ -62,9 +61,7 @@ CREATE TABLE `member` (
   `addr2` varchar(150) DEFAULT NULL,
   PRIMARY KEY (`mno`)
 );
-
 insert into member(mid, mpwd, tel, email, mdate)
 values('tea', '1111', '010-9999-8888', 'aaa@bbb.com', now());
 commit;
-
 */

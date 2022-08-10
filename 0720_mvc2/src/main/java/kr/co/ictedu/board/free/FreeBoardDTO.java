@@ -9,7 +9,6 @@ public class FreeBoardDTO {
 	private String contents;
 	private String write_date;
 	private String view_cnt;
-	
 
 	public String toString() {
 		return board_no + " : " + title + " : " + writer;
@@ -54,7 +53,6 @@ public class FreeBoardDTO {
 	public String getView_cnt() {
 		return view_cnt;
 	}
-	
 	public void setView_cnt(String view_cnt) {
 		this.view_cnt = view_cnt;
 	}

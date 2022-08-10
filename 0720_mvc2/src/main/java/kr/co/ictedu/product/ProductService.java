@@ -13,18 +13,6 @@ public class ProductService {
 	@Autowired
 	private ProductDAO dao;
 
-	public int fileDelete( ProductDTO dto ) {
-		int successCount = 0;
-		successCount = dao.fileDelete( dto );
-		return successCount;
-	}//fileDelete
-
-	public int update( ProductDTO dto ) {
-		int successCount = 0;
-		successCount = dao.update( dto );
-		return successCount;
-	}//update
-
 	public int delete( ProductDTO dto ) {
 		int successCount = 0;
 		successCount = dao.delete( dto );

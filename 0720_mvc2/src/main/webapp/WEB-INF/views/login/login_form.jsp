@@ -9,7 +9,6 @@
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-		<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 	</head>
 	<body>
 	<%@ include file="/WEB-INF/views/header.jsp" %>
@@ -51,8 +50,8 @@
 					, function(data, status) {
 						if(data == 0){
 							alert("아이디와 패스워드가 올바르지 않습니다.");
-						} else if(data == 1) {
-							location.href = "${pageContext.request.contextPath}/"							
+						} else if(data == 1){
+							location.href = "${pageContext.request.contextPath}/";
 						} else {
 							alert("잠시 후 다시 시도해 주세요.");
 						}
@@ -63,7 +62,6 @@
 	});//ready
 	</script>
 	</body>
-	
 </html>
 
 

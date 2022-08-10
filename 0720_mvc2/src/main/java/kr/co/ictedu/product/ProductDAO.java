@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.co.ictedu.board.member.MemberBoardDTO;
 import kr.co.ictedu.util.dto.SearchDTO;
 
 @Repository
@@ -13,20 +14,6 @@ public class ProductDAO {
 
 	@Autowired
 	private SqlSession sqlSession;
-
-	public int fileDelete( ProductDTO dto ) {
-		int successCount = 0;
-		successCount = sqlSession.update("ProductMapper.fileDelete", dto);
-		return successCount;
-	}//delete
-
-	public int update( ProductDTO dto ) {
-		int successCount = 0;
-		System.out.println(dto);
-		successCount = sqlSession.update("ProductMapper.update", dto);
-		System.out.println(successCount);
-		return successCount;
-	}//update
 
 	public int delete( ProductDTO dto ) {
 		int successCount = 0;

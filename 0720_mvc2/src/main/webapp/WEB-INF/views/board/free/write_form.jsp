@@ -62,11 +62,10 @@
 			</tbody>
 		</table>
 		<button id="write_btn" class="btn btn-primary float-right"> 글 작성 완료 </button>
-		
-		
 		<a href="${pageContext.request.contextPath}/board/free/final_list">
 			<button class="btn btn-warning"> 글 작성 취소 </button>
 		</a>
+		<hr>
 	<%@ include file="/WEB-INF/views/footer.jsp" %>
 	<script type="text/javascript">
 	$(document).ready(function() {
@@ -117,7 +116,3 @@
 	</script>
 	</body>
 </html>
-
-
-
-

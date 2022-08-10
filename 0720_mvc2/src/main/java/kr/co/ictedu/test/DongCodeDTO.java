@@ -4,14 +4,13 @@ public class DongCodeDTO {
 
 	private String sido_code;
 	private String sido_name;
-	
+
 	private String gugun_code;
 	private String gugun_name;
-	
+
 	private String dong_code;
 	private String dong_name;
-	
-	
+
 	public String getSido_code() {
 		return sido_code;
 	}
@@ -48,7 +47,5 @@ public class DongCodeDTO {
 	public void setDong_name(String dong_name) {
 		this.dong_name = dong_name;
 	}
-	
-	
-	
+
 }//class

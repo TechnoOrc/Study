@@ -71,9 +71,8 @@ public class FreeBoardDAO {
 
 	public void incrementViewCnt( String board_no ) {
 		sqlSession.update("FreeBoardMapper.incrementViewCnt", board_no);
-		
 	}//incrementViewCnt
-	
+
 	public int write( FreeBoardDTO dto ) {
 		int successCount = 0;
 		successCount = sqlSession.insert("FreeBoardMapper.write", dto);
@@ -85,6 +84,5 @@ public class FreeBoardDAO {
 		list = sqlSession.selectList("FreeBoardMapper.list");
 		return list;
 	}//list
-
 
 }//class

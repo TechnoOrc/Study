@@ -20,30 +20,27 @@
 	<%@ include file="/WEB-INF/views/footer.jsp" %>
 	<script type="text/javascript">
 	$(document).ready(function() {
-		
 		$("#txt_search").keyup(function() {
-			
-			if( $.trim(  $("#txt_search").val() ) == "" || $.trim(  $("#txt_search").val() ).length < 2 ){
+
+			if( $.trim( $("#txt_search").val() ) == "" || $.trim( $("#txt_search").val() ).length < 2 ){
+				$("#result_div").empty();
 				return;
-			}//if
-			
+			}
+
 			$.get(
-					
-				"${pageContext.request.contextPath}/test/dong_name"
-				, { key_word : $("#txt_search").val() }
-				, function(data, status) { 
-					$("#result_div").empty();
-					$.each( JSON.parse( data ), function(idx, dto) {
-						$("#result_div").append("<h6 class='toTxtSearch'>" +  dto.dong_name + "</h6>");
-					});//each
-					$(".toTxtSearch").on("click", function() {//alert( $().text() );
-						$("#txt_search").val( $(this).text() );
-					});//on
-					
-				}//call back function
-					
+					"${pageContext.request.contextPath}/test/dong_name"
+					, { key_word : $("#txt_search").val() }
+					, function(data, status) {
+						$("#result_div").empty();
+						$.each( JSON.parse( data ), function(idx, dto) {
+							$("#result_div").append("<h6 class='toTxtSearch'>" + dto.dong_name + "</h6>");
+						});//each
+						$(".toTxtSearch").on("click", function() { //alert( $(this).text() );
+							$("#txt_search").val( $(this).text() );
+						});//on
+					}//call back function
 			);//get
-			
+
 		});//keyup
 	});//ready
 	</script>

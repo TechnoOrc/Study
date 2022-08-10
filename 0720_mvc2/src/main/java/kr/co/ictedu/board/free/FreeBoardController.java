@@ -34,15 +34,14 @@ public class FreeBoardController {
 		if( userWantPage == null || userWantPage.equals("") ) userWantPage = "1";//if
 		int totalCount = 0, startPageNum = 1, endPageNum = 10, lastPageNum = 1;
 		totalCount = service.searchListCount( dto );
-		if( totalCount > 10 ) {  
+		if( totalCount > 10 ) {
 			lastPageNum = ( totalCount / 10 ) + ( totalCount % 10 > 0 ? 1 : 0);
-			// lastPageNum = 전체글의 갯수를 1페이지당 10개를 담아 나누게 될 경우 나오는 페이지의 수
 		}//if
-		if( userWantPage.length() >= 2 ) { // user가 선택한 페이지의 수가 2자리 이상일경우 
+		if( userWantPage.length() >= 2 ) {
 			String frontNum = userWantPage.substring(0, userWantPage.length()-1);//125 -> 12
-			startPageNum = Integer.parseInt(frontNum) * 10 + 1;//121 10페이지씩 하단에 보여줄 경우 시작 페이지 121
-			endPageNum = ( Integer.parseInt(frontNum) + 1 ) * 10;//130 10페이지씩 하단에 보여줄 경우 끝페이지 130
-			String backNum = userWantPage.substring( userWantPage.length()-1, userWantPage.length() );//125 -> 5
+			startPageNum = Integer.parseInt(frontNum) * 10 + 1;//121
+			endPageNum = ( Integer.parseInt(frontNum) + 1 ) * 10;//130
+			String backNum = userWantPage.substring( userWantPage.length()-1, userWantPage.length() );//120
 			if( backNum.equals("0") ) {
 				startPageNum = startPageNum - 10;//111
 				endPageNum = endPageNum - 10;//120
@@ -228,10 +227,4 @@ CREATE TABLE `freeboard` (
   `view_cnt` int DEFAULT '0',
   PRIMARY KEY (`board_no`)
 );
-
-use ict;
-insert into freeboard (title,writer,pwd,contents,write_date)
-select title,writer,pwd,contents,write_date from freeboard;
-select count(*) from freeboard;
-
 */

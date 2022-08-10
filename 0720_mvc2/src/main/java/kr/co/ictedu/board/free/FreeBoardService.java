@@ -65,7 +65,7 @@ public class FreeBoardService {
 	public FreeBoardDTO detail( String board_no ) {
 		dao.incrementViewCnt( board_no );
 		FreeBoardDTO dto = null;
-		dto = dao.detail(board_no);
+		dto = dao.detail( board_no );
 		return dto;
 	}//detail
 

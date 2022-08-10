@@ -72,11 +72,11 @@
 						<th> 상 품 설 명 이 미 지 </th>
 						<td>
 							<input type="file" id="desc_img" name="desc_img" class="form-control">
-							<label for="desc_img" id="desc_img_label" class="write_label"></label>
 						</td>
 						<th> 첨 부 문 서 </th>
 						<td>
 							<input type="file" id="add_file" name="add_file" class="form-control">
+							<label for="desc_img" id="desc_img_label" class="write_label"></label>
 						</td>
 					</tr>
 					<tr>
