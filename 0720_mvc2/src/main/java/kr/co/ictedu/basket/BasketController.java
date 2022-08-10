@@ -26,6 +26,15 @@ public class BasketController {
 	@Autowired
 	private BasketService service;
 
+	@RequestMapping( value = "/orderList", method = RequestMethod.GET )
+	public String orderList( String [] arr_basket_no, Model model, HttpSession session ) {
+		List<ProductDTO> list = null;
+		list = service.orderList( arr_basket_no );
+		logger.info(list.toString());
+		model.addAttribute("list", list);
+		return "/basket/olist";//jsp file name
+	}//list
+
 	@RequestMapping( value = "/delete", method = RequestMethod.GET )
 	public void delete( ProductDTO dto, HttpSession session, PrintWriter out ) {
 		dto.setMno( ( (MemberDTO) session.getAttribute("login_info") ).getMno() );
@@ -65,5 +74,6 @@ basket_no int primary key auto_increment
 , mno int not null
 , prdt_no int not null
 , buy_qty int not null
+, Reg_date datetime not null
 );
 */

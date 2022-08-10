@@ -6,6 +6,7 @@
 				<c:choose>
 					<c:when test="${login_info != null && login_info.mid != null}">
 					${login_info.mid}
+						<a href="${pageContext.request.contextPath}/basket/list"> 장바구니 </a>
 						<a href="${pageContext.request.contextPath}/logout"> LOGOUT </a>
 					</c:when>
 					<c:otherwise>

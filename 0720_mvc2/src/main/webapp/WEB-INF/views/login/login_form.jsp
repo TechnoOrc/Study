@@ -61,6 +61,19 @@
 		});//click
 	});//ready
 	</script>
+
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$("#mpwd").keyup(function() {
+
+			if(event.keyCode == 13) {
+				$("#login_btn").click();
+			}
+
+		});//click
+	});//ready
+	</script>
+
 	</body>
 </html>
 

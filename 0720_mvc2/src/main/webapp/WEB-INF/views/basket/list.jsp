@@ -28,13 +28,14 @@
 				<c:set var="sum_product_class_qty" value="0" />
 				<c:set var="sum_buy_amt" value="0" />
 				<c:set var="sum_discount_amt" value="0" />
-				<c:forEach var="dto" items="${list}">
+				<c:forEach var="dto" items="${list}" varStatus="status">
 					<c:set var="sum_product_class_qty" value="${sum_product_class_qty + 1}" />
 					<c:set var="sum_buy_amt" value="${sum_buy_amt + (dto.price * dto.buy_qty)}" />
 					<c:set var="sum_discount_amt" value="${sum_discount_amt + ( (dto.price - dto.sale_price) * dto.buy_qty )}" />
 					<tr>
 						<td>
 							<input type="checkbox" class="order_check_box form-control" checked="checked" id="${dto.price}" name="${dto.sale_price}" value="${dto.buy_qty}">
+							<input type="hidden" id="basket_no${status.index}" name="basket_no${status.index}" value="${dto.basket_no}">
 						</td>
 						<td width="10%">
 							<img src="${dto.thumbnail_path}" class="img-thumbnail">
@@ -44,7 +45,7 @@
 								${dto.prdt_name}
 							</a>
 						</td>
-						<td>${dto.price} 원</td>
+						<td> ${dto.price} 원 </td>
 						<td>
 							<select id="buy_qty" name="buy_qty">
 								<c:forEach var="tmp_qty" begin="1" end="10">
@@ -54,9 +55,9 @@
 								</c:forEach>
 							</select>
 						</td>
-						<td>${dto.price * dto.buy_qty} 원</td>
-						<td>${ (dto.price - dto.sale_price) * dto.buy_qty} 원</td>
-						<td>${dto.price * dto.buy_qty - ( (dto.price - dto.sale_price) * dto.buy_qty )} 원</td>
+						<td> ${dto.price * dto.buy_qty} 원 </td>
+						<td class="text-danger"> -${ (dto.price - dto.sale_price) * dto.buy_qty} 원 </td>
+						<td> ${dto.price * dto.buy_qty - ( (dto.price - dto.sale_price) * dto.buy_qty )} 원 </td>
 						<td>
 							<button class="basket_delete_btn btn btn-danger btn-small" value="${dto.basket_no}"> X </button>
 						</td>
@@ -65,23 +66,23 @@
 			</tbody>
 		</table>
 		<hr>
-		<table class="table table-hover">
+		<table class="table">
 			<tr>
 				<td rowspan="5"> <h1>전 체 합 계</h1> </td>
 				<th> 총 상 품 수 </th>
-				<td class="text-right"> <span id="span_sum_product_class_qty">${sum_product_class_qty}</span> 개 </td>
+				<td class="text-right"> <span id="span_sum_product_class_qty"> ${sum_product_class_qty}</span> 개 </td>
 			</tr>
 			<tr>
 				<th> 총 구 매 금 액 </th>
-				<td class="text-right"> <span id="span_sum_buy_amt">${sum_buy_amt}</span> 원 </td>
+				<td class="text-right"> <span id="span_sum_buy_amt"> ${sum_buy_amt}</span> 원 </td>
 			</tr>
 			<tr>
 				<th> 총 할 인 금 액 </th>
-				<td class="text-right"> <span id="span_sum_discount_amt">${sum_discount_amt}</span> 원 </td>
+				<td class="text-right text-danger"> <span id="span_sum_discount_amt"> -${sum_discount_amt} </span> 원 </td>
 			</tr>
 			<tr>
 				<th> <h1>총 주 문 금 액</h1> </th>
-				<td class="text-right"> <h1><span id="span_sum_total_buy_amt">${sum_buy_amt - sum_discount_amt}</span> 원</h1> </td>
+				<td class="text-right"> <h1><span id="span_sum_total_buy_amt"> ${sum_buy_amt - sum_discount_amt}</span> 원</h1> </td>
 			</tr>
 		</table>
 		<hr>
@@ -90,6 +91,31 @@
 		</div>
 		<hr>
 	<%@ include file="/WEB-INF/views/footer.jsp" %>
+	<script type="text/javascript">
+	let arr_basket_no = new Array();
+	$(document).ready(function() {
+		$("#order_btn").click(function() {
+
+			let checks = $("input[type=checkbox]");
+			for(let i = 0; i < checks.length; i++){
+
+				if( checks[i].checked == true ) {
+					arr_basket_no.push($("#basket_no" + i).val());
+				}//if
+				
+			}//for
+
+			if(arr_basket_no.length <= 0){
+				alert("선택된 상품이 없습니다.");
+				return;
+			}
+
+			location.href="${pageContext.request.contextPath}/basket/orderList?arr_basket_no="+arr_basket_no;
+
+		});//click
+	});//ready
+	</script>
+
 	<script type="text/javascript">
 	$(document).ready(function() {
 		$(".basket_delete_btn").click(function() {
@@ -148,7 +174,7 @@
 						$("#span_sum_total_buy_amt").text()
 						- ( $(this).attr("name") * $(this).val() )
 				);
-			}
+			}//if
 
 		});//click
 	});//ready
