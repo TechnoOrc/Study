@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="OrderMapper">
+
+	<delete id="deleteBasketByArray">
+	delete from basket b
+	where b.basket_no in
+		<foreach item="basket_no" collection="array" open="(" close=")" separator=",">
+			#{basket_no}
+		</foreach>
+	</delete>
+
+	<insert id="insertOrderDetail" parameterType="kr.co.ictedu.order.OrderMainDTO">
+	insert into order_detail (order_no, prod_no
+							, detail_qty, detail_price, detail_amt
+	                        , detail_discount, detail_discount_amt
+							, detail_pay_amt)
+	select #{order_no}, p.prdt_no
+			, b.buy_qty, p.price, b.buy_qty * p.price
+			, p.discount, b.buy_qty * p.price / 100 * p.discount
+			, (b.buy_qty * p.price) - (b.buy_qty * p.price / 100 * p.discount)
+	from basket b, product p
+	where b.basket_no in
+		<foreach item="basket_no" collection="arr_basket_no" open="(" close=")" separator=",">
+			#{basket_no}
+		</foreach>
+	and b.prdt_no = p.prdt_no
+	order by b.reg_date
+	</insert>
+
+	<insert id="insertOrderMain" parameterType="kr.co.ictedu.order.OrderMainDTO">
+		insert into order_main (mno, card_no, addr_no, order_product_cnt
+								, order_amt, discount_amt, pay_amt, order_date)
+		values (#{mno}, #{card_no}, #{addr_no}, #{order_product_cnt}
+				, #{order_amt}, #{discount_amt}, #{pay_amt}, now());
+		<selectKey resultType="String" keyProperty="order_no" order="AFTER">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+
+</mapper>

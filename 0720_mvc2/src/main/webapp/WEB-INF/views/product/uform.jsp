@@ -65,7 +65,7 @@
 							<c:choose>
 								<c:when test="${detail_dto.thumbnail_path != null && detail_dto.thumbnail_path != ''}">
 									<img src="${detail_dto.thumbnail_path}">
-									<button id="thumbnail_btn" type="button" class="btn btn-danger btn-small delete_btn" value="${detail_dto.thumbnail_path}">
+									<button id="thumbnail_btn" type="button" class="btn btn-danger  delete_btn" value="${detail_dto.thumbnail_path}">
 										이미지 삭제
 									</button>
 								</c:when>
@@ -80,7 +80,7 @@
 							<c:choose>
 								<c:when test="${detail_dto.prdt_img_path != null && detail_dto.prdt_img_path != ''}">
 									<img src="${detail_dto.prdt_img_path}">
-									<button id="prdt_img_btn" type="button" class="btn btn-danger btn-small delete_btn" value="${detail_dto.prdt_img_path}">
+									<button id="prdt_img_btn" type="button" class="btn btn-danger  delete_btn" value="${detail_dto.prdt_img_path}">
 										이미지 삭제
 									</button>
 								</c:when>
@@ -97,7 +97,7 @@
 							<c:choose>
 								<c:when test="${detail_dto.desc_img_path != null && detail_dto.desc_img_path != ''}">
 									<img src="${detail_dto.desc_img_path}">
-									<button id="desc_img_btn" type="button" class="btn btn-danger btn-small delete_btn" value="${detail_dto.desc_img_path}">
+									<button id="desc_img_btn" type="button" class="btn btn-danger  delete_btn" value="${detail_dto.desc_img_path}">
 										이미지 삭제
 									</button>
 								</c:when>
@@ -114,7 +114,7 @@
 									<a href="${pageContext.request.contextPath}/file/download?path=${detail_dto.add_file_path}">
 										${detail_dto.add_file_name}
 									</a>
-									<button id="add_file_btn" type="button" class="btn btn-danger btn-small delete_btn" value="${detail_dto.add_file_path}">
+									<button id="add_file_btn" type="button" class="btn btn-danger  delete_btn" value="${detail_dto.add_file_path}">
 										첨부 문서 삭제
 									</button>
 								</c:when>

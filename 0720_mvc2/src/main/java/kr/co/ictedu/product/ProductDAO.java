@@ -22,9 +22,7 @@ public class ProductDAO {
 
 	public int update( ProductDTO dto ) {
 		int successCount = 0;
-		System.out.println(dto);
 		successCount = sqlSession.update("ProductMapper.update", dto);
-		System.out.println(successCount);
 		return successCount;
 	}//update
 

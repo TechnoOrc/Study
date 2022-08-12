@@ -97,6 +97,7 @@
 		</a>
 		<hr>
 	<%@ include file="/WEB-INF/views/footer.jsp" %>
+
 	<script type="text/javascript">
 	let onlyNum = /^[0-9]+$/;
 
@@ -170,5 +171,6 @@
 		});//click
 	});//ready
 	</script>
+
 	</body>
 </html>

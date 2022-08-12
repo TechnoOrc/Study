@@ -22,7 +22,7 @@ public class BasketDAO {
 
 	public int delete( ProductDTO dto ) {
 		int successCount = 0;
-		successCount = sqlSession.update("BasketMapper.delete", dto);
+		successCount = sqlSession.delete("BasketMapper.delete", dto);
 		return successCount;
 	}//delete
 
@@ -34,7 +34,6 @@ public class BasketDAO {
 
 	public int insert(ProductDTO dto) {
 		int successCount = 0;
-		System.out.println(dto);
 		successCount = sqlSession.insert("BasketMapper.insert", dto);
 		return successCount;
 	}//insert

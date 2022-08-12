@@ -25,9 +25,6 @@ public class FileController2 {
 
 	@RequestMapping( value = "/ajax_upload", method = RequestMethod.POST )
 	public void ajaxUpload( FileTestDTO dto, PrintWriter out ) throws IOException {
-		logger.info( dto.getTitle() );
-		logger.info( dto.getContents() );
-		logger.info( dto.getUpload_file().getOriginalFilename() );
 
 		Date today = new Date();
 		DateFormat nalja = new SimpleDateFormat("YYYYMMDD");

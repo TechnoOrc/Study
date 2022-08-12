@@ -300,25 +300,27 @@ public class ProductController {
 
 /*
 drop table product;
-create table product(
-prdt_no int primary key auto_increment
-, prdt_name varchar(60) not null
-, mno int not null
-, qty int not null
-, price int not null
-, discount double not null
-, description varchar(1500)
-, view_cnt int default 0
-, reg_date datetime
-, del_yn int default 0
-, del_date datetime
-, thumbnail_name varchar(100) not null
-, thumbnail_path varchar(100) not null
-, prdt_img_name varchar(100)
-, prdt_img_path varchar(100)
-, desc_img_name varchar(100)
-, desc_img_path varchar(100)
-, add_file_name varchar(100)
-, add_file_path varchar(100)
+
+create table product (
+  prdt_no int not null auto_increment,
+  prdt_name varchar(60) not null,
+  mno int not null,
+  qty int not null,
+  price int not null,
+  discount double not null,
+  description varchar(1500) default null,
+  view_cnt int default '0',
+  reg_date datetime default null,
+  del_yn int default '0',
+  del_date datetime default null,
+  thumbnail_name varchar(100) not null,
+  thumbnail_path varchar(100) not null,
+  prdt_img_name varchar(100) default null,
+  prdt_img_path varchar(100) default null,
+  desc_img_name varchar(100) default null,
+  desc_img_path varchar(100) default null,
+  add_file_name varchar(100) default null,
+  add_file_path varchar(100) default null,
+  primary key (prdt_no)
 );
 */

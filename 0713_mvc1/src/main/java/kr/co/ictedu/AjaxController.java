@@ -17,7 +17,7 @@ public class AjaxController {
 	@Autowired
 	private AjaxService service;
 	
-	@RequestMapping( value = "/ajax3_test", method = RequestMethod.POST)
+	@RequestMapping( value = "/ajax3_test", method = RequestMethod.POST )
 	public void ajax3_Test( String mid, PrintWriter out ) {
 		int dupYN = 0;
 		dupYN = service.idDupCheck( mid );

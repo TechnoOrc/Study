@@ -44,9 +44,7 @@ public class MemberBoardDAO {
 
 	public List<MemberBoardDTO> searchList( SearchDTO dto ) {
 		List<MemberBoardDTO> list = null;
-		System.out.println(dto);
 		list = sqlSession.selectList("MemberBoardMapper.selectList", dto);
-		System.out.println(list);
 		return list;
 	}//searchList
 

@@ -26,7 +26,6 @@ public class FileController1 {
 
 	@RequestMapping( value = "/upload4", method = RequestMethod.POST )
 	public String upload4( FileTestDTO dto, Model model ) throws IOException {
-		logger.info(dto.getFile_memo());
 
 		Date today = new Date();
 		DateFormat nalja = new SimpleDateFormat("YYYYMMDD");

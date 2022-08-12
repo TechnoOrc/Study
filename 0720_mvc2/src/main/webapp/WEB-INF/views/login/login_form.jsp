@@ -20,13 +20,13 @@
 				<tr>
 					<th> 아 이 디 </th>
 					<td>
-						<input type="text" id="mid" name="mid" maxlength="20" class="form-control">
+						<input type="text" id="mid" name="mid" maxlength="20" class="form-control" value="tea">
 					</td>
 				</tr>
 				<tr>
 					<th> 패 스 워 드 </th>
 					<td>
-						<input type="password" id="mpwd" name="mpwd" maxlength="20" class="form-control">
+						<input type="password" id="mpwd" name="mpwd" maxlength="20" class="form-control" value="1111">
 					</td>
 				</tr>
 				<tr>
