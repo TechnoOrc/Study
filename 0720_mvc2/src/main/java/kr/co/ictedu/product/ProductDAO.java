@@ -32,15 +32,15 @@ public class ProductDAO {
 		return successCount;
 	}//delete
 
-	public void incrementViewCnt( String prdt_no ) {
-		sqlSession.update("ProductMapper.incrementViewCnt", prdt_no);
-	}//incrementViewCnt
-
 	public ProductDTO detail( String prdt_no ) {
 		ProductDTO dto = null;
 		dto = sqlSession.selectOne("ProductMapper.detail", prdt_no);
 		return dto;
 	}//detail
+
+	public void incrementViewCnt( String prdt_no ) {
+		sqlSession.update("ProductMapper.incrementViewCnt", prdt_no);
+	}//incrementViewCnt
 
 	public List<ProductDTO> searchList( SearchDTO dto ) {
 		List<ProductDTO> list = null;

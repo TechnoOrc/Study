@@ -38,14 +38,19 @@
 		<hr>
 		<div class="row">
 			<div class="col-6">
-				<table class="table table-hover">
+				<table class="table table-hover table-borderless">
+					<col class="col-11">
 					<tbody>
-						<c:forEach var="dto" items="${list}">
+						<c:forEach var="dto" items="${list}" varStatus="status">
 							<tr>
-								<td>
-									<h5> 배송지 : ${dto.addr_name} </h5>
-									<h6> 받으시는 분 : ${dto.recipient_name} ( 연락처 : ${dto.tel} ) </h6>
-									<h6> ( ${dto.post_code} ) ${dto.addr1} ${dto.addr2} </h6>
+								<td id="td_delivery${status.index}">
+									<div class="card">
+										<div class="card-body">
+											<h5 class="card-title">배송지 : ${dto.addr_name}</h5>
+											<p class="card-text">받는 분 : ${dto.recipient_name} ( 연락처 : ${dto.tel} )</p>
+											<p class="card-text">( ${dto.post_code} ) ${dto.addr1} ${dto.addr2}</p>
+										</div>
+									</div>
 								</td>
 								<td class="text-right">
 									<button class="addr_delete_btn btn btn-danger btn-sm" value="${dto.addr_no}"> X </button>

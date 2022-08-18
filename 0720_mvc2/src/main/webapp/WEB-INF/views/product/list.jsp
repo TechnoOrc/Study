@@ -36,8 +36,8 @@
 		</form>
 		<hr>
 		<div class="clearfix">
-			<a href="${pageContext.request.contextPath}/product/form">
-				<button class="btn btn-primary float-right"> 상품 등록 </button>
+			<a href="${pageContext.request.contextPath}/product/form"><!-- 컨트롤러의 RequestMapping 호출 -->
+				<button class="btn btn-primary float-right"> 상 품 등 록 </button>
 			</a>
 		</div>
 		<hr>

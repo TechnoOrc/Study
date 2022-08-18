@@ -11,8 +11,13 @@ public class OrderMainDTO {
 	private String discount_amt;
 	private String pay_amt;
 	private String order_date;
+	private String order_status;
+
 	private String str_basket_no;
 	private String [] arr_basket_no;
+
+	private String buy_now_prdt_no;
+	private String buy_now_qty;
 
 	@Override
 	public String toString() {
@@ -24,7 +29,8 @@ public class OrderMainDTO {
 				+ " : " +order_amt
 				+ " : " +discount_amt
 				+ " : " +pay_amt
-				+ " : " +order_date;
+				+ " : " +order_date
+				+ " : " +order_status;
 	}
 	public String getOrder_no() {
 		return order_no;
@@ -91,6 +97,24 @@ public class OrderMainDTO {
 	}
 	public void setArr_basket_no(String[] arr_basket_no) {
 		this.arr_basket_no = arr_basket_no;
+	}
+	public String getBuy_now_prdt_no() {
+		return buy_now_prdt_no;
+	}
+	public void setBuy_now_prdt_no(String buy_now_prdt_no) {
+		this.buy_now_prdt_no = buy_now_prdt_no;
+	}
+	public String getBuy_now_qty() {
+		return buy_now_qty;
+	}
+	public void setBuy_now_qty(String buy_now_qty) {
+		this.buy_now_qty = buy_now_qty;
+	}
+	public String getOrder_status() {
+		return order_status;
+	}
+	public void setOrder_status(String order_status) {
+		this.order_status = order_status;
 	}
 
 }//class

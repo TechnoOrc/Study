@@ -23,14 +23,19 @@
 		<hr>
 		<div class="row">
 			<div class="col-6">
-				<table class="table table-hover">
+				<table class="table table-hover table-borderless">
+					<col class="col-11">
 					<tbody>
-						<c:forEach var="dto" items="${list}">
+						<c:forEach var="dto" items="${list}" varStatus="status">
 							<tr>
-								<td>
-									<h5> ${dto.card_name} </h5>
-									<h6> 카드 번호 : ${dto.card_number} </h6>
-									<h6> 유효 기간 (MM/YY) : ${dto.expiry_date_month} / ${dto.expiry_date_year} </h6>
+								<td id="td_credit_card${status.index}">
+									<div class="card">
+										<div class="card-body">
+											<h5 class="card-title">${dto.card_name}</h5>
+											<p class="card-text">카드 번호 : ${dto.card_number}</p>
+											<p class="card-text">유효 기간 (MM/YY) : ${dto.expiry_date_month} / ${dto.expiry_date_year}</p>
+										</div>
+									</div>
 								</td>
 								<td class="text-right">
 									<button class="card_delete_btn btn btn-danger btn-sm" value="${dto.card_no}"> X </button>

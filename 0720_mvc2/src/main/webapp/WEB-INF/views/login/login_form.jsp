@@ -20,13 +20,26 @@
 				<tr>
 					<th> 아 이 디 </th>
 					<td>
-						<input type="text" id="mid" name="mid" maxlength="20" class="form-control" value="tea">
+						<input type="text" id="mid" name="mid" maxlength="20" class="form-control">
 					</td>
 				</tr>
 				<tr>
 					<th> 패 스 워 드 </th>
 					<td>
-						<input type="password" id="mpwd" name="mpwd" maxlength="20" class="form-control" value="1111">
+						<input type="password" id="mpwd" name="mpwd" maxlength="20" class="form-control">
+					</td>
+				</tr>
+				<tr>
+					<th> 테스트 ID 선택 -> 테스트 후 삭제 </th>
+					<td>
+						<div class="input-group">
+							<input type="radio" id="rdo1" name="test_id_selector" value="tea">
+							<h3><label for="rdo1">tea</label></h3>
+						</div>
+						<div class="input-group">
+						<input type="radio" id="rdo2" name="test_id_selector" value="sellerfruit">
+						<h3><label for="rdo2">sellerfruit</label></h3>
+						</div>
 					</td>
 				</tr>
 				<tr>
@@ -37,6 +50,16 @@
 			</tbody>
 		</table>
 	<%@ include file="/WEB-INF/views/footer.jsp" %>
+
+	<script type="text/javascript">
+	$(document).ready(function() {//테스트용 스크립트 -> 테스트 후 삭제
+		$("input[type='radio']").click(function() {
+			$("#mid").val( $(this).val() );
+			$("#mpwd").val("1111");
+		});//click
+	});//ready
+	</script>
+
 	<script type="text/javascript">
 	$(document).ready(function() {
 		$("#login_btn").click(function() {

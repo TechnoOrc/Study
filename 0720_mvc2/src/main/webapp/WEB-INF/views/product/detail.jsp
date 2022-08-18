@@ -39,12 +39,15 @@
 				<tr>
 					<th> 구 매 수 량 </th>
 					<td>
-						<select id="buy_qty" name="buy_qty">
-							<option value="0"> 선 택 </option>
-							<c:forEach var="tmp_qty" begin="1" end="10">
-								<option value="${tmp_qty}"> ${tmp_qty} </option>
-							</c:forEach>
-						</select>
+						<form id="buy_now_form">
+							<input type="hidden" id="prdt_no" name="prdt_no" value="${detail_dto.prdt_no}">
+							<select id="buy_qty" name="buy_qty">
+								<option value="0"> 선 택 </option>
+								<c:forEach var="tmp_qty" begin="1" end="10">
+									<option value="${tmp_qty}"> ${tmp_qty} </option>
+								</c:forEach>
+							</select>
+						</form>
 					</td>
 					<th> 구 매 가 격 </th>
 					<td><span id="tot_price_span"> 0 </span> 원 </td>
@@ -52,7 +55,7 @@
 				<tr>
 					<td colspan="4" class="text-right">
 						<button type="button" id="jang_btn" class="btn btn-primary btn-lg"> 장 바구니 담기 </button>
-						<button type="button" id="buy_btn" class="btn btn-primary btn-lg"> 바로 구매 하기 </button>
+						<button type="button" id="buy_now_btn" class="btn btn-primary btn-lg"> 바로 구매 하기 </button>
 					</td>
 				</tr>
 			</tbody>
@@ -92,6 +95,7 @@
 			<hr>
 		</c:if>
 	<%@ include file="/WEB-INF/views/footer.jsp" %>
+
 	<script type="text/javascript">
 	$(document).ready(function() {
 		$("#delete_btn").click(function() {
@@ -120,6 +124,7 @@
 		});//click
 	});//ready
 	</script>
+
 	<script type="text/javascript">
 	$(document).ready(function() {
 		$("#buy_qty").change(function() {
@@ -131,6 +136,27 @@
 		});//change
 	});//ready
 	</script>
+
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$("#buy_now_btn").click(function() {
+
+			if("${login_info.mno}" == ""){
+				alert("로그인 해주세요.");
+				return;
+			}
+
+			if( $("#buy_qty").val() == 0 ){
+				alert("구매 수량을 선택 하세요.");
+				return;
+			}
+
+			$("#buy_now_form").attr("action", "${pageContext.request.contextPath}/order/order_list");
+			$("#buy_now_form").submit();
+		});//click
+	});//ready
+	</script>
+
 	<script type="text/javascript">
 	$(document).ready(function() {
 		$("#jang_btn").click(function() {
@@ -164,19 +190,6 @@
 		});//click
 	});//ready
 	</script>
+
 	</body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-

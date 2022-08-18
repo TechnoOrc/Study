@@ -38,9 +38,9 @@
 
 	<select id="selectList" parameterType="kr.co.ictedu.util.dto.SearchDTO"
 			resultType="kr.co.ictedu.board.member.MemberBoardDTO">
-		select mb.board_no, mb.title, mb.mno, m.mid, mb.view_cnt, mb.write_date
-		from memberboard mb, member m
-		where mb.mno = m.mno
+	select mb.board_no, mb.title, mb.mno, m.mid, mb.view_cnt, mb.write_date
+	from memberboard mb, member m
+	where mb.mno = m.mno
 		<if test="searchOption != null and searchOption != ''
 					and searchWord != null and searchWord != ''">
 			<choose>
@@ -52,14 +52,14 @@
 				</when>
 			</choose>
 		</if>
-		order by board_no desc
-		limit #{limitNum}, 10
+	order by board_no desc
+	limit #{limitNum}, 10
 	</select>
 
 	<select id="searchListCount" parameterType="kr.co.ictedu.util.dto.SearchDTO" resultType="int">
-		select count(mb.board_no) cnt
-		from memberboard mb, member m
-		where mb.mno = m.mno
+	select count(mb.board_no) cnt
+	from memberboard mb, member m
+	where mb.mno = m.mno
 		<if test="searchOption != null and searchOption != ''
 					and searchWord != null and searchWord !=''">
 			<choose>

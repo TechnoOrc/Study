@@ -293,7 +293,7 @@ public class ProductController {
 
 	@RequestMapping(value = "/form", method = RequestMethod.GET)
 	public String form() {
-		return "product/form";//jsp file name
+		return "product/form";//views 폴더 안에 있는 product폴더 안에 있는 form.jsp 호출//jsp file name
 	}//form
 	
 }//class

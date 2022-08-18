@@ -13,12 +13,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.google.gson.Gson;
-
-import kr.co.ictedu.credit.card.CreditCardDTO;
-import kr.co.ictedu.credit.card.CreditCardService;
-import kr.co.ictedu.delivery.DeliveryDTO;
-import kr.co.ictedu.delivery.DeliveryService;
 import kr.co.ictedu.product.ProductDTO;
 import kr.co.ictedu.util.dto.MemberDTO;
 
@@ -31,30 +25,15 @@ public class BasketController {
 	@Autowired
 	private BasketService service;
 
-	@Autowired
-	private DeliveryService deliveryService;
+	@RequestMapping( value = "/update_buy_qty", method = RequestMethod.GET )
+	public void updateBuyQty( ProductDTO dto, HttpSession session, PrintWriter out ) {
+		dto.setMno( ( (MemberDTO) session.getAttribute("login_info") ).getMno() );
 
-	@Autowired
-	private CreditCardService creditCardService;
-
-	@RequestMapping( value = "/orderList", method = RequestMethod.GET )
-	public String orderList( String [] arr_basket_no, Model model, HttpSession session ) {
-		List<ProductDTO> list = null;
-		list = service.orderList( arr_basket_no );
-		model.addAttribute("list", list);
-
-		List<DeliveryDTO> deliverylist = null;
-		deliverylist = deliveryService.list( ( (MemberDTO) session.getAttribute("login_info") ).getMno() );
-		model.addAttribute("deliverylist", deliverylist);
-
-		List<CreditCardDTO> cardlist = null;
-		cardlist = creditCardService.list( ( (MemberDTO) session.getAttribute("login_info") ).getMno() );
-		model.addAttribute("cardlist", cardlist);
-
-		model.addAttribute( "arr_basket_no", new Gson().toJson( arr_basket_no ) );
-
-		return "/basket/olist";//jsp file name
-	}//list
+		int successCount = 0;
+		successCount = service.updateBuyQty( dto );
+		out.print(successCount);
+		out.close();
+	}//updateBuyQty
 
 	@RequestMapping( value = "/delete", method = RequestMethod.GET )
 	public void delete( ProductDTO dto, HttpSession session, PrintWriter out ) {

@@ -9,7 +9,6 @@
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-		
 	</head>
 	<body>
 	<%@ include file="/WEB-INF/views/header.jsp" %>
@@ -55,6 +54,7 @@
 									> ${tmp_qty} </option>
 								</c:forEach>
 							</select>
+							<button type="button" class="btn btn-danger btn-sm qty_chg_btn" value="${dto.basket_no}">수량 변경</button>
 						</td>
 						<td> ${dto.price * dto.buy_qty} 원 </td>
 						<td class="text-danger"> -${ (dto.price - dto.sale_price) * dto.buy_qty} 원 </td>
@@ -92,6 +92,33 @@
 		</div>
 		<hr>
 	<%@ include file="/WEB-INF/views/footer.jsp" %>
+
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$(".qty_chg_btn").click(function() {
+
+			//alert( $(this).val() + " : " + $(this).prev().val() );
+
+			$.get(
+					"${pageContext.request.contextPath}/basket/update_buy_qty"
+					, {
+						basket_no : $(this).val()
+						, buy_qty : $(this).prev().val()
+					}
+					, function(data, status) {
+						if(data >= 1){
+							alert("구매 수량을 수정 하였습니다.");
+							location.href="${pageContext.request.contextPath}/basket/list";
+						} else {
+							alert("구매 수량 수정을 실패 하였습니다.");
+						}
+					}//call back function
+			);//get
+
+		});//click
+	});//ready
+	</script>
+
 	<script type="text/javascript">
 	let arr_basket_no = new Array();
 	$(document).ready(function() {
@@ -111,7 +138,7 @@
 				return;
 			}
 
-			location.href="${pageContext.request.contextPath}/basket/orderList?arr_basket_no="+arr_basket_no;
+			location.href="${pageContext.request.contextPath}/order/order_list?arr_basket_no="+arr_basket_no;
 
 		});//click
 	});//ready
@@ -168,8 +195,8 @@
 						$("#span_sum_buy_amt").text() - ( $(this).attr("id")  * $(this).val() )
 				);
 				$("#span_sum_discount_amt").text(
-						$("#span_sum_discount_amt").text()
-						- ( ( $(this).attr("id") - $(this).attr("name") ) * $(this).val() )
+						parseInt( $("#span_sum_discount_amt").text() )
+						+ ( ( $(this).attr("id") - $(this).attr("name") ) * $(this).val() )
 				);
 				$("#span_sum_total_buy_amt").text(
 						$("#span_sum_total_buy_amt").text()
@@ -183,17 +210,3 @@
 
 	</body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-

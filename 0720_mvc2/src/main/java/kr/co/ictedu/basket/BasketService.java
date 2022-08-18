@@ -13,11 +13,11 @@ public class BasketService {
 	@Autowired
 	private BasketDAO dao;
 
-	public List<ProductDTO> orderList(String [] arr_basket_no) {
-		List<ProductDTO> list = null;
-		list = dao.orderList(arr_basket_no);
-		return list;
-	}//orderList
+	public int updateBuyQty( ProductDTO dto ) {
+		int successCount = 0;
+		successCount = dao.updateBuyQty( dto );
+		return successCount;
+	}//updateBuyQty
 
 	public int delete( ProductDTO dto ) {
 		int successCount = 0;

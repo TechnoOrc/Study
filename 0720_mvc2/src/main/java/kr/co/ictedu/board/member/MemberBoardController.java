@@ -110,6 +110,9 @@ public class MemberBoardController {
 		model.addAttribute("userWantPage", userWantPage);
 
 		dto.setLimitNum( ( Integer.parseInt(userWantPage) - 1 ) * 10  );
+		// 1 -> (1-1)*10 -> 0
+		// 2 -> (2-1)*10 -> 10
+		// 3 -> (3-1)*10 -> 20
 
 		List<MemberBoardDTO> list = null;
 		list = service.searchList( dto );

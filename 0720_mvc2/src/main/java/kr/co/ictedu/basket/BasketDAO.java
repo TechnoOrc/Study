@@ -14,11 +14,11 @@ public class BasketDAO {
 	@Autowired
 	private SqlSession sqlSession;
 
-	public List<ProductDTO> orderList(String [] arr_basket_no) {
-		List<ProductDTO> list = null;
-		list = sqlSession.selectList("BasketMapper.orderList", arr_basket_no);
-		return list;
-	}//orderList
+	public int updateBuyQty( ProductDTO dto ) {
+		int successCount = 0;
+		successCount = sqlSession.delete("BasketMapper.updateBuyQty", dto);
+		return successCount;
+	}//updateBuyQty
 
 	public int delete( ProductDTO dto ) {
 		int successCount = 0;

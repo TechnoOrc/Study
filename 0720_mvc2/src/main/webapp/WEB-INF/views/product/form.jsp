@@ -151,6 +151,12 @@
 			let form = new FormData( document.getElementById( "write_form" ) );
 			form.append( "description", CKEDITOR.instances.desc_txt.getData() );
 
+			let keys = form.keys();
+			for(key of keys) console.log(key);
+
+			let values = form.values();
+			for(value of values) console.log(value);
+
 			$.ajax({
 					type : "POST"
 					, encType : "multipart/form-data"
