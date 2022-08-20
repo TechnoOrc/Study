@@ -21,6 +21,7 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import kr.co.sbsj.util.dto.MemberDTO;
 import kr.co.sbsj.util.dto.SearchDTO;
 
 
@@ -33,24 +34,28 @@ public class MdReviewController {
 	@Autowired
 	private MdReviewService service;
 	
+	
 	//후기 삭제
 	@RequestMapping ( value = "/delete", method = RequestMethod.GET) 
-	public void delete( MdReviewDTO dto, String review_id, PrintWriter out ) { 
+	public void delete( MdReviewDTO dto, String review_id, PrintWriter out, Model model, String md_id ) { 
 		int successCount = 0;
 		successCount = service.delete( dto );
 		out.print(successCount);
 		out.close();
-	}
+	
+	}//delete
+	
 	
 	//후기 수정
 	@RequestMapping( value = "/update", method = RequestMethod.POST )
-	public void update( MdReviewDTO dto, PrintWriter out ) throws IOException {
+	public void update( MdReviewDTO dto, PrintWriter out, Model model, String md_id ) throws IOException {
 		dto.setReview_star(dto.getReview_star().substring(0, 1));
 	
 		int successCount = 0;
 		successCount = service.update( dto );
 		out.print(successCount);
 		out.close();
+		
 	}//update
 	
 	//후기 수정 입력폼
@@ -65,12 +70,21 @@ public class MdReviewController {
 	
 	//후기 상세보기
 	@RequestMapping( value = "/detail", method = RequestMethod.GET )
-	public String detail( String review_id, Model model ) {
+	public String detail( String review_id, Model model, MemberDTO mdto ) {
 		MdReviewDTO dto = null;
 		dto = service.detail( review_id );
 		model.addAttribute("detail_dto", dto);
-		model.addAttribute("review_id", review_id);
+		model.addAttribute("review_id", review_id); //수정&삭제 때 보낼 review_id 정보
 		return "/mdreview/review_detail";//jsp file name
+	}//detail
+	
+	@RequestMapping( value = "/detail_admin", method = RequestMethod.GET )
+	public String detail_Admin( String review_id, Model model, MemberDTO mdto ) {
+		MdReviewDTO dto = null;
+		dto = service.detail_admin( review_id );
+		model.addAttribute("detail_dto", dto);
+		model.addAttribute("review_id", review_id); //수정&삭제 때 보낼 review_id 정보
+		return "admin/admin_review_detail";//jsp file name
 	}//detail
 	
 	
@@ -119,15 +133,17 @@ public class MdReviewController {
 	
 	//후기 등록
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
-	public void insert( MdReviewDTO dto, PrintWriter out, Model model ) {
+	public void insert( MdReviewDTO dto, PrintWriter out, Model model, String md_id ) {
 				
 		System.out.println("확인용");
+		System.out.println("==========" + md_id);
 		dto.setReview_star(dto.getReview_star().substring(0, 1));
 				
 		int successCount = 0;
 		successCount = service.insert(dto);
 		out.print(successCount);
 		out.close();
+			
 	}//insert
 	
 	
@@ -147,3 +163,20 @@ public class MdReviewController {
 	}//review_write
 	
 }
+
+
+/*
+CREATE TABLE `review` (
+`review_id` int NOT NULL AUTO_INCREMENT,
+`md_id` int NOT NULL,
+`member_id` int NOT NULL,
+`order_detail_id` int NOT NULL,
+`review_title` varchar(100) NOT NULL,
+`review_content` varchar(4000) NOT NULL,
+`review_date` datetime NOT NULL,
+`review_viewcnt` int NOT NULL DEFAULT 0,
+review_star double NOT NULL DEFAULT 0,
+member_nick varchar(100) NOT NULL,
+PRIMARY KEY (`review_id`)
+);
+*/

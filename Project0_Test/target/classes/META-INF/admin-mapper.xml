@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="AdminMapper">
+
+	<update id="fileDelete" parameterType="kr.co.sbsj.admin.AdminDTO">
+	update md
+		<if test="md_thumbnail_name != null and md_thumbnail_name != ''">
+			set md_thumbnail_name = ''
+			, md_thumbnail_path = ''
+		</if>
+		<if test="md_detail_name != null and md_detail_name != ''">
+			set md_detail_name = ''
+			, md_detail_path = ''
+		</if>
+		
+	where md_id = #{md_id}
+	</update>
+	
+	
+	
+	<update id="update" parameterType="kr.co.sbsj.admin.AdminDTO">
+	update md
+	set md_name = #{md_name}
+		, md_oneline = #{md_oneline}
+		, md_price = #{md_price}
+		, md_category = #{md_category}
+		, md_abv = #{md_abv}
+		
+		<if test="md_thumbnail_name != null and md_thumbnail_name != ''">
+			,md_thumbnail_name = #{md_thumbnail_name}
+			, md_thumbnail_path = #{md_thumbnail_path}
+		</if>
+		<if test="md_detail_name != null and md_detail_name != ''">
+			,md_detail_name = #{md_detail_name}
+			, md_detail_path = #{md_detail_path}
+		</if>
+		, md_content = #{md_content}
+		, md_standard_stock = #{md_standard_stock}
+		, md_sales_rate = #{md_sales_rate}
+		, md_stock = #{md_stock}
+		, md_sweet = #{md_sweet}
+		, md_sour = #{md_sour}
+		, md_sparkling = #{md_sparkling}
+		, md_use = #{md_use}
+		, md_discount = #{md_discount}
+	
+	where md_id = #{md_id}
+	</update>
+	
+	
+	<delete id="delete">
+	delete from md
+	where md_id=#{no}
+	</delete>
+	
+	<update id="offsale">
+	update md
+	set md_onsale = "N"
+	where md_id=#{no}
+	</update>
+	
+	<update id="onsale">
+	update md
+	set md_onsale = "Y"
+	where md_id=#{no}
+	</update>
+	
+	<delete id="reviewDelete">
+	delete from review
+	where review_id=#{no}
+	</delete>
+	
+	<update id="reviewOn">
+	update review
+	set review_enable = "Y"
+	where review_id=#{no}
+	</update>
+	
+	<update id="reviewOff">
+	update review
+	set review_enable = "N"
+	where review_id=#{no}
+	</update>
+	
+	
+	
+	<select id="detail" parameterType="java.lang.String" resultType="kr.co.sbsj.admin.AdminDTO">
+		select md_id, md_name, md_oneline, md_price, md_category, md_abv, md_discount
+		, truncate( md_price - (md_price / 100 * md_discount), 0 ) sale_price
+		, md_content, md_thumbnail_name, md_thumbnail_path, md_detail_name,
+		md_detail_path, md_content, md_standard_stock, md_sales_rate, md_stock
+		, md_sweet, md_sour, md_sparkling, md_use, md_ratingAvg
+    	from md
+		where md_id = #{md_id}
+	</select>
+	
+	
+	
+	<select id="searchReviewCount" parameterType="kr.co.sbsj.util.dto.SearchDTO" resultType="int">
+		select count(r.md_id) cnt
+		from review r
+		
+		<if test="searchOption1 != null and searchOption1 != ''
+					and searchWord1 != null and searchWord1 !=''">
+			<choose>
+				<when test="searchOption1 == 'md_name'">
+				, md m	where r.md_id = m.md_id and  m.md_name like concat('%', #{searchWord1}, '%')
+				</when>
+				<when test="searchOption1 == 'review_star'">
+				, md m	where r.md_id = m.md_id and  r.review_star like concat('%', #{searchWord1}, '%')
+				</when>
+			</choose>
+		</if>
+	</select>
+	
+	<select id="selectReview" parameterType="kr.co.sbsj.util.dto.SearchDTO"
+			resultType="kr.co.sbsj.admin.AdminReviewDTO">
+		select r.review_id, r.md_id, r.member_nick, r.order_detail_id,  r.review_title, r.review_content, r.review_date, review_star
+		, r.review_enable, m.md_name, m.md_thumbnail_path
+    	from review r, md m
+    	where r.md_id = m.md_id
+		<if test="searchOption1 != null and searchOption1 != ''
+					and searchWord1 != null and searchWord1 !=''">
+			<choose>
+				<when test="searchOption1 == 'md_name'">
+					and m.md_name like concat('%', #{searchWord1}, '%')
+				</when>
+				<when test="searchOption1 == 'review_star'">
+					and r.review_star like concat('%', #{searchWord1}, '%')
+				</when>
+			</choose>
+		</if>
+		order by review_id desc
+		limit #{limitNum}, 10
+	</select>
+	
+	<select id="searchListCount" parameterType="kr.co.sbsj.util.dto.SearchDTO" resultType="int">
+		select count(m.md_id) cnt
+		from md m
+		<if test="searchOption1 != null and searchOption1 != ''
+					and searchWord1 != null and searchWord1 !=''">
+			<choose>
+				<when test="searchOption1 == 'md_name'">
+					where m.md_name like concat('%', #{searchWord1}, '%')
+				</when>
+				<when test="searchOption1 == 'md_category'">
+					where md_category like concat('%', #{searchWord1}, '%')
+				</when>
+			</choose>
+		</if>
+	
+	</select>
+	
+	
+	
+	<select id="selectList" parameterType="kr.co.sbsj.util.dto.SearchDTO"
+			resultType="kr.co.sbsj.md.MdDTO">
+		select m.md_id, m.md_name, m.md_price, m.md_category,  m.md_standard_stock, m.md_sales_rate, m.md_stock
+		, m.md_thumbnail_name, m.md_thumbnail_path, m.md_onsale
+    	from md m
+		<if test="searchOption1 != null and searchOption1 != ''
+					and searchWord1 != null and searchWord1 !=''">
+			<choose>
+				<when test="searchOption1 == 'md_name'">
+					where m.md_name like concat('%', #{searchWord1}, '%')
+				</when>
+				<when test="searchOption1 == 'md_category'">
+					where md_category like concat('%', #{searchWord1}, '%')
+				</when>
+			</choose>
+		</if>
+		order by md_id desc
+		limit #{limitNum}, 10
+	</select>
+
+	
+</mapper>

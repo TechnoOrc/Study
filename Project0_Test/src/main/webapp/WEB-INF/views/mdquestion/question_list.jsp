@@ -16,25 +16,33 @@
 			<table class="table table-hover">
 				<thead>
 					<tr>
-					<th>작성일자 </th> <th> 답변상태 </th> <th> 문의유형 </th> <th>작성자</th> <th>글 제목</th>
+					<th>작성일자 </th> <th>글 제목</th> <th>작성자</th> <th> 문의유형 </th> <th> 답변상태 </th>
 					</tr>
 				</thead>
 					<c:forEach var="question" items="${list}">
 						<tr>
 							<td>${question.md_question_date}</td>
-							<td>${question.md_question_answer}</td>
+							<td>
+								<a href="${pageContext.request.contextPath}/mdquestion/detail?md_question_id=${question.md_question_id}">
+								${question.md_question_title}
+								</a>
+							</td>
+							<td>${question.member_nick}</td>
 							<td>${question.md_question_type}</td>
-							<td>${question.member_id}</td>
-							<td>${question.md_question_title}</td>
+							<td>${question.md_question_answer}</td>
 						</tr>
 					</c:forEach>
 			</table>
-		<div class="clearfix">
-			<a href="${pageContext.request.contextPath}/mdquestion/write?md_id=${md_id}">
-				<button class="btn btn-info float-right"> 문의 작성 </button>
-			</a>
-		</div>	
-			
+		
+		<!-- 문의 작성 버튼 -->
+		<c:if test="${login_info.member_id != null}"> <!-- 비회원은 글 작성 불가 -->
+			<div class="clearfix">
+				<a href="${pageContext.request.contextPath}/mdquestion/write?md_id=${md_id}">
+					<button class="btn btn-info float-right"> 문의 작성 </button>
+				</a>
+			</div>	
+		</c:if>
+		
 		<ul class="pagination">
 			<c:if test="${startPageNum > 10}">
 				<li class="page-item mx-auto">

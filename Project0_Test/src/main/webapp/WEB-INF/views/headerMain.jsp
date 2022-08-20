@@ -27,7 +27,7 @@
 	<c:choose>
 		<c:when test="${login_info != null && login_info.member_name != null && login_info.admin_yn == 'N'}">
 		${login_info.member_nick}님
-			<a id="loginBarText" href="${pageContext.request.contextPath}/mypage/member"> 마이페이지 </a>
+			<a id="loginBarText" href="${pageContext.request.contextPath}/member/member"> 마이페이지 </a>
 			<a id="loginBarText" href="${pageContext.request.contextPath}/login/logout"> 로그아웃 </a>
 		</c:when>
 		
@@ -67,14 +67,14 @@
           <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
           <li class="nav-item dropdown dmenu">
             <a class="nav-link dropdown-toggle" href="/md/list" id="navbardrop" data-toggle="dropdown">
-              전체상품
+               전체상품
             </a>
             <div class="dropdown-menu sm-menu">
-              <a class="dropdown-item" href="/md/search?search=탁주">탁주</a>
-              <a class="dropdown-item" href="/md/search?search=약·청주">약·청주</a>
-              <a class="dropdown-item" href="/md/search?search=과실주">과실주</a>
-              <a class="dropdown-item" href="/md/search?search=증류주">증류주</a>
-              <a class="dropdown-item" href="/md/search?search=선물세트">선물세트</a>
+              <a class="dropdown-item" href="${pageContext.request.contextPath}/md/list_cate?md_category=탁주">탁주</a>
+              <a class="dropdown-item" href="${pageContext.request.contextPath}/md/list_cate?md_category=약·청주">약·청주</a>
+              <a class="dropdown-item" href="${pageContext.request.contextPath}/md/list_cate?md_category=과실주">과실주</a>
+              <a class="dropdown-item" href="${pageContext.request.contextPath}/md/list_cate?md_category=증류주">증류주</a>
+              <a class="dropdown-item" href="${pageContext.request.contextPath}/md/list_cate?md_category=선물세트">선물세트</a>
             </div>
           </li>
           <li class="nav-item">
@@ -84,7 +84,7 @@
               <a class="nav-link" href="/event/toEvent">베스트</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link" href="/event/toEvent">정기구독</a>
+              <a class="nav-link" href="${pageContext.request.contextPath}/md/subs_list">정기구독</a>
           </li>
           <li class="nav-item">
               <a class="nav-link" href="/event/toEvent">이벤트</a>
@@ -102,16 +102,18 @@
 
           </ul>
 	<!-- searchbar 검색바 -->
+	<form action="${pageContext.request.contextPath}/md/list" method="get">
 	<div id="side_search" class="gnb_search">
-		<input name="search" type="text" id="search" class="inp_search" value="" required label="검색어" placeholder="검색어를 입력 해주세요.">
+		<input name="searchWord" type="text" id="searchWord" class="inp_search" value="${search_dto.searchWord}" required label="검색어" placeholder="검색어를 입력해주세요.">
 		<a href="javascript:void(0);" id="search-button"><input type=image src="https://res.kurly.com/pc/service/common/1908/ico_search_x2.png" class="btn_search"></a>
 	</div>
-
+	</form>
+	
 	<!-- searchbar 아이콘 -->
 	<div id="icon">
 		<span >
 	  		<a href="/mypage/myPageLike?cPage=1" id="heartbtn"><i class="far fa-heart"  style="font-size: 25px;"></i></a></span>
-		<span style="margin:10px;margin-top: 15px;"><a href="/cart/cart" id="cartbtn"><i class="fas fa-shopping-cart" style="font-size: 22px;"></i></a> </span>          
+		<span style="margin:10px;margin-top: 15px;"><a href="${pageContext.request.contextPath}/cart/list" id="cartbtn"><i class="fas fa-shopping-cart" style="font-size: 22px;"></i></a> </span>          
 	</div>
 
 </div>

@@ -23,10 +23,20 @@ public class MemberDTO {
 	private String join_kakao;
 	
 	public String toString() {
-		return member_name + " : " + member_email + " : " + member_pwd + " : " + member_nick + " : " + member_phone + " : " + member_addr1 + " : " + member_addr2 + " : " + member_addr3 + " : " + email_agree + " : " + sms_agree + " 관리자 여부 : " + admin_yn;
+		return member_id+ ":"+member_name + " : " + member_email + " : " + member_pwd + " : " + member_nick + " : " + member_phone + " : " + member_addr1 + " : " + member_addr2 + " : " + member_addr3 + " : " + email_agree + " : " + sms_agree + admin_yn;
 	}
 	
 	
+	public String getMember_id() {
+		return member_id;
+	}
+
+
+	public void setMember_id(String member_id) {
+		this.member_id = member_id;
+	}
+
+
 	public String getMember_name() {
 		return member_name;
 	}

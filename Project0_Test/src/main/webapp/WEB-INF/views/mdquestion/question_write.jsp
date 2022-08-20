@@ -29,10 +29,10 @@
 				
 				문의 유형
 				<select id="md_question_type" name="md_question_type">
-					<option value="product">상품 문의</option>
-					<option value="delivery">배송 문의</option>
-					<option value="pay">결제 문의</option>
-					<option value="exchange">교환&반품 문의</option>
+					<option value="상품 문의">상품 문의</option>
+					<option value="배송 문의">배송 문의</option>
+					<option value="결제 문의">결제 문의</option>
+					<option value="교환&반품 문의">교환&반품 문의</option>
 				</select><br><br>
 						
 				글 제목 <br>
@@ -41,8 +41,14 @@
 				<label for="md_question_title" id="md_question_title_label" class="write_label"></label>
 				<br>
 				
-				작성자 <br><br>
-				<!-- 로그인 구현한 후 login_info 정보 추가 예정 -->
+				작성자 <br>
+				<input id="member_nick" name="member_nick" type="text" readonly="readonly"
+					value="${login_info.member_nick}" cols="100" style="width:500px;">
+				<br><br>
+				
+				<!-- member_id 정보 넘기기 -->
+				<input id="member_id" name="member_id" type="hidden" 
+					value="${login_info.member_id}" cols="100" style="width:500px;">
 				
 				내용 작성<br>
 				<textarea id="md_question_content" name="md_question_content" 

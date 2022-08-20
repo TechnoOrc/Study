@@ -18,9 +18,15 @@ public class MdReviewDAO {
 	
 	public int delete( MdReviewDTO dto ) {
 		int successCount = 0;
-		successCount = sqlSession.update("ReviewMapper.delete", dto);
+		successCount = sqlSession.delete("ReviewMapper.delete", dto);
 		return successCount;
 	}//delete
+	
+	public MdReviewDTO detail_admin( String review_id ) {
+		MdReviewDTO dto = null;
+		dto = sqlSession.selectOne("ReviewMapper.detail_admin", review_id);
+		return dto;
+	}//detail_admin
 	
 	public MdReviewDTO detail( String review_id ) {
 		MdReviewDTO dto = null;
@@ -45,11 +51,12 @@ public class MdReviewDAO {
 		successCount = sqlSession.insert("ReviewMapper.insert", dto);
 		return successCount;
 	}//insert
-
-	public int update(MdReviewDTO dto) {
+	
+	public int update( MdReviewDTO dto ) {
 		int successCount = 0;
 		successCount = sqlSession.update("ReviewMapper.update", dto);
 		return successCount;
 	}//update
+
 	
 }
