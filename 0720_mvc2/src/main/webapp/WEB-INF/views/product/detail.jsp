@@ -9,6 +9,7 @@
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+		<script src="//cdn.ckeditor.com/4.19.1/basic/ckeditor.js"></script>
 	</head>
 	<body>
 	<%@ include file="/WEB-INF/views/header.jsp" %>
@@ -94,7 +95,117 @@
 			</div>
 			<hr>
 		</c:if>
+		<!-- prdt_no는 상품 페이지에 기본 hidden으로 존재함 -->
+		<!-- mno는 현재 로그인한 사용자 세션에서 받으면 됨 -->
+		<c:if test="${login_info != null && login_info.mno != null && login_info.mno != '' }">
+			<table class="table table-borderless">
+				<col class="col-xs-2">
+				<col class="col-xs-8">
+				<col class="col-xs-2">
+				<tbody>
+					<tr>
+						<td>
+							<select id="reply_class" name="reply_class" class="form-control">
+								<option value="0"> 선 택 </option>
+								<option value="1"> 후 기 </option>
+								<option value="2"> 문 의 </option>
+							</select>
+						</td>
+						<td>
+							<textarea id="cnts" name="cnts"></textarea>
+							<script type="text/javascript">
+								CKEDITOR.replace('cnts');
+							</script>
+						</td>
+						<td>
+							<button id="reply_insert_btn" class="btn btn-primary btn-sm"> 글 전 송 </button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<hr>
+		</c:if>
+		<c:forEach var="dto" items="${list}" varStatus="status">
+					<div class="card">
+						<div class="card-body">
+							<h5 class="card-title">${dto.contents}</h5>
+							<p class="card-text">${dto.mid}</p>
+							<p class="card-text">${dto.reply_date} / ${dto.reply_class_name}</p>
+						</div>
+					</div>
+		</c:forEach>
+		<hr>
+		<hr>
+		<hr>
+		<hr>
+		<hr>
+		<hr>
+		<hr>
+		<hr>
+		<hr>
+		<hr>
+		<hr>
+		<hr>
+		<hr>
+		<hr>
+		<hr>
+		<hr>
+		<hr>
+		<hr>
+		<hr>
+		<hr>
+		<hr>
+		<hr>
+		<hr>
+		<hr>
+		<hr>
+		<hr>
+		<hr>
+		<hr>
+		<hr>
 	<%@ include file="/WEB-INF/views/footer.jsp" %>
+
+	<script type="text/javascript">
+	$(document).ready(function() {
+
+		$("#reply_insert_btn").click(function() {
+
+			if( $("#reply_class").val() == 0 ){
+				alert("글의 종류를 선택해 주세요.");
+				return;
+			}
+
+			if( CKEDITOR.instances.cnts.getData() == '' ){
+				alert("글의 내용을 입력해 주세요.");
+				return;
+			}
+
+// 			alert( $("#prdt_no").val() );
+// 			alert( $("#reply_class").val() );
+// 			alert( CKEDITOR.instances.cnts.getData() );
+// 			return;
+
+			$.post(
+					"${pageContext.request.contextPath}/product/reply_insert"
+					, {
+						prdt_no : $("#prdt_no").val()
+						, reply_class : $("#reply_class").val()
+						, contents : CKEDITOR.instances.cnts.getData()
+					}
+					, function(data, status) {
+						if(data >= 1){
+							alert();
+							window.location.reload();
+						} else {
+							alert("잠시 후 다시 시도해 주세요.");
+						}
+					}//call back functiion
+			);//post
+
+		});//click
+
+	});//ready
+	</script>
 
 	<script type="text/javascript">
 	$(document).ready(function() {

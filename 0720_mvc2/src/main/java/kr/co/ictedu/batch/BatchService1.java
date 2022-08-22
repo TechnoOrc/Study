@@ -13,6 +13,12 @@ public class BatchService1 {
 	@Autowired
 	private BatchDAO1 dao;
 
+	public int updateAutoConfirm( List<OrderMainDTO> list ) {
+		int successCount = 0;
+		successCount = dao.updateAutoConfirm( list );
+		return successCount;
+	}//updateAutoConfirm
+
 	public List<OrderMainDTO> autoConfirmList() {
 
 		List<OrderMainDTO> list = null;
@@ -22,16 +28,3 @@ public class BatchService1 {
 	}//autoConfirmList
 
 }//class
-
-
-
-
-
-
-
-
-
-
-
-
-

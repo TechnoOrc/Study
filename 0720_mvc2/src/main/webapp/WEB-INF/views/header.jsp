@@ -46,6 +46,8 @@
 							게시판
 						</a>
 						<div class="dropdown-menu">
+							<a class="dropdown-item" href="${pageContext.request.contextPath}/board/ck/list">
+								CK Editor 이미지 게시판 (로그인) </a>
 							<a class="dropdown-item" href="${pageContext.request.contextPath}/board/member/list">
 								멤버 게시판</a>
 							<a class="dropdown-item" href="${pageContext.request.contextPath}/board/free/final_list">
@@ -77,6 +79,8 @@
 								파일 업로드 연습</a>
 							<a class="dropdown-item" href="${pageContext.request.contextPath}/file2/form">
 								AJAX 파일 업로드 연습</a>
+							<a class="dropdown-item" href="${pageContext.request.contextPath}/gmail/send">
+								임시 비밀번호 Google Mail 발송 연습</a>
 						</div>
 					</li>
 

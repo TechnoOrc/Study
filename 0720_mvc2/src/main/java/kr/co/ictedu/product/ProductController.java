@@ -34,6 +34,19 @@ public class ProductController {
 	@Autowired
 	private ProductService service;
 
+	@RequestMapping( value = "/reply_insert", method = RequestMethod.POST )
+	public void replyInsert( ProductReplyDTO dto, HttpSession session, PrintWriter out ) {
+
+		dto.setMno( ( (MemberDTO) session.getAttribute("login_info") ).getMno() );
+
+		int successCount = 0;
+		successCount = service.replyInsert( dto );
+
+		out.print(successCount);
+		out.close();
+
+	}//replyInsert
+
 	@RequestMapping( value = "/update", method = RequestMethod.POST )
 	public void update( ProductDTO dto, HttpSession session, PrintWriter out ) throws IOException {
 
@@ -175,10 +188,17 @@ public class ProductController {
 
 	@RequestMapping( value = "/detail", method = RequestMethod.GET )
 	public String detail( String prdt_no, Model model ) {
+
 		ProductDTO dto = null;
 		dto = service.detail( prdt_no );
 		model.addAttribute("detail_dto", dto);
+
+		List<ProductReplyDTO> list = null;
+		list = service.productReplyList( prdt_no );
+		model.addAttribute("list", list);
+
 		return "/product/detail";//jsp file name
+
 	}//detail
 
 	@RequestMapping( value = "/list", method = RequestMethod.GET )
@@ -323,4 +343,16 @@ create table product (
   add_file_path varchar(100) default null,
   primary key (prdt_no)
 );
+
+drop table product_reply;
+
+create table product_reply (
+  reply_no int primary key auto_increment
+, prdt_no int not null
+, mno int not null
+, reply_class int not null
+, contents varchar(1500) not null
+, reply_date datetime not null
+);
+
 */

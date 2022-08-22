@@ -14,11 +14,23 @@ public class ProductDAO {
 	@Autowired
 	private SqlSession sqlSession;
 
+	public List<ProductReplyDTO> productReplyList( String prdt_no ) {
+		List<ProductReplyDTO> list = null;
+		list = sqlSession.selectList("ProductMapper.productReplyList", prdt_no);
+		return list;
+	}//productReplyList
+
+	public int replyInsert( ProductReplyDTO dto ) {
+		int successCount = 0;
+		successCount = sqlSession.insert("ProductMapper.replyInsert", dto);
+		return successCount;
+	}//replyInsert
+
 	public int fileDelete( ProductDTO dto ) {
 		int successCount = 0;
 		successCount = sqlSession.update("ProductMapper.fileDelete", dto);
 		return successCount;
-	}//delete
+	}//fileDelete
 
 	public int update( ProductDTO dto ) {
 		int successCount = 0;

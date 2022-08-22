@@ -5,6 +5,23 @@
 
 <mapper namespace="ProductMapper">
 
+	<select id="productReplyList" parameterType="java.lang.String"
+			resultType="kr.co.ictedu.product.ProductReplyDTO">
+	select pr.reply_no, pr.prdt_no, pr.mno, m.mid
+			, pr.reply_class, coco.code_name as reply_class_name
+			, pr.contents, pr.reply_date
+	from product_reply pr, member m, common_code coco
+	where pr.prdt_no = #{prdt_no}
+	and pr.mno = m.mno
+	and coco.code_class = 'product_reply_class'
+	and coco.code_no = pr.reply_class
+	</select>
+
+	<insert id="replyInsert" parameterType="kr.co.ictedu.product.ProductReplyDTO">
+	insert into product_reply(prdt_no, mno, reply_class, contents, reply_date)
+	values (#{prdt_no}, #{mno}, #{reply_class}, #{contents}, now());
+	</insert>
+
 	<update id="fileDelete" parameterType="kr.co.ictedu.product.ProductDTO">
 	update product
 		<if test="thumbnail_name != null and thumbnail_name != ''">

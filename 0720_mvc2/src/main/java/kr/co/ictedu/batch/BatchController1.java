@@ -17,12 +17,14 @@ public class BatchController1 {
 	@Autowired
 	private BatchService1 service;
 
-	@Scheduled( cron = "5 30 13 * * *" )
+	@Scheduled( cron = "10 52 14 * * *" )
 	public void autoConfirm() {
 		//자동 구매 업데이트 대상을  select
 		List<OrderMainDTO> list = null;
 		list = service.autoConfirmList();
 		//업데이트 수행
+		int successCount = 0;
+		successCount = service.updateAutoConfirm( list );
 	}//autoConfirm
 
 	//초 분 시 일 월 요일
@@ -32,9 +34,3 @@ public class BatchController1 {
 	}//testScheduler
 
 }//class
-
-
-
-
-
-

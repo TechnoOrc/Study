@@ -5,6 +5,15 @@
 
 <mapper namespace="Batch1Mapper">
 
+	<update id="updateAutoConfirm" parameterType="java.util.List">
+	update order_main
+	set order_status = 15
+	where order_no in
+		<foreach item="item" collection="list" open="(" close=")" separator=",">
+			#{item.order_no}
+		</foreach>
+	</update>
+
 	<select id="autoConfirmList" resultType="kr.co.ictedu.order.OrderMainDTO">
 	select order_no
 	from order_main

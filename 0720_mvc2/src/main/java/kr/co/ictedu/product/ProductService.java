@@ -13,6 +13,18 @@ public class ProductService {
 	@Autowired
 	private ProductDAO dao;
 
+	public List<ProductReplyDTO> productReplyList( String prdt_no ) {
+		List<ProductReplyDTO> list = null;
+		list = dao.productReplyList( prdt_no );
+		return list;
+	}//productReplyList
+
+	public int replyInsert( ProductReplyDTO dto ) {
+		int successCount = 0;
+		successCount = dao.replyInsert( dto );
+		return successCount;
+	}//replyInsert
+
 	public int fileDelete( ProductDTO dto ) {
 		int successCount = 0;
 		successCount = dao.fileDelete( dto );

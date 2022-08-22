@@ -14,6 +14,12 @@ public class BatchDAO1 {
 	@Autowired
 	private SqlSession sqlSession;
 
+	public int updateAutoConfirm( List<OrderMainDTO> list ) {
+		int successCount = 0;
+		successCount = sqlSession.update("Batch1Mapper.updateAutoConfirm", list);
+		return successCount;
+	}//updateAutoConfirm
+
 	public List<OrderMainDTO> autoConfirmList() {
 
 		List<OrderMainDTO> list = null;

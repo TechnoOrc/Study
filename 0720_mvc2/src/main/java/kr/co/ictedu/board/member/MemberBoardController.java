@@ -125,15 +125,17 @@ public class MemberBoardController {
 }//class
 
 /*
+
 drop table memberboard;
 
 create table memberboard (
   board_no int not null auto_increment,
-  title varchar(150) default null,
-  mno int default null,
-  contents varchar(1500) default null,
-  view_cnt int default null,
-  write_date datetime default null,
+  title varchar(150) not null,
+  mno int not null,
+  contents varchar(1500) not null,
+  view_cnt int default '0',
+  write_date datetime not null,
   primary key (board_no)
 );
+
 */

@@ -28,6 +28,7 @@
 	<interceptors>
 		<interceptor>
 			<mapping path="/basket/*"/>
+			<mapping path="/board/ck/*"/>
 			<mapping path="/board/member/*"/>
 			<mapping path="/credit/card*"/>
 			<mapping path="/delivery/*"/>
@@ -35,6 +36,7 @@
 			<mapping path="/mypage/*"/>
 			<mapping path="/order/*"/>
 			<mapping path="/product/*"/>
+			<exclude-mapping path="/board/ck/list"/>
 			<exclude-mapping path="/board/member/list"/>
 			<exclude-mapping path="/product/list"/>
 			<exclude-mapping path="/product/detail"/>
