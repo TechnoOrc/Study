@@ -29,8 +29,8 @@ public class CKFileController {
 	private final static Logger logger = LoggerFactory.getLogger(CKFileController.class);
 
 	@RequestMapping(value="/ckfileup", method=RequestMethod.POST)
-	public void ckFileUp(MultipartRequest multiReq, String pkgnm, HttpSession session
-			, PrintWriter print) throws IOException {
+	public void ckFileUp(MultipartRequest multiReq, String pkgnm
+						, HttpSession session, PrintWriter print) throws IOException {
 
 		Date today = new Date();
 		DateFormat nalja = new SimpleDateFormat("YYYYMMDD");

@@ -109,9 +109,6 @@ create table order_main (
  -- discount_amt -- 할인금액
  -- pay_amt -- 결제금액
  -- order_date -- 주문일자
- -- order_status -- 주문상태
- -- 주문상태(1:주문완료, 3:결제완료, 5:판매자확인완료, 7:운송장정보입력완료, 9:택배사인수완료, 11:택배사배송완료, 13:구매자구매확정완료, 15:자동구매결정완료)
- -- 결제사 및 택배사 연동이 없으므로, (3:결제완료, 5:판매자확인완료, 7:운송장정보입력완료, 13:구매자구매확정완료, 15:자동구매결정완료)만 구현한다.
 
 drop table order_detail;
 
@@ -125,6 +122,9 @@ create table order_detail (
   detail_discount int default null,
   detail_discount_amt int not null,
   detail_pay_amt int not null,
+  order_status int default '3',
+  invoice_company varchar(45) default null,
+  invoice_number varchar(45) default null,
   primary key (detail_no)
 );
 
@@ -137,6 +137,11 @@ create table order_detail (
  -- detail_discount -- 할인율
  -- detail_discount_amt -- 할인금액
  -- detail_pay_amt -- 결제금액
+ -- order_status -- 주문상태
+ -- 주문상태(1:주문완료, 3:결제완료, 5:판매자확인완료, 7:운송장정보입력완료, 9:택배사인수완료, 11:택배사배송완료, 13:구매자구매확정완료, 15:자동구매결정완료)
+ -- 결제사 및 택배사 연동이 없으므로, (3:결제완료, 5:판매자확인완료, 7:운송장정보입력완료, 13:구매자구매확정완료, 15:자동구매결정완료)만 구현한다.
+ -- invoice_company -- 택배사
+ -- invoice_number -- 송장번호
 
 drop table common_code;
 

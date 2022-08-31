@@ -37,8 +37,12 @@
 							<h3><label for="rdo1">tea</label></h3>
 						</div>
 						<div class="input-group">
-						<input type="radio" id="rdo2" name="test_id_selector" value="sellerfruit">
-						<h3><label for="rdo2">sellerfruit</label></h3>
+							<input type="radio" id="rdo2" name="test_id_selector" value="teacher">
+							<h3><label for="rdo2">teacher</label></h3>
+						</div>
+						<div class="input-group">
+							<input type="radio" id="rdo3" name="test_id_selector" value="sellerfruit">
+							<h3><label for="rdo3">sellerfruit</label></h3>
 						</div>
 					</td>
 				</tr>

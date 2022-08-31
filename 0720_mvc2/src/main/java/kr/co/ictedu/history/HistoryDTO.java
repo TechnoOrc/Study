@@ -12,11 +12,13 @@ public class HistoryDTO {
 	private String discount_amt;
 	private String pay_amt;
 	private String order_date;
-	private String order_status;
-	private String order_status_name;
 
 	private String detail_no;
 	private String prdt_no;
+	private String order_status;
+	private String order_status_name;
+	private String invoice_company;
+	private String invoice_number;
 
 	private String detail_qty;
 	private String detail_price;
@@ -52,11 +54,13 @@ public class HistoryDTO {
 				+ " : " + discount_amt
 				+ " : " + pay_amt
 				+ " : " + order_date
-				+ " : " + order_status
-				+ " : " + order_status_name
 
 				+ " : " + detail_no
 				+ " : " + prdt_no
+				+ " : " + order_status
+				+ " : " + order_status_name
+				+ " : " + invoice_company
+				+ " : " + invoice_number
 
 				+ " : " + detail_qty
 				+ " : " + detail_price
@@ -138,18 +142,7 @@ public class HistoryDTO {
 	public void setOrder_date(String order_date) {
 		this.order_date = order_date;
 	}
-	public String getOrder_status() {
-		return order_status;
-	}
-	public void setOrder_status(String order_status) {
-		this.order_status = order_status;
-	}
-	public String getOrder_status_name() {
-		return order_status_name;
-	}
-	public void setOrder_status_name(String order_status_name) {
-		this.order_status_name = order_status_name;
-	}
+
 	public String getDetail_no() {
 		return detail_no;
 	}
@@ -162,6 +155,31 @@ public class HistoryDTO {
 	public void setPrdt_no(String prdt_no) {
 		this.prdt_no = prdt_no;
 	}
+	public String getOrder_status() {
+		return order_status;
+	}
+	public void setOrder_status(String order_status) {
+		this.order_status = order_status;
+	}
+	public String getOrder_status_name() {
+		return order_status_name;
+	}
+	public void setOrder_status_name(String order_status_name) {
+		this.order_status_name = order_status_name;
+	}
+	public String getInvoice_company() {
+		return invoice_company;
+	}
+	public void setInvoice_company(String invoice_company) {
+		this.invoice_company = invoice_company;
+	}
+	public String getInvoice_number() {
+		return invoice_number;
+	}
+	public void setInvoice_number(String invoice_number) {
+		this.invoice_number = invoice_number;
+	}
+
 	public String getDetail_qty() {
 		return detail_qty;
 	}

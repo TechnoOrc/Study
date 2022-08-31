@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title> 구매 내역 </title>
+		<title> 판매 내역 </title>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
@@ -13,9 +13,9 @@
 	<body>
 	<%@ include file="/WEB-INF/views/header.jsp" %>
 		<hr>
-		<h3> 구매 내역 </h3>
+		<h3> 판매 내역 </h3>
 		<hr>
-		<form action="${pageContext.request.contextPath}/history/my_order_list" method="get">
+		<form action="${pageContext.request.contextPath}/history/my_sell_list" method="get">
 			<div class="input-group">
 				<div class="input-group-prepend">
 					<select class="form-control" id="searchOption" name="searchOption">
@@ -37,14 +37,14 @@
 		<table class="table table-hover">
 			<col class="col-2">
 			<col class="col-2">
-			<col class="col-5">
+			<col class="col-4">
 			<col class="col-1">
-			<col class="col-2">
+			<col class="col-3">
 			<thead>
 				<tr>
-					<th> 결제일 </th>
+					<th> 판매일 </th>
 					<th> 상품 이미지 </th>	<th> 상품명 / 주문옵션 / 주문번호 </th>
-					<th> 판매자 </th>	<th> 주문상태 </th>
+					<th> 구매자 </th>	<th> 주문상태 </th>
 				</tr>
 			</thead>
 			<tbody>
@@ -53,10 +53,10 @@
 						<td>
 							${dto.order_date}
 							<hr>
-							결제금액 : <b>${dto.detail_pay_amt}</b> 원
+							판매금액 : <b>${dto.detail_pay_amt}</b> 원
 							<hr>
-							<button type="button" class="pay_detail_btn btn btn-link btn-sm" value="${dto.order_no}">
-								결제 상세 보기
+							<button type="button" class="sell_detail_btn btn btn-link btn-sm" value="${dto.detail_no}">
+								판매 상세 보기
 							</button>
 						</td>
 						<td>
@@ -71,17 +71,19 @@
 							<hr>
 							주문 번호 : ${dto.detail_no}
 						</td>
-						<td>${dto.seller_mid}</td>
+						<td>${dto.mid}</td>
 						<td>
+							${dto.order_status_name}
+							<hr>
 							<c:choose>
-								<c:when test="${dto.order_status == 7}">
-									배송 완료
-									<hr>
-									<button class="order_status_update_btn13 btn btn-danger btn-sm" value="13" name="${dto.detail_no}"> 구 매 확 정 </button>
+								<c:when test="${dto.order_status == 3}">
+									<button class="order_status_update_btn5 btn btn-danger btn-sm" value="5" name="${dto.detail_no}"> 주 문 확 인 </button>
 								</c:when>
-								<c:otherwise>
-									${dto.order_status_name}
-								</c:otherwise>
+								<c:when test="${dto.order_status == 5}">
+									<input type="text" maxlength="15" placeholder="택배사 이름">
+									<input type="text" maxlength="15" placeholder="운송장 번호">
+									<button class="order_status_update_btn7 btn btn-danger btn-sm" value="7" name="${dto.detail_no}"> 송 장 입 력 </button>
+								</c:when>
 							</c:choose>
 						</td>
 					</tr>
@@ -93,7 +95,7 @@
 			<c:if test="${startPageNum > 10}">
 				<li class="page-item mx-auto">
 					<a class="page-link"
-						href="${pageContext.request.contextPath}/history/my_order_list?userWantPage=${startPageNum-1}&searchOption=${search_dto.searchOption}&searchWord=${search_dto.searchWord}">
+						href="${pageContext.request.contextPath}/history/my_sell_list?userWantPage=${startPageNum-1}&searchOption=${search_dto.searchOption}&searchWord=${search_dto.searchWord}">
 						Previous
 					</a>
 				</li>
@@ -108,7 +110,7 @@
 					<c:otherwise>
 						<li class="page-item mx-auto">
 							<a class="page-link"
-								href="${pageContext.request.contextPath}/history/my_order_list?userWantPage=${page_no}&searchOption=${search_dto.searchOption}&searchWord=${search_dto.searchWord}">
+								href="${pageContext.request.contextPath}/history/my_sell_list?userWantPage=${page_no}&searchOption=${search_dto.searchOption}&searchWord=${search_dto.searchWord}">
 								${page_no}
 							</a>
 						</li>
@@ -118,7 +120,7 @@
 			<c:if test="${lastPageNum > endPageNum}">
 				<li class="page-item mx-auto">
 					<a class="page-link"
-						href="${pageContext.request.contextPath}/history/my_order_list?userWantPage=${endPageNum+1}&searchOption=${search_dto.searchOption}&searchWord=${search_dto.searchWord}">
+						href="${pageContext.request.contextPath}/history/my_sell_list?userWantPage=${endPageNum+1}&searchOption=${search_dto.searchOption}&searchWord=${search_dto.searchWord}">
 						Next
 					</a>
 				</li>
@@ -211,7 +213,7 @@
 	<script type="text/javascript">
 	$(document).ready(function() {
 
-		$(".order_status_update_btn13").click(function() {
+		$(".order_status_update_btn5").click(function() {
 
 			$.post(
 					"${pageContext.request.contextPath}/history/update_order_status"
@@ -235,12 +237,49 @@
 
 	<script type="text/javascript">
 	$(document).ready(function() {
-		$(".pay_detail_btn").click(function() {
+
+		$(".order_status_update_btn7").click(function() {
+
+			if( $.trim( $(this).prev().prev().val() ) == '' ){
+				alert("택배사를 입력해 주세요.");
+				return;
+			}
+
+			if( $.trim( $(this).prev().val() ) == '' ){
+				alert("운송장 번호를 입력해 주세요.");
+				return;
+			}
+
+			$.post(
+					"${pageContext.request.contextPath}/history/update_order_status"
+					, {
+						detail_no : $(this).attr("name")
+						, order_status : $(this).val()
+						, invoice_company : $.trim( $(this).prev().prev().val() )
+						, invoice_number : $.trim( $(this).prev().val() )
+					}
+					, function(data, status) {
+						if(data >= 1){
+							window.location.reload();
+						} else {
+							alert("잠시 후 다시 시도해 주세요.");
+						}
+					}//call back functiion
+			);//post
+
+		});//click
+
+	});//ready
+	</script>
+
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$(".sell_detail_btn").click(function() {
 
 			$.get(
-					"${pageContext.request.contextPath}/history/pay_detail"
+					"${pageContext.request.contextPath}/history/sell_detail"
 					, {
-						order_no : $(this).val()
+						detail_no : $(this).val()
 					}
 					, function(data, status) {
 						if(data.length >= 1){

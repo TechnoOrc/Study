@@ -7,6 +7,9 @@
 					<c:when test="${login_info != null && login_info.mid != null}">
 					${login_info.mid}
 						<div class="btn-group">
+							<a href="${pageContext.request.contextPath}/history/my_sell_list">
+								<button type="button" class="btn btn-link btn-sm">판매내역</button>
+							</a>
 							<a href="${pageContext.request.contextPath}/history/my_order_list">
 								<button type="button" class="btn btn-link btn-sm">구매내역</button>
 							</a>
@@ -81,6 +84,18 @@
 								AJAX 파일 업로드 연습</a>
 							<a class="dropdown-item" href="${pageContext.request.contextPath}/gmail/send">
 								임시 비밀번호 Google Mail 발송 연습</a>
+							<a class="dropdown-item" href="${pageContext.request.contextPath}/map/kakao/step1">
+								Kakao Map Step 1</a>
+							<a class="dropdown-item" href="${pageContext.request.contextPath}/map/kakao/step2">
+								Kakao Map Step 2</a>
+							<a class="dropdown-item" href="${pageContext.request.contextPath}/map/kakao/step3">
+								Kakao Map Step 3</a>
+							<a class="dropdown-item" href="${pageContext.request.contextPath}/jsoup/step1">
+								JSOUP - step1</a>
+							<a class="dropdown-item" href="${pageContext.request.contextPath}/jsoup/step2">
+								JSOUP - step2</a>
+							<a class="dropdown-item" href="${pageContext.request.contextPath}/jsoup/step3">
+								JSOUP - step3</a>
 						</div>
 					</li>
 

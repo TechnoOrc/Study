@@ -30,7 +30,7 @@
 			<!-- 판매 내역 start -->
 			<div class="col-6">
 				<div class="text-right mb-1">
-						<a href="javascript:alert('준비 중 입니다.');">
+						<a href="${pageContext.request.contextPath}/history/my_sell_list">
 							<button type="button" class="btn btn-link btn-sm">
 								판매 내역 더보기
 							</button>

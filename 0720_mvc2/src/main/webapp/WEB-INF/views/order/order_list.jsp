@@ -366,7 +366,7 @@
 					, function(data, status) {
 						if(data >= 1){
 							alert("주문을 성공적으로 등록 하였습니다.");
-							location.href="${pageContext.request.contextPath}/basket/list";
+							location.href="${pageContext.request.contextPath}/history/my_order_list";
 						} else if(data <= 0){
 							alert("주문 등록을 실패 하였습니다.");
 						} else {
