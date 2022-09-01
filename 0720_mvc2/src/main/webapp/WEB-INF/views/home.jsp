@@ -15,6 +15,40 @@
 		<hr>
 		<h3> Home </h3>
 		<hr>
+
+		<h4>Rest API : REpresentational State Transfer API : json 주고 받기</h4>
+		<h6>json : javascript object notation</h6>
+
+		<h6><a href="${pageContext.request.contextPath}/rest1/step1">
+			rest1 step1 : @ResponseBody</a></h6>
+
+		<h6><a href="${pageContext.request.contextPath}/rest2/step2">
+			rest2 step2 : @RestController</a></h6>
+
+		<h6><a href="${pageContext.request.contextPath}/rest2/step3">
+			rest2 step3 : rest service로부터 dto 1개 받기</a></h6>
+
+		<h6><a href="${pageContext.request.contextPath}/rest2/step4">
+			rest2 step4 : rest service로부터 dto list 받기</a></h6>
+
+		<h6><a href="${pageContext.request.contextPath}/restview/step5view">
+			rest2 step5 / step6 : @PathVariabe</a></h6>
+			
+		<h6><a href="${pageContext.request.contextPath}/restview/step7view">
+			rest2 step7 : @RequestBody</a></h6>
+
 	<%@ include file="/WEB-INF/views/footer.jsp" %>
 	</body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+

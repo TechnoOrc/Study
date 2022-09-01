@@ -39,13 +39,13 @@ public class CKBoardController {
 		//ck file start =====
 		String mid = ( (MemberDTO) session.getAttribute("login_info") ).getMid();
 
-		File folderForDel = new File("C:/upload/board/" + mid + "/");
-		File [] fileArr = folderForDel.listFiles();
-		if(fileArr != null) {
-			for(int i=0; i<fileArr.length; i++) {
-				fileArr[i].delete();
-			}//for
-		}//if
+//		File folderForDel = new File("C:/upload/board/" + mid + "/");
+//		File [] fileArr = folderForDel.listFiles();
+//		if(fileArr != null) {
+//			for(int i=0; i<fileArr.length; i++) {
+//				fileArr[i].delete();
+//			}//for
+//		}//if
 
 		if( dto.getContents().indexOf("src=\"") > 0) {
 
@@ -72,8 +72,8 @@ public class CKBoardController {
 
 			}//for
 
-			folderForDel = new File("C:/upload/tmp/board/" + mid + "/");
-			fileArr = folderForDel.listFiles();
+			File folderForDel = new File("C:/upload/tmp/board/" + mid + "/");
+			File [] fileArr = folderForDel.listFiles();
 			if(fileArr != null) {
 				for(int i=0; i<fileArr.length; i++) {
 					fileArr[i].delete();

@@ -99,6 +99,25 @@
 						</div>
 					</li>
 
+					<!-- Dropdown -->
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+							REST API
+						</a>
+						<div class="dropdown-menu">
+							<a class="dropdown-item" href="${pageContext.request.contextPath}/rest1/step1">
+								step1 : @ResponseBody</a>
+							<a class="dropdown-item" href="${pageContext.request.contextPath}/rest2/step2">
+								step2 : @RestController</a>
+							<a class="dropdown-item" href="${pageContext.request.contextPath}/rest2/step3">
+								step3 : rest service로부터 dto 1개 받기</a>
+							<a class="dropdown-item" href="${pageContext.request.contextPath}/rest2/step4">
+								step4 : rest service로부터 dto list 받기</a>
+							<a class="dropdown-item" href="${pageContext.request.contextPath}/restview/step5view">
+								step4 : @PathVariabe</a>
+						</div>
+					</li>
+
 					<li class="nav-item">
 						<a class="nav-link" href="${pageContext.request.contextPath}/product/list">
 							상품 목록</a>
