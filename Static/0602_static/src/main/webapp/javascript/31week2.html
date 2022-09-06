@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>31week2.html</title>
+	</head>
+	<body>
+	<h1>이달의 첫 주를 만들자</h1>
+		<script type="text/javascript">
+		let yoilArray  = new Array("일","월","화","수","목","금","토");
+		let today = new Date();
+		let startDate = new Date(today.getFullYear(), today.getMonth(), 1);
+		//document.write(startDate);
+		document.write("<table border=1><tr>");
+		for (let i = 0; i < yoilArray.length; i++) {
+			document.write("<td>" + yoilArray[i] + "</td>");
+		}
+		document.write("</tr><tr>");
+		let date = 1;
+		for (let i = 0; i < yoilArray.length; i++) {
+			if (i >= startDate.getDay()) {
+				document.write("<td>" + date + "</td>")
+				date++;
+			} else{
+				document.write("<td></td>");
+			}
+		}//for
+		document.write("</tr></table>");
+		</script>
+	</body>
+</html>

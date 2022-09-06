@@ -1,0 +1,47 @@
+# Eclipse JQuery File Index List
+
+jquery.jquery-3.6.0.min.js - JavaScript Source File
+
+jquery.01start.html - jquery 적용방법 2가지
+
+jquery.01start2.html - JQuery 기본 사용법
+
+jquery.01start3.html - JQuery를 사용하는 이유
+
+jquery.02selector_element.html - html element에 접근 하는 방법
+
+jquery.03selector_id.html - html의 ID에 접근하는 방법
+
+jquery.04attr.html - ID selector_html의 ID로 element에 접근_전체 선택/해제 , 이미지 변경_attr(), prop()
+
+jquery.05prop.html -ID selector_html의 ID로 element에 접근_전체 선택/해제 , 이미지 변경_attr(), prop() 
+
+jquery.06append.html - ID selector_table에 데이터 추가_append
+
+jquery.07selector_class.html - Class selector_클래스 별로css 효과 적용 , css 값 가져옴_css()
+
+jquery.08selector_group.html - Group selector_ 배열에 컬러명 저장하여 색상 변경_css(), Array
+
+jquery.09hide_show.html - effects_hide & show_show(), hide(), toggle()_메뉴 표시 / 숨기기_Toggle()
+
+jquery.10fade.html - effects_fade in & fade out_ fadeIn(), fadeOut()_메뉴 표시/ 숨기기 (부드럽게..)_fadeToggle()
+
+jquery.11slide.html - effects_slide up & slide out_slideUp(), slideDown() _ 메뉴 표시/ 숨기기_slideToggle()
+
+jquery.12even_odd.html - even, odd, first, last row selector 짝수, 홀수, 처음과 마지막 row 에 색상변경_tr:even, odd, first, last, hover(infunction, outfunction)
+
+jquery.13cth_child.html - first-child, last-child row selector 첫row의 child, 행의 위치 직접선택하여 색상변경_tr:first-child, tf:last-child, tr:nth-child(숫자)
+
+jquery.14keyup.htm - 자바스크립트 정규식 _ 숫자 + 영문 대소문자 + @ + . 만 허용_chang()_
+
+jquery.15selector_eq.html - eq, li, gt selector_list 중 특정 index 배경변경_li:eq(5), li:lt(5), li:gt(5) 
+
+jquery.16select_search.html - search select_  list의 value에 특정문자열 시작, 끝, 포함, 같지않은, 같은 요소에 색상 변경
+
+jquery.17addClass - addClass selector_div 일부 영역에 색상변화 
+
+jquery18parent.html. - parent, child selector_ 부모, 부모들, 자식 객체에 색상변화_parent(), parents(), parentsUntill(), children(), find() // siblings selector - 형제 element 전체에 적용_siblings(), nextAll()_뒤에 형제 요소모두, prevAll()_앞에 형제 요소모두//
+
+jquery.19traversing.html - 노드간의 관계를 통해 다른 노드들을 access 할 수 있음
+
+

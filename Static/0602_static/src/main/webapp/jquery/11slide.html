@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>11slide.html</title>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	</head>
+	<body>
+		<script>
+		$(document).ready(function() {
+			$("#cnts1").slideUp();
+			let state = false;
+			$("#title1").click(function() {
+				if (state == false) {//slide close 상태
+					$("#cnts1").slideDown(2000);
+					state = true;//슬라이드를 열었음을 기록.
+				} else if (state == true) {//slide open 상태
+					$("#cnts1").slideUp(2000);
+					state = false;//슬라이드를 닫았음을 기록
+				}
+			});//click
+			
+			$("#openToggle").click(function() {
+			$("#cnts1").slideToggle();
+			});//click
+		});//ready
+		</script>
+		<h1>slide down & slide up</h1>
+		<button id="openToggle"> toggle button </button>
+		<div id="title1"><h3>193 오늘의 알림 2022.04.14.</h3></div>
+		<div id="cnts1">
+			<p>여러분 안녕하세요.</p>
+			<p>새로운 class가 시작 되었습니다.</p>
+			<p>모두 건승하세요.</p>
+		</div>
+		<script>
+		
+		</script>
+	</body>
+</html>

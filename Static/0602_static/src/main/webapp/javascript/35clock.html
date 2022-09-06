@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>35clock.html</title>
+	</head>
+	<body>
+		<h1>시계 구현</h1>
+		setTimeout(다른 함수 이름, 시간); => 일정 시간이 지나간 다음, 다른 함수 이름을 실행시킨다.
+		<div id="clock"></div>
+		<script type="text/javascript">
+		function setClock() {
+			let today = new Date();
+			let timeNow = today.getHours() + " : "
+							+ today.getMinutes() + " : "
+							+ today.getSeconds();
+			clock.innerHTML = "<h1>" + timeNow + "</h1>";
+			setTimeout(setClock, 1000);//1000의 1000초 마다 실행=> 1초
+		}
+		setClock();
+		</script>
+	</body>
+</html>

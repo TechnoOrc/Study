@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>25string.html</title>
+	</head>
+	<body>
+		<h1>문자열 함수들</h1>
+		<script type="text/javascript">
+		let str = "Nice To Meet You, Too.";
+		document.write("length : " + str.length + "<br>");//length
+		document.write("charAt(0) : " + str.charAt(0) + "<br>");//index
+		document.write("charAt(length-1) : " + str.charAt(str.length-1) + "<br>");
+		document.write("indexOf(To) : " + str.indexOf("To") + "<br>");
+		document.write("lastIndexOf(To) : " + str.lastIndexOf("To") + "<br>");
+		document.write("   abc   .trim() : [" + "   abc   ".trim() + "]<br>");
+		document.write("toUpperCase : " + str.toUpperCase() + "<br>");
+		document.write("toLowerCase : " + str.toLowerCase() + "<br>");
+		document.write("concat : " + str.concat("!!!") + "<br>");
+		document.write("문자열 + : " + str + "!!!" + "<br>");
+
+		document.write("<hr>");
+		document.write("<h1>문자열 자르기</h1>");
+		document.write("slice(3, 10) : " + str.slice(3, 10) + "<br>");//3번지부터9번지까지.
+		document.write("substring(3, 10) : " + str.substring(3, 10) + "<br>");//3번지부터9번지까지.
+		document.write("substr(3, 11) : " + str.substr(3, 11) + "<br>");//3번지부터11개.
+
+		document.write("<hr>");
+		document.write("<h1>문자열 대체하기</h1>");
+		document.write("replace(e, A) : " + str.replace("e", "A") + "<br>");//첫번째e하나만변경.
+		document.write("replaceAll(e, A) : " + str.replaceAll("e", "A") + "<br>");//전부변경.
+
+		document.write("<hr>");
+		document.write("<h1>문자열을 잘라서 배열에 저장하기</h1>");
+		let strArr = str.split(" ");
+		for(let i = 0; i < strArr.length; i++){
+			document.write("strArr[" + i + "] : " + strArr[i] + "<br>");
+		}
+		</script>
+	</body>
+</html> 

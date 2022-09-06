@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>29array_fill_select.html</title>
+	</head>
+	<body>
+		<h1> 배열을 내용으로 selectbox option 채우기</h1>
+		<select id="sel1">
+			<option> 옵션 채우기 </option>
+		</select>
+		<br><br>
+		<button onclick="fillSelect(1);"> 과일로 옵션을 채우자</button>
+		<button onclick="fillSelect(2);"> 스포츠로 옵션을 채우자</button>
+		<script type="text/javascript">
+		let arr1 = new Array(new Option("apple")
+							,new Option("banana")
+							,new Option("cherry"));
+		let arr2 = new Array(new Option("baseball")
+							,new Option("basketball")
+							,new Option("football"));
+		function fillSelect( gubun ){
+			let arr;
+			if (gubun == 1) arr = arr1;
+			else if(gubun ==2) arr = arr2;
+			
+			for (let i = 0; i < arr.length; i++) {
+				sel1.options[i] = arr[i];
+			}//for
+		}//fillSelect
+		</script>
+	</body>
+</html>

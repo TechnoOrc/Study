@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>01start3.html</title>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	</head>
+	<body>
+		<h1>jquery 왜 사용? 좋은 이유</h1>
+		<h2>html과 javascript 코드를 분리시켜 준다</h2>
+		<h2>버튼에 이벤트를 주기 위해서는 javascript는 html 코드에 onclick(javascript) 사용</h2>
+		<h2>jquery : 버튼에 이벤트를 주기 위해서 selector 사용=> html과 javascript 분리</h2> 
+		
+		<button id="testBtn1"> this is test jquery button </button> 
+		<script>
+		$(document).ready(function() {
+			$("#testBtn1").click(function() {
+				alert( $("#testBtn1").text() );
+			});
+		});
+		</script>
+	</body>
+</html>

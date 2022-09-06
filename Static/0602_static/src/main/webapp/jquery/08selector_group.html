@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>08selector_group.html</title>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	</head>
+	<body>
+		<script>
+		let colorArr1 = ["red","orange","yellow","green","skyblue","blue","purple"];
+		let colorArr2 = ["purple","blue","skyblue","yellow","orange","red"];
+		let arr1Num = 0;
+		$(document).ready(function() {
+			
+			$("#btn1").click(function() {
+				$("h1, .testCls").css("color", colorArr1[arr1Num % 7]);
+				$("#h2id, #btn1").css("color", colorArr2[arr1Num % 6]);
+				arr1Num++;
+			});//click
+			
+		});//ready
+		</script>
+		<h1> element selector 적용</h1>
+		<h2 id="h2id"> id selector 적용</h2>
+		<h3 class="testCls"> class selector 적용</h3>
+		<h4 class="testCls"> class selector 적용</h4>
+		<button id="btn1"> group selector test </button>
+	</body>
+</html>

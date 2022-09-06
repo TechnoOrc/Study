@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>20key.html</title>
+	</head>
+	<body>
+		<h1>keyboard의 key event와 ascii code</h1>
+		<input type="text" onkeyup="findKey(event);">
+		<button id="btn1" onclick="btnPress();">ascii code 13이면 실행됨.</button>
+		<script type="text/javascript">
+		function findKey( event ){
+			//event : 키보드 이벤트 :  onkeyup, onkeydown, onkeypress
+			//event.keyCode : 눌러진 키보드의 아스키코드
+			alert( event.keyCode );
+			if( event.keyCode == 13 ) btn1.click();// 내장함수
+		}//function
+		function btnPress() {
+			alert("버튼이 클릭되었습니다.");
+		}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>09table.html</title>
+	</head>
+	<body>
+		<h1>rowspan="2" : 2개 행을 하나로 합친다.</h1>
+		<h1>colspan="3" : 3개 열을 하나로 합친다.</h1>
+		<table border="1">
+			<colgroup>
+				<col width="100px"><!-- 1번째 컬럼 -->
+				<col width="250px"><!-- 2번째 컬럼 -->
+				<col width="150px"><!-- 3번째 컬럼 -->
+			</colgroup>
+			<tfoot>
+				<tr><td colspan="3">colspan="3"</td></tr>
+			</tfoot>
+			<tbody>
+				<tr><td>1</td><td>apple</td><td>010</td></tr>
+				<tr><td rowspan="2">2</td><td>banana</td><td>011</td></tr>
+				<tr><td>cherry</td><td>012</td></tr>
+			</tbody>
+			<thead>
+				<tr><th>no</th><th>id</th><th>tel</th></tr>
+			</thead>
+		</table>
+	</body>
+</html>

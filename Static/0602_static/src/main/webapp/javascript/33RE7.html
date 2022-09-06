@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>33RE7.html</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+		let today = new Date();
+		//alert(today.getDate() + "일 " + today.getDay() + "요일");
+		let yoil = new Array("일","월","화","수","목","금","토");
+		
+		document.write("<table border=1><tr>");
+		for (let i = 0; i < 7; i++) {
+			document.write("<th>" + yoil[i] + "</th>");
+		}
+		document.write("<tr>");
+		let getDate = today.getDate();
+		for (let i = 0; i < 7; i++) {
+			if (i >= today.getDay()) {
+			document.write("<td>" + getDate++ + "</td>");
+			} else{
+				document.write("<td></td>");
+			}
+		}
+		document.write("</tr>");
+		document.write("</tr></table>");
+		</script>
+	</body>
+</html>

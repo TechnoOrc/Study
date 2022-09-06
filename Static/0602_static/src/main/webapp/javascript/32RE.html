@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+ 	<head>
+		<meta charset="UTF-8">
+		<title>32RE.html</title>
+	</head>
+	<body>
+		<h1>div, span : 공간/영역/구역을 설정하는 태그</h1>
+		<h2>div : 가로 한 줄 </h2>
+		<h2>span : 가로 한 줄 중에서 일부 조금.</h2>
+		아디디 : <input type="text" id="memid" name="memid">
+		[<span id="idspan"></span>]
+		<br><br>
+		패스워드 : <input type="password" id="mempwd" name="mempwd">
+		<br><br>
+		패스워드 확인 : <input type="password" id="mempwd2" name="mempwd2">
+		<br><br>
+		<button onclick="valueCheck();"> 아이디 전송 </button>
+		<script type="text/javascript">
+		function valueCheck() {
+			if (memid.value.trim() == "") {
+				alert("아이디를 입력해 주세요.");
+				//idspan.textContent = "아이디를 입력해 주세요.";
+				idspan.innerHTML = "<font color = red> 아이디를 입력해 주세요.</font>";
+				
+				return;//진행중지
+			}
+			if (memid.value.trim().length <= 7) {
+				alert("아이디는 8자 이상입니다.")
+				return;//진행중지
+			}
+			if (mempwd.value.trim() == "") {
+				alert("패스워드를 입력해 주세요.");
+				return;//진행중지
+			}
+			if (mempwd.value.trim().length <= 7) {
+				alert("패스워드는 8자 이상입니다.")
+				return;//진행중지
+			}
+			if (mempwd.value.trim() != mempwd2.value.trim()) {
+				alert("패스워드와 패스워드 확인이 다릅니다.");
+				return;//진행중지
+			}
+			alert("전송 완료");
+			
+		}//function
+		</script>
+	</body>
+</html>

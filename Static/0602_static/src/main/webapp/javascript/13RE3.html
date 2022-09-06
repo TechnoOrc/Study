@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>13RE3.html</title>
+	</head>
+	<body>
+		<h1>함수 두개로 처리</h1>
+		<input type="text" id="txt1">
+		<input type="button" id="downBtn" value="DOWN"
+				onclick="moveTxt1()">
+		<br><br>
+		<input type="text" id="txt2">
+		<input type="button" id="upBtn" value="UP"
+				onclick="moveTxt2()">
+		<script type="text/javascript">
+		function moveTxt1() {
+			txt2.value = txt1.value;
+			txt1.value = "";
+		}
+		function moveTxt2() {
+			txt1.value = txt2.value;
+			txt2.value = "";
+		}
+		</script>
+		<hr>
+		<h1>함수 하나로 처리</h1>
+		<input type="text" id="txt3">
+		<input type="button" id="btn3" value="DOWN"
+				onclick="UpAndDown(1);">
+		<br><br>
+		<input type="text" id="txt4">
+		<input type="button" id="btn4" value="UP"
+				onclick="UpAndDown(2);">
+		<script type="text/javascript">
+		function UpAndDown( gubun ) {
+			if(gubun == 1) {//down
+				txt4.value = txt3.value;
+				txt3.value = "";
+			} else if(gubun == 2){//up
+				txt3.value = txt4.value;
+				txt4.value = "";
+			}
+		}//function
+		</script>
+		<hr>
+		<h1>함수 두개로 처리 + 데이터가 있을 때만</h1>
+		<input type="text" id="txt5">
+		<input type="button" id="btn5" value="DOWN" onclick="down();">
+		<br><br>
+		<input type="text" id="txt6">
+		<input type="button" id="btn6" value="UP" onclick="up();">
+		<script type="text/javascript">
+		function down() {
+			if( txt5.value.trim() == "") return;//return; : 함수 종료.
+			txt6.value = txt5.value;
+			txt5.value = "";
+		}
+		function up() {
+			if( txt6.value.trim() == "") return;//trim() : 공백 자르기.
+			txt5.value = txt6.value;
+			txt6.value = "";
+		}
+		</script>
+	</body>
+</html>

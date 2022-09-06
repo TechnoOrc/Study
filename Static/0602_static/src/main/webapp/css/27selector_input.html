@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>27selector_input.html</title>
+		<style type="text/css">
+		input {
+			width : 300px;
+			height : 50px;
+			border : 2px solid purple;
+			border-radius: 20px;
+		}
+		input[type=text] {
+			color : purple;
+			background-color: lightblue;
+			text-align: center;
+		}
+		input[type=button]{
+			background-color: lightgreen;
+		}
+		input[id=btn2] {
+			background-color: pink;
+		}
+		input[class=btn3] {
+			background-color: lightyellow;
+		}
+		input[type=button]:active{
+			background-color: gray;
+		}
+		
+		
+		</style>
+	</head>
+	<body>
+		<input type="text" value="텍 스 트 필 드 1">
+		<br><br>
+		<input type="text" value="텍 스 트 필 드 2">
+		<br><br>
+		<input type="button" value=" B U T T O N">
+		<br><br>
+		<input type="button" id="btn2" value=" B U T T O N 2">
+		<br><br>
+		<input type="button" class="btn3" value=" B U T T O N 3">
+		<br><br>
+	</body>
+</html>

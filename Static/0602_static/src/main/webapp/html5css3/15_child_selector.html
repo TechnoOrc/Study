@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>15child_selector.html</title>
+		<style type="text/css">
+		table > tr > td {
+			background-color : orange;
+		}
+		/*실행 시에 웹브라우저가 자동으로 tbody를 만드므로,
+		table > tr > td는 테이블 구조상 성립 불가능 하다.
+		-> 실제 구조는 table > tbody > tr > td가 되어야 한다. */
+		thead > tr > th {
+			background-color : skyblue;
+		}
+		</style>
+	</head>
+	<body>
+		<table border="1">
+			<thead>
+				<tr><th>no</th><th>id</th><th>tel</th></tr>
+			</thead>
+			<tr><!-- 실행 시에 웹브라우저가 tbody를 만든다 -->
+				<td>1</td><td>apple</td><td>010</td>
+			</tr>
+		</table>
+	</body>
+</html>

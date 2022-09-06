@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>31week.html</title>
+	</head>
+	<body>
+		<h1>Date 객체를 이용하여 이번 주를 표현하자</h1>
+		<script type="text/javascript">
+		let yoilArray  = new Array("일","월","화","수","목","금","토");
+		
+		document.write("<table border=1><tr>");
+		
+		for (let i = 0; i < yoilArray.length; i++) {
+			document.write("<th>" + yoilArray[i] + "</th>");
+		}
+		
+		document.write("</tr><tr>")
+		
+		let today = new Date();
+		let date = today.getDate();
+		let day = today.getDay();
+		
+		for (let i = 0; i < yoilArray.length; i++) {
+			if (i == day) {
+				document.write( "<td>" + date + "</td>");
+			} else {
+				document.write("<td></td>");
+			}//else
+		}//for
+		
+		document.write("</tr></table>");
+		</script>
+	</body>
+</html>

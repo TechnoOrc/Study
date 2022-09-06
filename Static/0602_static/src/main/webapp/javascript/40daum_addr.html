@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>40daum_addr.html</title>
+		<br><br>
+		<h1>참고 사이트 : https://postcode.map.daum.net/guide#usage</h1>
+	</head>
+	<body>
+		<h1> 다음 주소 </h1>
+		우편	번호 : <input type="text" id="post_code" name="post_code" readonly="readonly"
+						style="background-color:lightgray;">
+		<button onclick="openDaumAddr();"> 다음 주소 팝업 열기 </button>
+		<br><br>주소 : <input type="text" id="addr1" name="addr1" readonly="readonly"
+						style="background-color:lightgray;">
+		<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+		<script>
+			function openDaumAddr() {
+			    new daum.Postcode({
+			        oncomplete: function(data) {
+			        	post_code.value = data.zonecode;
+			        	addr1.value = data.address;
+			        }
+			    }).open();
+			}//openDaumAddr
+		</script>
+	</body>
+</html> 

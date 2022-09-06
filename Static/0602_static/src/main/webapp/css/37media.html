@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, inital-scale=1.0">
+		<title>37media.html</title>
+		<style type="text/css">
+		
+		.box {
+			width : 8.33%;
+			height : 140px;
+			float : left;
+		}
+		@media only screen and (max-width : 1000px) {
+			.box {
+				width : 100%;
+			}
+		}
+		/* 100픽셀 이하로 내려갈 경우 width 100%로 적용 */
+		@media only screen and (max-width : 700px) {
+			.box {
+				width : 50%;
+			}
+		}
+		/* 700픽셀 이하로 내려갈 경우 width 50%로 적용 */
+		</style>
+	</head>
+	<body>
+		<div>
+			<!-- div 12개  -->
+			<div class="box" style="background-color: red;"></div>
+			<div class="box" style="background-color: orange;"></div>
+			<div class="box" style="background-color: yellow;"></div>
+			<div class="box" style="background-color: green;"></div>
+			<div class="box" style="background-color: skyblue;"></div>
+			<div class="box" style="background-color: blue;"></div>
+			<div class="box" style="background-color: violet;"></div>
+			<div class="box" style="background-color: lightgray;"></div>
+			<div class="box" style="background-color: pink;"></div>
+			<div class="box" style="background-color: lightgreen;"></div>
+			<div class="box" style="background-color: gray;"></div>
+			<div class="box" style="background-color: black;"></div>
+		</div>
+	</body>
+</html>

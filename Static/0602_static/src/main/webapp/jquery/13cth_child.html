@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>13nth_child.html</title>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<style type="text/css">
+		table {
+			border : 3px solid gray;
+			margin-top : 5px;
+		}
+		</style>
+	</head>
+	<body>
+		<script>
+		$(document).ready(function() {
+			$("#firstBtn").click(function() {
+				$("tr:first-child").css("background-color", "red");
+			});//click
+			$("#lastBtn").click(function() {
+				$("tr:last-child").css("background-color", "orange");
+			});//click
+
+			$("#nthBtn").click(function() {
+				//alert( $.trim( $("#numid").val() ) == "" );
+				if(   $.trim(   $("#numid").val()   ) == ""
+						|| $("#numid").val() > 5
+						|| $("#numid").val() < 1   ){
+					alert("1에서 5사이의 수를 입력하세요.");
+					return;//진행 중지
+				}//if - validation check
+				$( "tr:nth-child(" + $("#numid").val() + ")" ).css("background-color", "yellow");
+			});//click
+
+		});//ready
+		</script>
+		<button id="firstBtn"> find first child </button>
+		<button id="lastBtn"> find last child </button>
+		<input type="number" id="numid" placeholder="1에서 5사이의 수를 입력하세요." maxlength="1">
+		<button id="nthBtn"> find nth child </button>
+		<table>
+			<thead>
+				<tr><th>번호</th><th>아이디</th><th>전화번호</th></tr><!-- first-child, last-child, only-child -->
+			</thead>
+			<tbody>
+				<tr><td>1</td><td>apple</td><td>010</td></tr>
+				<tr><td>2</td><td>banana</td><td>011</td></tr>
+				<tr><td>3</td><td>cherry</td><td>012</td></tr>
+				<tr><td>4</td><td>melon</td><td>013</td></tr>
+				<tr><td>5</td><td>grape</td><td>014</td></tr>
+			</tbody>
+		</table>
+	</body>
+</html> 
