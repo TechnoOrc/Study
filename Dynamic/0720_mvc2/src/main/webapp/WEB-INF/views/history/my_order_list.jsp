@@ -71,7 +71,16 @@
 							<hr>
 							주문 번호 : ${dto.detail_no}
 						</td>
-						<td>${dto.seller_mid}</td>
+						<td class="dropdown">
+							<button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown">
+								${dto.seller_mid}
+							</button>
+							<div class="dropdown-menu">
+								<button class="dropdown-item memo_to_seller btn btn-link" id="${dto.seller_mno}">
+										판매자에게 쪽지 보내기
+								</button>
+							</div>
+						</td>
 						<td>
 							<c:choose>
 								<c:when test="${dto.order_status == 7}">
@@ -207,6 +216,30 @@
 		</div>
 	</div>
 	<!-- pay detail modal end -->
+
+	<script type="text/javascript">
+	$(document).ready(function() {
+
+		$(".memo_to_seller").click(function() {
+
+			$.get(
+					"${pageContext.request.contextPath}/memo/start"
+					, {
+						mno_to : $(this).attr("id")
+					}
+					, function(data, status) {
+						if(data == 0){
+							alert("잠시 후 다시 시도해 주세요.");
+						} else {
+							window.location.href="${pageContext.request.contextPath}/memo/open_room?room_no="+data;
+						}
+					}//call back functiion
+			);//get
+
+		});//click
+
+	});//ready
+	</script>
 
 	<script type="text/javascript">
 	$(document).ready(function() {

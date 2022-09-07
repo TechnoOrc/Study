@@ -25,12 +25,12 @@ public class RestController3 {
 
 	@Autowired
 	private MemberBoardService service;
-	
-	@RequestMapping( value = "/{inData}", method = RequestMethod.DELETE ) // Ajax Type : DELETE 
+
+	@RequestMapping( value = "/{inData}", method = RequestMethod.DELETE )
 	public int delete( @PathVariable("inData") String board_no, HttpSession session ) {
 		MemberBoardDTO dto = new MemberBoardDTO();
 		dto.setBoard_no(board_no);
-		dto.setMno( ( (MemberDTO) session.getAttribute("login_info") ).getMno() );
+		dto.setMno(   ( (MemberDTO) session.getAttribute("login_info") ).getMno()   );
 		int successCount = service.delete(dto);
 		return successCount;
 	}//delete
@@ -38,10 +38,9 @@ public class RestController3 {
 	@RequestMapping( value = "/{inData}", method = RequestMethod.GET )
 	public MemberBoardDTO detail( @PathVariable("inData") String board_no ) {
 		MemberBoardDTO dto = service.detail(board_no);
-		return dto; 
-//		return service.detail(board_no);
+		return dto;
 	}//detail
-	
+
 	@RequestMapping( value = "/list", method = RequestMethod.GET )
 	public List<MemberBoardDTO> list( SearchDTO dto ) {
 		List<MemberBoardDTO> list = service.searchList(dto);

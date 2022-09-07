@@ -5,7 +5,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>/restmember/list_page</title>
+		<title>/restmbrbrdview/list_page</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
@@ -14,7 +14,7 @@
 	<body>
 		<%@ include file="/WEB-INF/views/header.jsp" %>
 		<hr>
-		<h3>/restmember/list_page</h3>
+		<h3>/restmbrbrdview/list_page</h3>
 		<hr>
 		<table class="table table-hover">
 			<thead>
@@ -32,21 +32,23 @@
 					"${pageContext.request.contextPath}/restmbrbrd/list"
 					, {}
 					, function(data, status) {
-						alert(JSON.stringify (data));
-						$.each(data, function(index, dto) {// 데이터를 돌려서 index와 dto로 나눔
+						//alert(data);
+
+						$.each(data, function(index, dto) {
 							$("#list_tbody").append(
 								"<tr>"
 								+ "<td>" + dto.board_no + "</td>"
-								+ "<td><a href='${pageContext.request.contextPath}/restmbrbrdview/detail_page?board_no=" + dto.board_no +"'>"
-								+ dto.title + "</a></td>"
++ "<td><a href='${pageContext.request.contextPath}/restmbrbrdview/detail_page?board_no=" + dto.board_no + "'>"
+									+ dto.title + "</a></td>"
 								+ "<td>" + dto.mid + "</td>"
 								+ "<td>" + dto.view_cnt + "</td>"
 								+ "<td>" + dto.write_date + "</td>"
 								+ "</tr>"
 							);//append
 						});//each
+
 					}//call back function
-					, "json" // json 타입을 보내겠다는 의미
+					, "json"
 			);//get
 		});//ready
 		</script>

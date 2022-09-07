@@ -33,6 +33,7 @@
 			<mapping path="/credit/card*"/>
 			<mapping path="/delivery/*"/>
 			<mapping path="/history/*"/>
+			<mapping path="/memo/*"/>
 			<mapping path="/mypage/*"/>
 			<mapping path="/order/*"/>
 			<mapping path="/product/*"/>

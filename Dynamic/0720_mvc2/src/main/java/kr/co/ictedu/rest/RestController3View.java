@@ -18,7 +18,7 @@ public class RestController3View {
 		model.addAttribute( "board_no", board_no );
 		return "rest/detail_page";//jsp file name
 	}//detailPage
-	
+
 	@RequestMapping( value = "/list_page", method = RequestMethod.GET )
 	public String listPage() {
 		return "rest/list_page";//jsp file name
