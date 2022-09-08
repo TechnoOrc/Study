@@ -21,7 +21,54 @@
 			<tbody>
 				<tr>
 					<td rowspan="5"><img src="${detail_dto.thumbnail_path}"></td>
-					<td colspan="4"><h2><em>${detail_dto.prdt_name}</em></h2></td>
+					<td colspan="4">
+						<h2>
+							<em>${detail_dto.prdt_name}</em>
+							<img id="favorite_btn" width="35px" style="cursor:hand;"
+								<c:choose>
+									<c:when test="${favoriteCount == 0}">
+										 title="즐겨찾기" src="${pageContext.request.contextPath}/resources/ictedu/image/star1.png"
+									</c:when>
+									<c:otherwise>
+										 title="즐겨찾기해제" src="${pageContext.request.contextPath}/resources/ictedu/image/star2.png"
+									</c:otherwise>
+								</c:choose>
+							>
+						</h2>
+						<script type="text/javascript">
+						$(document).ready(function() {
+
+							let favoriteCount = "${favoriteCount}";
+
+							$("#favorite_btn").click(function() {
+
+								if("${login_info.mno}" == ""){
+									alert("로그인 해 주세요.");
+								}
+
+								$.get(
+										"${pageContext.request.contextPath}/product/favorite_change"
+										, {
+											prdt_no : "${detail_dto.prdt_no}"
+											, favoriteCount : favoriteCount
+										}
+										, function(data, status) {
+											if(favoriteCount == 0 && data >= 1){
+												favorite_btn.src="${pageContext.request.contextPath}/resources/ictedu/image/star2.png";
+												favorite_btn.title="즐겨찾기해제";
+												favoriteCount = 1;
+											} else if(favoriteCount >= 1 && data >= 1){
+												favorite_btn.src="${pageContext.request.contextPath}/resources/ictedu/image/star1.png";
+												favorite_btn.title="즐겨찾기";
+												favoriteCount = 0;
+											}
+										}//call back function
+								);//get
+
+							});//click
+						});//ready
+						</script>
+					</td>
 				</tr>
 				<tr>
 					<th> 판 매 가 </th>

@@ -13,6 +13,22 @@ public class ProductService {
 	@Autowired
 	private ProductDAO dao;
 
+	public int favoriteCount(ProductFavoriteDTO dto) {
+		int favoriteCount = 0;
+		favoriteCount = dao.favoriteCount(dto);
+		return favoriteCount;
+	}//favoriteCount
+
+	public int favoriteChange(ProductFavoriteDTO dto) {
+		int successCount = 0;
+		if(dto.getFavoriteCount().equals("0")) {
+			successCount = dao.favoriteInsert(dto);
+		} else {
+			successCount = dao.favoriteDelete(dto);
+		}
+		return successCount;
+	}//favoriteChange
+
 	public List<ProductReplyDTO> productReplyList( String prdt_no ) {
 		List<ProductReplyDTO> list = null;
 		list = dao.productReplyList( prdt_no );

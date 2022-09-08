@@ -20,9 +20,7 @@ public class MemoDAO {
 
 	public int insert(MemoDTO dto) {
 		int successCount = 0;
-		System.out.println(dto);
 		successCount = sqlSession.insert("MemoMapper.insert", dto);
-		System.out.println(successCount);
 		return successCount;
 	}//insert
 

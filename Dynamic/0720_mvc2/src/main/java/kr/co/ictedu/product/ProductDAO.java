@@ -14,6 +14,24 @@ public class ProductDAO {
 	@Autowired
 	private SqlSession sqlSession;
 
+	public int favoriteCount(ProductFavoriteDTO dto) {
+		int favoriteCount = 0;
+		favoriteCount = sqlSession.selectOne("ProductMapper.favoriteCount", dto);
+		return favoriteCount;
+	}//favoriteCount
+
+	public int favoriteDelete(ProductFavoriteDTO dto) {
+		int successCount = 0;
+		successCount = sqlSession.delete("ProductMapper.favoriteDelete", dto);
+		return successCount;
+	}//favoriteDelete
+
+	public int favoriteInsert(ProductFavoriteDTO dto) {
+		int successCount = 0;
+		successCount = sqlSession.insert("ProductMapper.favoriteInsert", dto);
+		return successCount;
+	}//favoriteInsert
+
 	public List<ProductReplyDTO> productReplyList( String prdt_no ) {
 		List<ProductReplyDTO> list = null;
 		list = sqlSession.selectList("ProductMapper.productReplyList", prdt_no);

@@ -62,7 +62,7 @@
 			            content: '<div style="width:150px;text-align:center;padding:6px 0;">'
 			            			+ mid
 			            			+ '<br>'
-			            			+ '<img src="${pageContext.request.contextPath}/resources/test/gra.png" width="70px">'
+			            			+ '<img src="${pageContext.request.contextPath}/resources/ictedu/image/star2.png" width="70px">'
 			            			+ '</div>'
 			        });
 			        infowindow.open(map, marker);

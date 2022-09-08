@@ -5,6 +5,23 @@
 
 <mapper namespace="ProductMapper">
 
+	<select id="favoriteCount" parameterType="kr.co.ictedu.product.ProductFavoriteDTO" resultType="int">
+	select count(mno) cnt from product_favorite
+	where mno = #{mno}
+	and prdt_no = #{prdt_no}
+	</select>
+
+	<delete id="favoriteDelete" parameterType="kr.co.ictedu.product.ProductFavoriteDTO">
+	delete from product_favorite
+	where mno = #{mno}
+	and prdt_no = #{prdt_no}
+	</delete>
+
+	<insert id="favoriteInsert" parameterType="kr.co.ictedu.product.ProductFavoriteDTO">
+	insert into product_favorite (mno, prdt_no)
+	values (#{mno}, #{prdt_no})
+	</insert>
+
 	<select id="productReplyList" parameterType="java.lang.String"
 			resultType="kr.co.ictedu.product.ProductReplyDTO">
 	select pr.reply_no, pr.prdt_no, pr.mno, m.mid

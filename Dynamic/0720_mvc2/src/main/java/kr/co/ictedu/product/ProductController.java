@@ -34,6 +34,15 @@ public class ProductController {
 	@Autowired
 	private ProductService service;
 
+	@RequestMapping( value = "/favorite_change", method = RequestMethod.GET )
+	public void favoriteChange( ProductFavoriteDTO dto, HttpSession session, PrintWriter out ) {
+		dto.setMno( ( (MemberDTO) session.getAttribute("login_info") ).getMno() );
+		int successCount = 0;
+		successCount = service.favoriteChange( dto );
+		out.print(successCount);
+		out.close();
+	}//favoriteChange
+
 	@RequestMapping( value = "/reply_insert", method = RequestMethod.POST )
 	public void replyInsert( ProductReplyDTO dto, HttpSession session, PrintWriter out ) {
 
@@ -187,7 +196,7 @@ public class ProductController {
 	}//delete
 
 	@RequestMapping( value = "/detail", method = RequestMethod.GET )
-	public String detail( String prdt_no, Model model ) {
+	public String detail( String prdt_no, HttpSession session, Model model ) {
 
 		ProductDTO dto = null;
 		dto = service.detail( prdt_no );
@@ -196,6 +205,16 @@ public class ProductController {
 		List<ProductReplyDTO> list = null;
 		list = service.productReplyList( prdt_no );
 		model.addAttribute("list", list);
+
+		int favoriteCount = 0;
+		if(session.getAttribute("login_info") != null) {
+			ProductFavoriteDTO tmpDto = new ProductFavoriteDTO();
+			tmpDto.setMno( ( (MemberDTO) session.getAttribute("login_info") ).getMno() );
+			tmpDto.setPrdt_no( prdt_no );
+
+			favoriteCount = service.favoriteCount(tmpDto);
+		}
+		model.addAttribute("favoriteCount", favoriteCount);
 
 		return "/product/detail";//jsp file name
 
@@ -342,6 +361,14 @@ create table product (
   add_file_name varchar(100) default null,
   add_file_path varchar(100) default null,
   primary key (prdt_no)
+);
+
+drop table product_favorite;
+
+CREATE TABLE product_favorite (
+  mno int NOT NULL,
+  prdt_no int NOT NULL,
+  PRIMARY KEY (mno,prdt_no)
 );
 
 drop table product_reply;
