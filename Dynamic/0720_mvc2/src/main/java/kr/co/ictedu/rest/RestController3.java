@@ -1,5 +1,6 @@
 package kr.co.ictedu.rest;
 
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -25,6 +26,15 @@ public class RestController3 {
 
 	@Autowired
 	private MemberBoardService service;
+
+	@RequestMapping( value = "/", method = RequestMethod.POST )
+	public void insert(MemberBoardDTO dto, HttpSession session, PrintWriter out) {
+		dto.setMno( ( (MemberDTO) session.getAttribute("login_info") ).getMno() );
+		int successCount = 0;
+		successCount = service.write(dto);
+		out.print(successCount);
+		out.close();
+	}//insert
 
 	@RequestMapping( value = "/{inData}", method = RequestMethod.DELETE )
 	public int delete( @PathVariable("inData") String board_no, HttpSession session ) {

@@ -13,6 +13,11 @@ public class RestController3View {
 
 	private final static Logger logger = LoggerFactory.getLogger(RestController3View.class);
 
+	@RequestMapping( value = "/write_page", method = RequestMethod.GET )
+	public String writePage() {
+		return "rest/write_page";//jsp file name
+	}//writePage
+
 	@RequestMapping( value = "/detail_page", method = RequestMethod.GET )
 	public String detailPage( String board_no, Model model ) {
 		model.addAttribute( "board_no", board_no );

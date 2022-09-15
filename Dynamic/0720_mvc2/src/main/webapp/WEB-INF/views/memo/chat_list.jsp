@@ -31,7 +31,7 @@
 								${dto.chat_date}
 								<div class="card w-100">
 									<div class="card-header">${dto.mid_ins}</div>
-									<div class="card-body">${dto.chat}</div>
+									<div class="card-body bg-warning">${dto.chat}</div>
 								</div>
 							</div>
 						</div>

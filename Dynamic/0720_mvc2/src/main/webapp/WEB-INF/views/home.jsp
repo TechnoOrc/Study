@@ -16,18 +16,18 @@
 		<h3> Home </h3>
 		<hr>
 
+		<table class="table table-bordered">
+			<tr>
+				<c:forEach var="num" begin="1" end="31">
+					<td style="height:150px;">${num}</td>
+					<c:if test="${num % 7 == 0}">
+						</tr>
+						<tr>
+					</c:if>
+				</c:forEach>
+			</tr>
+		</table>
+
 	<%@ include file="/WEB-INF/views/footer.jsp" %>
 	</body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-

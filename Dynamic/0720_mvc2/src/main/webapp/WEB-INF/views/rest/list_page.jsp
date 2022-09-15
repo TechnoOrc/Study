@@ -16,6 +16,14 @@
 		<hr>
 		<h3>/restmbrbrdview/list_page</h3>
 		<hr>
+		<!-- 글쓰기 버튼 영역 -->
+		<div class="text-right">
+			<a href="${pageContext.request.contextPath}/restmbrbrdview/write_page">
+				<button class="btn btn-primary"> 글 쓰러 가기 => ${pageContext.request.contextPath}/restmbrbrdview/write_page </button>
+			</a>
+		</div>
+		<hr>
+		<!-- 목록 출력 테이블 시작 -->
 		<table class="table table-hover">
 			<thead>
 				<tr>

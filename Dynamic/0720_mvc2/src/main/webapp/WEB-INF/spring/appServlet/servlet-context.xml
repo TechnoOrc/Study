@@ -37,10 +37,12 @@
 			<mapping path="/mypage/*"/>
 			<mapping path="/order/*"/>
 			<mapping path="/product/*"/>
+			<mapping path="/restmbrbrdview/*"/>
 			<exclude-mapping path="/board/ck/list"/>
 			<exclude-mapping path="/board/member/list"/>
 			<exclude-mapping path="/product/list"/>
 			<exclude-mapping path="/product/detail"/>
+			<exclude-mapping path="/restmbrbrdview/list_page"/>
 			<beans:bean class="kr.co.ictedu.login.LoginCheckInterceptor" />
 		</interceptor>
 	</interceptors>
