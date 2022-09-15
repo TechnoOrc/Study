@@ -4,7 +4,7 @@ public class CalendarDTO {
 
 	private String to_date;
 	private String last_date;
-	private String first_day;
+	private String first_day;//(mysql)1:일, 2:월, 3:화, 4:수, 5:목, 6:금, 7:토
 	private String for_end;
 	private String this_month;
 	private String this_year;

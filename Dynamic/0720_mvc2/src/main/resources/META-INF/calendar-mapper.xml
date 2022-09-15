@@ -9,8 +9,8 @@
 							resultType="kr.co.ictedu.calendar.CalendarDTO">
 	select dayofmonth( now() ) to_date
 		, dayofmonth( last_day( #{userWantMonth} ) ) last_date
-		, dayofweek( DATE_FORMAT( now(), #{userWantMonth} ) ) first_day
-		, dayofmonth( last_day( #{userWantMonth} ) ) + dayofweek( DATE_FORMAT( now(), #{userWantMonth} ) ) for_end
+		, dayofweek( #{userWantMonth} ) first_day
+		, dayofmonth( last_day( #{userWantMonth} ) ) + dayofweek( #{userWantMonth} ) for_end
 		, month( #{userWantMonth} ) this_month
 		, year( #{userWantMonth} ) this_year
 	from dual

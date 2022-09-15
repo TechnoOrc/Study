@@ -26,8 +26,9 @@ public class CalendarController {
 	public String calendarMain(CalendarDTO dto, Model model) {
 
 		String userWantMonth = "";
-		if( dto.getThis_year() != null || dto.getThis_year() != ""
-				|| dto.getThis_month() != null || dto.getThis_month() != "" ) {
+		if( dto != null
+				&& dto.getThis_year() != null && !dto.getThis_year().equals( "" )
+				&& dto.getThis_month() != null && !dto.getThis_month().equals( "" ) ) {
 			userWantMonth = dto.getThis_year() + "-" + dto.getThis_month() + "-01";
 		} else {
 			Date today = new Date();

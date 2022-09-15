@@ -12,9 +12,10 @@ public class CalendarService {
 	public CalendarDTO dateInfo(String userWantMonth) {
 		CalendarDTO dto = null;
 		dto = dao.dateInfo(userWantMonth);
+
 		int intForEnd = Integer.parseInt( dto.getFor_end() );
 		int modIntForEnd = intForEnd % 7;
-		if(intForEnd > 0) {
+		if(modIntForEnd > 0) {
 			intForEnd = intForEnd + (7 - modIntForEnd);
 			dto.setFor_end(intForEnd + "");
 		}

@@ -13,7 +13,7 @@
 	<body>
 	<%@ include file="/WEB-INF/views/header.jsp" %>
 		<hr>
-		<h3> Calendar Main </h3>
+		<h3> Calendar Main ${date_info.for_end} </h3>
 		<hr>
 			<form id="monthSearchForm" action="${pageContext.request.contextPath}/calendar/main"
 					class="form-inline justify-content-center">
