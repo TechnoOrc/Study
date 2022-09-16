@@ -13,31 +13,31 @@
 	<body>
 	<%@ include file="/WEB-INF/views/header.jsp" %>
 		<hr>
-		<h3> Calendar Main ${date_info.for_end} </h3>
+		<h3> Calendar Main </h3>
 		<hr>
 			<form id="monthSearchForm" action="${pageContext.request.contextPath}/calendar/main"
 					class="form-inline justify-content-center">
-				<select id="this_year" name="this_year" class="form-control mr-1">
-					<c:forEach var="selectVarYear" begin="${date_info.this_year - 10}" end="${date_info.this_year + 10}">
+				<select id="plan_year" name="plan_year" class="form-control mr-1">
+					<c:forEach var="selectVarYear" begin="${date_info.plan_year - 10}" end="${date_info.plan_year + 10}">
 						<option value="${selectVarYear}"
-							<c:if test="${date_info.this_year == selectVarYear}">selected="selected"</c:if>
+							<c:if test="${date_info.plan_year == selectVarYear}">selected="selected"</c:if>
 						>${selectVarYear}</option>
 					</c:forEach>
 				</select>
-				<select id="this_month" name="this_month" class="form-control">
+				<select id="plan_month" name="plan_month" class="form-control">
 					<c:forEach var="selectVarMonth" begin="1" end="12">
 						<option value="${selectVarMonth}"
-							<c:if test="${date_info.this_month == selectVarMonth}">selected="selected"</c:if>
+							<c:if test="${date_info.plan_month == selectVarMonth}">selected="selected"</c:if>
 						>${selectVarMonth}</option>
 					</c:forEach>
 				</select>
 			</form>
 			<script type="text/javascript">
 			$(document).ready(function() {
-				$("#this_year").change(function() {
+				$("#plan_year").change(function() {
 					$("#monthSearchForm").submit();
 				});//change
-				$("#this_month").change(function() {
+				$("#plan_month").change(function() {
 					$("#monthSearchForm").submit();
 				});//change
 			});//ready
@@ -51,23 +51,27 @@
 					<th>SUN</th>	<th>MON</th>	<th>TUE</th>	<th>WED</th>	<th>THU</th>	<th>FRI</th>	<th>SAT</th>
 				</tr>
 			</thead>
-			<tr>
-				<c:forEach var="count" begin="1" end="${date_info.for_end}">
-					<td style="width:14.28%; height:150px;">
-						<c:choose>
-							<c:when test="${count >= date_info.first_day && num <= date_info.last_date}">
-								${num}
-								<c:set var="num" value="${num + 1}" />
-							</c:when>
-							<c:otherwise></c:otherwise>
-						</c:choose>
-					</td>
-					<c:if test="${count % 7 == 0}">
-						</tr>
-						<tr>
-					</c:if>
-				</c:forEach>
-			</tr>
+			<tbody>
+				<tr>
+					<c:forEach var="count" begin="1" end="${date_info.for_end}">
+						<td style="width:14.28%; height:150px;">
+							<c:choose>
+								<c:when test="${count >= date_info.first_day && num <= date_info.last_date}">
+									<a href="${pageContext.request.contextPath}/calendar/day_plan_form?plan_year=${date_info.plan_year}&plan_month=${date_info.plan_month}&plan_date=${num}">
+										${num}
+									</a>
+									<c:set var="num" value="${num + 1}" />
+								</c:when>
+								<c:otherwise></c:otherwise>
+							</c:choose>
+						</td>
+						<c:if test="${count % 7 == 0}">
+							</tr>
+							<tr>
+						</c:if>
+					</c:forEach>
+				</tr>
+			</tbody>
 		</table>
 		<hr>
 

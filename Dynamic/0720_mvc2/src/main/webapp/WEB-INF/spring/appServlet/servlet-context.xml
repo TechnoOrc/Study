@@ -30,7 +30,8 @@
 			<mapping path="/basket/*"/>
 			<mapping path="/board/ck/*"/>
 			<mapping path="/board/member/*"/>
-			<mapping path="/credit/card*"/>
+			<mapping path="/calendar/*"/>
+			<mapping path="/credit/card/*"/>
 			<mapping path="/delivery/*"/>
 			<mapping path="/history/*"/>
 			<mapping path="/memo/*"/>
@@ -40,6 +41,7 @@
 			<mapping path="/restmbrbrdview/*"/>
 			<exclude-mapping path="/board/ck/list"/>
 			<exclude-mapping path="/board/member/list"/>
+			<exclude-mapping path="/calendar/main"/>
 			<exclude-mapping path="/product/list"/>
 			<exclude-mapping path="/product/detail"/>
 			<exclude-mapping path="/restmbrbrdview/list_page"/>

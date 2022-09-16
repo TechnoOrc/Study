@@ -5,14 +5,26 @@
 
 <mapper namespace="CalendarMapper">
 
+	<insert id="dayPlanInsert">
+	INSERT INTO calendar_day_plan (plan_year, plan_month, plan_date, mno
+		, plan_start_time, plan_end_time, plan_desc, plan_expect_price, plan_contact_price)
+	VALUES
+		<foreach collection="array" item="dto" separator=" , ">
+		( "${dto.plan_year}", "${dto.plan_month}", "${dto.plan_date}", "${dto.mno}"
+			, "${dto.plan_start_time}", "${dto.plan_end_time}", "${dto.plan_desc}"
+			, "${dto.plan_expect_price}", "${dto.plan_contact_price}")
+		</foreach>
+	;
+	</insert>
+
 	<select id="dateInfo"	parameterType="java.lang.String"
 							resultType="kr.co.ictedu.calendar.CalendarDTO">
 	select dayofmonth( now() ) to_date
 		, dayofmonth( last_day( #{userWantMonth} ) ) last_date
 		, dayofweek( #{userWantMonth} ) first_day
 		, dayofmonth( last_day( #{userWantMonth} ) ) + dayofweek( #{userWantMonth} ) for_end
-		, month( #{userWantMonth} ) this_month
-		, year( #{userWantMonth} ) this_year
+		, month( #{userWantMonth} ) plan_month
+		, year( #{userWantMonth} ) plan_year
 	from dual
 	</select>
 
